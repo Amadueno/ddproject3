@@ -9,7 +9,7 @@ const Character = new Schema({
   alignment: String,
   exp: String,
   dci: String,
-  user: [{ type: Schema.Types.ObjectId, ref: 'User' }]
+  user: { type: Schema.Types.ObjectId, ref: 'User' }
 })
 
 module.exports = model('Character', Character)
