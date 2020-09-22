@@ -1,9 +1,13 @@
 const { model, Schema } = require('mongoose')
 
 const User = new Schema({
-  id: Schema.ObjectId,
   name: String,
-  characters: [{ type: Schema.ObjectId, ref: 'Character' }]
+  characters: [{
+    type: Schema.Types.ObjectId,
+    ref: 'Character'
+  }]
 })
+
+User.plugin(require('passport-local-mongoose'))
 
 module.exports = model('User', User)
