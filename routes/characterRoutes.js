@@ -18,7 +18,6 @@ router.post('/characters', passport.authenticate('jwt'), (req, res) => {
     faction: req.body.faction,
     alignmnent: req.body.alignment,
     exp: req.body.exp,
-    dci: req.body.dci,
     user: req.user._id
   })
     .then(character => {
