@@ -1,7 +1,10 @@
 const { model, Schema } = require('mongoose')
 
 const User = new Schema({
-  name: String,
+  username: {
+    type: String,
+    required: true
+  },
   characters: [{
     type: Schema.Types.ObjectId,
     ref: 'Character'

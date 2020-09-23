@@ -4,16 +4,16 @@ const passport = require('passport')
 const jwt = require('jsonwebtoken')
 
 router.post('/users/register', (req, res) => {
-  const { name, password } = req.body
-  User.register(new User({ name }), password, err => {
+  const { username, password } = req.body
+  User.register(new User({ username }), password, err => {
     if (err) { console.log(err) }
     res.sendStatus(200)
   })
 })
 
 router.post('/users/login', (req, res) => {
-  const { name, password } = req.body
-  User.authenticate()(name, password, (err, user) => {
+  const { username, password } = req.body
+  User.authenticate()(username, password, (err, user) => {
     if (err) { console.log(err) }
     res.json(user ? jwt.sign({ id: user._id }, process.env.SECRET) : null)
   })

@@ -22,49 +22,88 @@ router.post('/characters', passport.authenticate('jwt'), (req, res) => {
   })
     .then(character => {
       User.findByIdAndUpdate(character.user, { $push: { characters: character._id } })
-        .then(() => res.json((character)
-          // {
-
-          // name: character.name,
-          // class: character.class,
-          // background: character.background,
-          // race: character.race,
-          // faction: character.faction,
-          // alignmnent: character.alignment,
-          // exp: character.exp,
-          // dci: character.dci,
-          // user: req.user
-          // title: character.title,
-          // body: character.body,
-          // user: req.user
-          // }
-        ))
-        .catch(err => console.error(err))
+        .then(() => res.json(character))
+        .catch(err => console.log(err))
     })
-
-  router.post('/characters/bulk', passport.authenticate('jwt'), (req, res) => {
-    const characters = req.body.map(characters => ({
-      ...characters,
-      user: req.user._id
-    }))
-
-    Character.create(characters)
-      .then(characters => {
-        const characterIds = characters.map(character => character._id)
-        User.findById(req.user._id)
-          .then(user => {
-            const allCharacters = [...user.characters, ...characterIds]
-            User.findByIdAndUpdate(req.user._id, { items: allCharacters })
-              .then(() => res.sendStatus(200))
-              .catch(err => console.log(err))
-          })
-      })
-  })
-
-    .catch(err => console.error(err))
+    .catch(err => console.log(err))
 })
 
-module.exports = router
+// router.post('/characters', passport.authenticate('jwt'), (req, res) => {
+//   Character.create({
+//     name: req.body.name,
+//     class: req.body.class,
+//     background: req.body.background,
+//     race: req.body.race,
+//     faction: req.body.faction,
+//     alignmnent: req.body.alignment,
+//     exp: req.body.exp,
+//     user: req.user._id
+//   })
+//     // 5f6bc45c28a9760648259b4c
+//     .then(character => {
+//       User.findByIdAndUpdate(character.user, { $push: { characters: character._id } })
+//         .then(() => res.json((character))
+//           // {
+
+//           // name: character.name,
+//           // class: character.class,
+//           // background: character.background,
+//           // race: character.race,
+//           // faction: character.faction,
+//           // alignmnent: character.alignment,
+//           // exp: character.exp,
+//           // dci: character.dci,
+//           // user: req.user
+//           // title: character.title,
+//           // body: character.body,
+//           // user: req.user
+//           // }
+
+//           .catch(err => console.error(err))
+//     })
+
+router.post('/characters/bulk', passport.authenticate('jwt'), (req, res) => {
+  const characters = req.body.map(character => ({
+    ...character,
+    user: req.user._id
+  }))
+
+  Character.create(characters)
+    .then(characters => {
+      const characterIds = characters.map(character => character._id)
+      User.findById(req.user._id)
+        .then(user => {
+          const allcharacters = [...user.characters, ...characterIds]
+          User.findByIdAndUpdate(req.user._id, { items: allcharacters })
+            .then(() => res.sendStatus(200))
+            .catch(err => console.log(err))
+        })
+    })
+})
+
+// router.post('/characters/bulk', passport.authenticate('jwt'), (req, res) => {
+//   const characters = req.body.map(characters => ({
+//     ...characters,
+//     user: req.user._id
+//   }))
+
+//   Character.create(characters)
+//     .then(characters => {
+//       const characterIds = characters.map(character => character._id)
+//       User.findById(req.user._id)
+//         .then(user => {
+//           const allCharacters = [...user.characters, ...characterIds]
+//           User.findByIdAndUpdate(req.user._id, { items: allCharacters })
+//             .then(() => res.sendStatus(200))
+//             .catch(err => console.log(err))
+//         })
+//     })
+// })
+
+//   .catch(err => console.error(err))
+// })
+
+// module.exports = router
 
 // const router = require('express').Router()
 // const { Character } = require('../models')
@@ -94,4 +133,4 @@ module.exports = router
 //     .catch(err => console.log(err))
 // })
 
-// module.exports = router
+module.exports = router
