@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Col,Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+import axios from 'axios'
 
 
 const Character = () => {
@@ -14,6 +15,7 @@ const Character = () => {
         character: []
 
     })
+   
 
     characterState.handleInputChange = event => {
         setCharacterState({ ...characterState, [event.target.name]: event.target.value })
@@ -23,7 +25,22 @@ const Character = () => {
     }
     characterState.handleCreateCharacter = event => {
         event.preventDefault ()
-        // axios.post
+        axios.post('/api/characters',{
+            name: characterState.name,
+            class: characterState.class,
+            background: characterState.background,
+            race: characterState.race,
+            faction: characterState.faction,
+            alignment: characterState.alignment,
+            exp: characterState.exp,
+            
+
+
+        })
+
+        
+
+        
         // send the req.body=characterState
 
     }
