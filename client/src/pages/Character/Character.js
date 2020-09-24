@@ -3,9 +3,9 @@ import DnDCharacterStatsSheet from 'dnd-character-sheets'
 import 'dnd-character-sheets/dist/index.css'
 
 class Character extends Component {
-  render() {
+  render () {
     return
-    <>
+      <>
       <div>
         <DnDCharacterStatsSheet />
       </div>
