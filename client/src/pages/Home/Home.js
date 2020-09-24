@@ -1,5 +1,5 @@
 import React from 'react'
-import API from '../../utils/API'
+// import API from '../../utils/API'
 
 import {
   ButtonToggle,
@@ -7,7 +7,6 @@ import {
   FormGroup,
   Label,
   Input,
-  FormText,
   Row,
   Col,
   Container
@@ -52,4 +51,4 @@ const Home = (props) => {
   )
 }
 
-// export default Home
+export default Home
