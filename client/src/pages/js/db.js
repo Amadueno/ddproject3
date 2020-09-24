@@ -1,5 +1,5 @@
 let db
-const request = indexedDB.open('todo', 1)
+const request = indexedDB.open('dd', 1)
 
 request.onupgradeneeded = event => {
   db = event.target.result
@@ -18,10 +18,10 @@ request.onerror = event => {
   console.log(event.target.errorCode)
 }
 
-const saveItem = item => {
+const saveCharacter = character => {
   const transaction = db.transaction(['pending'], 'readwrite')
   const store = transaction.objectStore('pending')
-  store.add(item)
+  store.add(character)
 }
 
 const checkDatabase = () => {
@@ -32,7 +32,7 @@ const checkDatabase = () => {
 
   getAll.onsuccess = () => {
     if (getAll.result.length > 0) {
-      fetch('/api/items/bulk', {
+      fetch('/api/characters/bulk', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

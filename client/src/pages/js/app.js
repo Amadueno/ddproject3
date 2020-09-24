@@ -4,8 +4,7 @@ if ('serviceWorker' in navigator) {
   })
 }
 
-
-axios.get('/api/users/items', {
+axios.get('/api/users/characters', {
   headers: {
     Authorization: `Bearer ${localStorage.getItem('user')}`
   }
@@ -13,11 +12,11 @@ axios.get('/api/users/items', {
   .then(({ data: user }) => {
     document.getElementById('username').textContent = `Welcome ${user.username}!`
 
-    user.items.forEach(item => {
-      let itemElem = document.createElement('li')
-      itemElem.className = item.isDone ? 'list-group-item list-group-item-success' : 'list-group-item'
-      itemElem.textContent = item.text
-      document.getElementById('items').append(itemElem)
+    user.characters.forEach(character => {
+      const characterElem = document.createElement('li')
+      characterElem.className = character.isDone ? 'list-group-item list-group-item-success' : 'list-group-item'
+      characterElem.textContent = character.text
+      document.getElementById('characters').append(characterElem)
     })
   })
   .catch(err => {
@@ -25,28 +24,28 @@ axios.get('/api/users/items', {
     // window.location = '/auth.html'
   })
 
-document.getElementById('addItem').addEventListener('click', event => {
+document.getElementById('addCharacter').addEventListener('click', event => {
   event.preventDefault()
 
-  axios.post('/api/items', {
-    text: document.getElementById('item').value,
+  axios.post('/api/characters', {
+    text: document.getElementById('character').value,
     isDone: false
   }, {
     headers: {
       Authorization: `Bearer ${localStorage.getItem('user')}`
     }
   })
-    .then(({ data: item }) => {
-      let itemElem = document.createElement('li')
-      itemElem.className = item.isDone ? 'list-group-item list-group-item-success' : 'list-group-item'
-      itemElem.textContent = item.text
-      document.getElementById('items').append(itemElem)
-      document.getElementById('item').value = ''
+    .then(({ data: character }) => {
+      const characterElem = document.createElement('li')
+      characterElem.className = character.isDone ? 'list-group-item list-group-item-success' : 'list-group-item'
+      characterElem.textContent = character.text
+      document.getElementById('characters').append(characterElem)
+      document.getElementById('character').value = ''
     })
     .catch(err => {
       console.error(err)
-      saveItem({
-        text: document.getElementById('item').value,
+      saveCharacter({
+        text: document.getElementById('character').value,
         isDone: false
       })
     })
