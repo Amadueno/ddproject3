@@ -1,17 +1,23 @@
 import React from 'react'
+// import User from '../User/User.js'
 import {
   Col,
   Form,
   FormGroup,
   Label,
   Input,
+  ButtonToggle,
+  Container
 } from 'reactstrap'
 
 const Character = (props) => {
   return (
+    <>
+    <Container>
     <Form>
       <FormGroup row>
         <Label for="CharacterName" sm={2}>Character Name</Label>
+        <br/>
         <Col sm={10}>
           <Input type="characterName" name="characterName" id="CharacterName" />
         </Col>
@@ -174,7 +180,16 @@ const Character = (props) => {
         </Label>
         </FormGroup>
       </Form>
+      <hr/ >
+      <ButtonToggle color="danger">Save</ButtonToggle>
     </Form>
+    </Container>
+    <Container>
+      <Form>
+
+      </Form>
+    </Container>
+    </>
   )
 }
 
