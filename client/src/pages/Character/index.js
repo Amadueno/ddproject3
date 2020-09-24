@@ -1,1 +1,1 @@
-// export { default } from './Character.js'
+export { default } from './Character.js'

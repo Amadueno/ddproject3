@@ -8,7 +8,6 @@ const Character = new Schema({
   faction: String,
   alignment: String,
   exp: String,
-  dci: String,
   user: { type: Schema.Types.ObjectId, ref: 'User' }
 })
 
