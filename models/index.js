@@ -1,3 +1,4 @@
 module.exports = {
-  // send your models out here...
+  Character: require('./Character.js'),
+  User: require('./User.js')
 }
