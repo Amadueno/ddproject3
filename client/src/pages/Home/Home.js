@@ -13,6 +13,7 @@ import {
   Container
 } from 'reactstrap'
 import axios from 'axios'
+
 const Home = () => {
   const [userState, setUserState] = useState({
     username: ' ',
@@ -37,12 +38,16 @@ const Home = () => {
       password: userState.password
     })
       .then(({ data: token }) => {
+        console.log(token)
         if (token) {
           localStorage.setItem('user', token)
           console.log(token)
-          window.location.pathname = './User.js'
+          window.location.pathname = '../User/User.js'
           // window.location = '/index.html'
+        } else {
+          console.log('Wrong credential')
         }
+        // localStorage.setItem('user', '')
       })
       .catch(err => {
         console.error(err)
