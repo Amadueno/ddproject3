@@ -62,7 +62,7 @@ const Character = () => {
     setCharacterState({ ...characterState, [event.target.name]: event.target.value })
     console.log('hi')
   }
-  characterState.handleCreateCharacter = event => {
+  characterState.handleModifyCharacter = event => {
     event.preventDefault()
     // axios.post
     // send the req.body=characterState
@@ -77,47 +77,47 @@ const Character = () => {
             <CardBody>
               <Form>
                 <FormGroup row>
-                  <Label for="CharacterName" sm={2}>Character Name</Label>
+                  <Label for='CharacterName' sm={2}>Character Name</Label>
                   <br />
-                  <Input type="characterName" name="characterName" id="CharacterName" />
+                  <Input type='characterName' name='characterName' id='CharacterName' />
                 </FormGroup>
                 <Row>
                   <Col xs={4}>
                     <FormGroup row>
-                      <Label for="PlayerName" sm={2}>Player</Label>
-                      <Input type="player" name="player" id="PlayerName" />
+                      <Label for='PlayerName' sm={2}>Player</Label>
+                      <Input type='player' name='player' id='PlayerName' />
                     </FormGroup>
                   </Col>
                   <Col xs={4}>
                     <FormGroup row>
-                      <Label for="Class" sm={2}>Class</Label>
-                      <Input type="class" name="class" id="Class" />
+                      <Label for='Class' sm={2}>Class</Label>
+                      <Input type='class' name='class' id='Class' />
                     </FormGroup>
                   </Col>
                   <Col xs={4}>
                     <FormGroup row>
-                      <Label for="background" sm={2}>Background</Label>
-                      <Input type="background" name="background" id="background" />
+                      <Label for='background' sm={2}>Background</Label>
+                      <Input type='background' name='background' id='background' />
                     </FormGroup>
                   </Col>
                 </Row>
                 <Row>
                   <Col xs={4}>
                     <FormGroup row>
-                      <Label for="Race" sm={2}>Race</Label>
-                      <Input type="race" name="race" id="Race" />
+                      <Label for='Race' sm={2}>Race</Label>
+                      <Input type='race' name='race' id='Race' />
                     </FormGroup>
                   </Col>
                   <Col xs={4}>
                     <FormGroup row>
-                      <Label for="alignment" sm={2}>Alignment</Label>
-                      <Input type="alignment" name="alignment" id="alignment" />
+                      <Label for='alignment' sm={2}>Alignment</Label>
+                      <Input type='alignment' name='alignment' id='alignment' />
                     </FormGroup>
                   </Col>
                   <Col xs={4}>
                     <FormGroup row>
-                      <Label for="Exp" sm={2}>Exp</Label>
-                      <Input type="exp" name="exp" id="Exp" />
+                      <Label for='Exp' sm={2}>Exp</Label>
+                      <Input type='exp' name='exp' id='Exp' />
                     </FormGroup>
                   </Col>
                 </Row>
@@ -127,136 +127,136 @@ const Character = () => {
         </Row>
         {/* stats */}
         <Row>
-          <Col lg="6">
+          <Col lg='6'>
             <Card>
               <CardBody>
                 <Form>
                   <hr />
                   <FormGroup>
-                    <Label for="proficiency">Proficiency</Label>
-                    <Input type="text" name="proficiency" id="proficiency" />
-                    <Label for="inspiration">Inspiration</Label>
-                    <Input type="text" name="inspiration" id="inspiration" />
+                    <Label for='proficiency'>Proficiency</Label>
+                    <Input type='text' name='proficiency' id='proficiency' />
+                    <Label for='inspiration'>Inspiration</Label>
+                    <Input type='text' name='inspiration' id='inspiration' />
                   </FormGroup>
                   <hr />
                   <FormGroup>
-                    <Label for="strength">Strength</Label>
-                    <Input type="text" name="strength" id="strength" />
+                    <Label for='strength'>Strength</Label>
+                    <Input type='text' name='strength' id='strength' />
                   </FormGroup>
                   <FormGroup check inline>
                     <Label check>
-                      <Input type="checkbox" /> Athletics
-                </Label>
+                      <Input type='checkbox' /> Athletics
+                    </Label>
                   </FormGroup>
                   <hr />
                   <FormGroup>
-                    <Label for="dexterity">Dexterity</Label>
-                    <Input type="text" name="dexterity" id="dexterity" />
+                    <Label for='dexterity'>Dexterity</Label>
+                    <Input type='text' name='dexterity' id='dexterity' />
                   </FormGroup>
                   <FormGroup check inline>
                     <Label check>
-                      <Input type="checkbox" /> Acrobatics
-                </Label>
+                      <Input type='checkbox' /> Acrobatics
+                    </Label>
                   </FormGroup>
                   <FormGroup check inline>
                     <Label check>
-                      <Input type="checkbox" /> Sleight of Hand
-                </Label>
+                      <Input type='checkbox' /> Sleight of Hand
+                    </Label>
                   </FormGroup>
                   <FormGroup check inline>
                     <Label check>
-                      <Input type="checkbox" /> Stealth
-                </Label>
+                      <Input type='checkbox' /> Stealth
+                    </Label>
                   </FormGroup>
                   <hr />
                   <FormGroup>
-                    <Label for="constitution">Constitution</Label>
-                    <Input type="text" name="constitution" id="constitution" />
+                    <Label for='constitution'>Constitution</Label>
+                    <Input type='text' name='constitution' id='constitution' />
                   </FormGroup>
                   <hr />
                   <FormGroup>
-                    <Label for="intelligence">Intelligence</Label>
-                    <Input type="text" name="intelligence" id="intelligence" />
+                    <Label for='intelligence'>Intelligence</Label>
+                    <Input type='text' name='intelligence' id='intelligence' />
                   </FormGroup>
                   <FormGroup check inline>
                     <Label check>
-                      <Input type="checkbox" /> Arcana
-                </Label>
+                      <Input type='checkbox' /> Arcana
+                    </Label>
                   </FormGroup>
                   <FormGroup check inline>
                     <Label check>
-                      <Input type="checkbox" /> History
-                </Label>
+                      <Input type='checkbox' /> History
+                    </Label>
                   </FormGroup>
                   <FormGroup check inline>
                     <Label check>
-                      <Input type="checkbox" /> Investigation
-                </Label>
+                      <Input type='checkbox' /> Investigation
+                    </Label>
                   </FormGroup>
                   <FormGroup check inline>
                     <Label check>
-                      <Input type="checkbox" /> Nature
-                </Label>
+                      <Input type='checkbox' /> Nature
+                    </Label>
                   </FormGroup>
                   <FormGroup check inline>
                     <Label check>
-                      <Input type="checkbox" /> Religion
-                </Label>
+                      <Input type='checkbox' /> Religion
+                    </Label>
                   </FormGroup>
                   <hr />
                   <FormGroup>
-                    <Label for="wisdom">Wisdom</Label>
-                    <Input type="text" name="wisdom" id="wisdom" />
+                    <Label for='wisdom'>Wisdom</Label>
+                    <Input type='text' name='wisdom' id='wisdom' />
                   </FormGroup>
                   <FormGroup check inline>
                     <Label check>
-                      <Input type="checkbox" /> Animal Handling
-                </Label>
+                      <Input type='checkbox' /> Animal Handling
+                    </Label>
                   </FormGroup>
                   <FormGroup check inline>
                     <Label check>
-                      <Input type="checkbox" /> Insight
-                </Label>
+                      <Input type='checkbox' /> Insight
+                    </Label>
                   </FormGroup>
                   <FormGroup check inline>
                     <Label check>
-                      <Input type="checkbox" /> Medicine
-                </Label>
+                      <Input type='checkbox' /> Medicine
+                    </Label>
                   </FormGroup>
                   <FormGroup check inline>
                     <Label check>
-                      <Input type="checkbox" /> Perception
-                </Label>
+                      <Input type='checkbox' /> Perception
+                    </Label>
                   </FormGroup>
                   <FormGroup check inline>
                     <Label check>
-                      <Input type="checkbox" /> Survival
-                </Label>
+                      <Input type='checkbox' /> Survival
+                    </Label>
                   </FormGroup>
                   <hr />
                   <FormGroup>
-                    <Label for="charisma">Charisma</Label>
-                    <Input type="text" name="charisma" id="charisma" />
+                    <Label for='charisma'>Charisma</Label>
+                    <Input type='text' name='charisma' id='charisma' />
                   </FormGroup>
                   <FormGroup check inline>
                     <Label check>
-                      <Input type="checkbox" /> Deception
-                </Label>
+                      <Input type='checkbox' /> Deception
+                    </Label>
                   </FormGroup>
                   <FormGroup check inline>
                     <Label check>
-                      <Input type="checkbox" /> Intimidation
-                </Label>
+                      <Input type='checkbox' /> Intimidation
+                    </Label>
                   </FormGroup>
                   <FormGroup check inline>
                     <Label check>
-                      <Input type="checkbox" /> Performance
-                </Label>
+                      <Input type='checkbox' /> Performance
+                    </Label>
                   </FormGroup>
                   <FormGroup check inline>
                     <Label check>
-                      <Input type="checkbox" /> Persuasion
-                </Label>
+                      <Input type='checkbox' /> Persuasion
+                    </Label>
                   </FormGroup>
                 </Form>
                 <hr />
@@ -264,73 +264,73 @@ const Character = () => {
             </Card>
           </Col>
           {/* HP/AC */}
-          <Col lg="6">
+          <Col lg='6'>
             <Card>
               <CardBody>
                 <Form>
                   <Row>
                     <Col md={3}>
                       <FormGroup>
-                        <Label for="armor">Armor Class</Label>
-                        <Input type="text" name="armor" id="armor" />
+                        <Label for='armor'>Armor Class</Label>
+                        <Input type='text' name='armor' id='armor' />
                       </FormGroup>
                     </Col>
                     <Col md={3}>
                       <FormGroup>
-                        <Label for="initiviate">Initiative</Label>
-                        <Input type="text" name="initiative" id="initiviate" />
+                        <Label for='initiviate'>Initiative</Label>
+                        <Input type='text' name='initiative' id='initiviate' />
                       </FormGroup>
                     </Col>
                     <Col md={3}>
                       <FormGroup>
-                        <Label for="speed">Speed</Label>
-                        <Input type="text" name="speed" id="speed" />
+                        <Label for='speed'>Speed</Label>
+                        <Input type='text' name='speed' id='speed' />
                       </FormGroup>
                     </Col>
                   </Row>
                   <FormGroup>
-                    <Label for="hitPoints">Hit Points</Label>
-                    <Input type="text" name="hitPoints" id="hitPoints" />
+                    <Label for='hitPoints'>Hit Points</Label>
+                    <Input type='text' name='hitPoints' id='hitPoints' />
                   </FormGroup>
                   <FormGroup>
-                    <Label for="tempHitPoints">Temporary Hit Points</Label>
-                    <Input type="text" name="tempHitPoints" id="tempHitPoints" />
+                    <Label for='tempHitPoints'>Temporary Hit Points</Label>
+                    <Input type='text' name='tempHitPoints' id='tempHitPoints' />
                   </FormGroup>
                   <Row>
                     <Col md={6}>
                       <FormGroup>
-                        <Label for="hitDice">Hit Dice</Label>
-                        <Input type="text" name="hitDice" id="hitDice" />
+                        <Label for='hitDice'>Hit Dice</Label>
+                        <Input type='text' name='hitDice' id='hitDice' />
                         <br />
                       </FormGroup>
                     </Col>
                     <Col md={6}>
-                      <Label for="deathSaves">Death Saves</Label>
+                      <Label for='deathSaves'>Death Saves</Label>
                       <br />
                       <FormGroup check inline>
                         {/* Successes */}
                         <Label check>
                           Successes
-                    <Input type="checkbox" />
+                          <Input type='checkbox' />
                         </Label>
                         <Label check>
-                          <Input type="checkbox" />
+                          <Input type='checkbox' />
                         </Label>
                         <Label check>
-                          <Input type="checkbox" />
+                          <Input type='checkbox' />
                         </Label>
                       </FormGroup>
                       <FormGroup check inline>
                         {/* Failures */}
                         <Label check>
                           Failures
-                    <Input type="checkbox" />
+                          <Input type='checkbox' />
                         </Label>
                         <Label check>
-                          <Input type="checkbox" />
+                          <Input type='checkbox' />
                         </Label>
                         <Label check>
-                          <Input type="checkbox" />
+                          <Input type='checkbox' />
                         </Label>
                       </FormGroup>
                     </Col>
