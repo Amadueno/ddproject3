@@ -1,14 +1,14 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import DiceRoller from 'dice-roller-dnd'
 import {
-  Row, 
+  Row,
   Card,
   CardBody,
   Button
 } from 'reactstrap'
 
 const dice = new DiceRoller()
-    console.log(dice.d20())
+console.log(dice.d20())
 
 // { dice.d20().rolls }
 const Dice = () => {
@@ -18,7 +18,7 @@ const Dice = () => {
 
   diceState.handleD4 = event => {
     let newRoll = dice.d4().rolls[0]
-    setDiceState({ ...diceState,roll: newRoll})
+    setDiceState({ ...diceState, roll: newRoll })
     console.log(dice.d4().rolls[0])
     console.log(diceState)
     console.log(event.target)
@@ -62,13 +62,13 @@ const Dice = () => {
         <Card>
           <CardBody>
             <h2>Select Dice Type:</h2>
-            <hr/>
+            <hr />
             <Button color="danger" onClick={diceState.handleD4}>d4</Button>
             <Button color="danger" onClick={diceState.handleD6}>d6</Button>
             <Button color="danger" onClick={diceState.handleD8}>d8</Button>
             <Button color="danger" onClick={diceState.handleD10}>d10</Button>
             <Button color="danger" onClick={diceState.handleD20}>d20</Button>
-            <hr/>
+            <hr />
             <h5>Roll Outcome: {diceState.roll}</h5>
           </CardBody>
         </Card>
