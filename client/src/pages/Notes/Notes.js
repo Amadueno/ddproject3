@@ -2,11 +2,11 @@ import React from 'react'
 import { Button, Card, CardTitle, CardText, CardImg, CardImgOverlay, Col, Container, Row } from 'reactstrap'
 import Moment from 'react-moment'
 
+// import Component from '../../components'
 
-
-class notes extends Component {
-
-render() {
+// class Notes extends Component {
+const Notes = () => {
+{
   return (
     <div>
       <Container>
