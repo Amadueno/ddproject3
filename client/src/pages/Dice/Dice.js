@@ -68,7 +68,11 @@ const Dice = () => {
             <Button color="danger" onClick={diceState.handleD8}>d8</Button>
             <Button color="danger" onClick={diceState.handleD10}>d10</Button>
             <Button color="danger" onClick={diceState.handleD20}>d20</Button>
-            <hr/>
+          </CardBody>
+        </Card>
+        <Card>
+          <CardBody>
+            <hr />
             <h5>Roll Outcome: {diceState.roll}</h5>
           </CardBody>
         </Card>
