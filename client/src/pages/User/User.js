@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
-import { Col, Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+import { Col, Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap'
 import axios from 'axios'
-
 
 const Character = () => {
     const [characterState, setCharacterState] = useState({
@@ -16,13 +15,11 @@ const Character = () => {
 
     })
 
-
     characterState.handleInputChange = event => {
         setCharacterState({ ...characterState, [event.target.name]: event.target.value })
         console.log('hi')
-
-
     }
+
     characterState.handleCreateCharacter = event => {
         event.preventDefault()
 
@@ -33,30 +30,37 @@ const Character = () => {
             race: characterState.race,
             faction: characterState.faction,
             alignment: characterState.alignment,
-            exp: characterState.exp,
+            exp: characterState.exp
         }, {
             headers: {
                 Authorization: `Bearer ${localStorage.getItem('user')}`
             }
         })
-            .then(({ data: character }) => {
-                setCharacterState({
-                    ...characterState, name: ' ',
-                    class: ' ',
-                    background: ' ',
-                    race: ' ',
-                    faction: ' ',
-                    alignment: ' ',
-                    exp: ' '
-                })
-
-
-                    .catch(err => {
-                        console.error(err)
-
-                    })
+        .then(res => {
+            setCharacterState({
+              ...characterState,
+              name: ' ',
+              class: ' ',
+              background: ' ',
+              race: ' ',
+              faction: ' ',
+              alignment: ' ',
+              exp: ' '
             })
-    }
+            localStorage.setItem('name',characterState.name)
+            localStorage.setItem('class',characterState.class)
+            localStorage.setItem('background',characterState.background)
+            localStorage.setItem('race',characterState.race)
+            localStorage.setItem('faction',characterState.faction)
+            localStorage.setItem('alignment',characterState.alignment)
+            localStorage.setItem('exp',characterState.exp)
+            window.location.pathname = '../Character/Character.js'
+          })
+          .catch(err => {
+            console.error(err)
+          })
+      }
+
 
     return (
         <>
@@ -76,6 +80,15 @@ const Character = () => {
                         <input type="class"
                             name="class"
                             value={characterState.class}
+                            onChange={characterState.handleInputChange} />
+                    </Col>
+                </FormGroup>
+                <FormGroup row>
+                    <Label for="background" sm={2}>Background</Label>
+                    <Col sm={10}>
+                        <input type="background"
+                            name="background"
+                            value={characterState.background}
                             onChange={characterState.handleInputChange} />
                     </Col>
                 </FormGroup>
@@ -130,6 +143,8 @@ const Character = () => {
 
 
     )
+
+
 
 
 }
