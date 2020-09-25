@@ -40,6 +40,7 @@ const Home = () => {
       .then(({ data: token }) => {
         console.log(token)
         if (token) {
+          localStorage.setItem('username', userState.username)
           localStorage.setItem('user', token)
           console.log(token)
           window.location.pathname = '../User/User.js'
@@ -122,7 +123,7 @@ const Home = () => {
                   onChange={newUserState.handleNewInputChange}
                 />
               </FormGroup>
-              <ButtonToggle onClick={newUserState.handleCreateUser}>Register</ButtonToggle>
+              <ButtonToggle color = 'danger' onClick={newUserState.handleCreateUser}>Register</ButtonToggle>
             </Form>
           </Col>
         </Row>
