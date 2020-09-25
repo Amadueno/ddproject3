@@ -123,7 +123,7 @@ const Home = () => {
                   onChange={newUserState.handleNewInputChange}
                 />
               </FormGroup>
-              <ButtonToggle color = 'danger' onClick={newUserState.handleCreateUser}>Register</ButtonToggle>
+              <ButtonToggle color='danger' onClick={newUserState.handleCreateUser}>Register</ButtonToggle>
             </Form>
           </Col>
         </Row>
