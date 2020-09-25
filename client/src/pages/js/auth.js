@@ -2,8 +2,6 @@ document.getElementById('register').addEventListener('click', event => {
   event.preventDefault()
 
   axios.post('/api/users/register', {
-    name: document.getElementById('name').value,
-    email: document.getElementById('email').value,
     username: document.getElementById('rUsername').value,
     password: document.getElementById('rPassword').value
   })
@@ -12,9 +10,6 @@ document.getElementById('register').addEventListener('click', event => {
         text: 'Registered! Please Sign In!',
         duration: 3000
       }).showToast()
-
-      document.getElementById('name').value = ''
-      document.getElementById('email').value = ''
       document.getElementById('rUsername').value = ''
       document.getElementById('rPassword').value = ''
     })

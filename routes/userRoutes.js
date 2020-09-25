@@ -4,6 +4,7 @@ const passport = require('passport')
 const jwt = require('jsonwebtoken')
 
 router.post('/users/register', (req, res) => {
+  console.log(req.body)
   const { username, password } = req.body
   User.register(new User({ username }), password, err => {
     if (err) { console.log(err) }
