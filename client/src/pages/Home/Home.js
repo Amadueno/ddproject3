@@ -32,10 +32,6 @@ const Home = (props) => {
         <Col xs="6">
           <Form>
             <FormGroup>
-              <Label for="name">Name</Label>
-              <Input type="text" name="name" id="name" />
-            </FormGroup>
-            <FormGroup>
               <Label for="username">Username</Label>
               <Input type="username" name="username" id="username" />
             </FormGroup>
