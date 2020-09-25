@@ -159,7 +159,6 @@ const Character = () => {
                 localStorage.setItem('faction', characterState.faction)
                 localStorage.setItem('alignment', characterState.alignment)
                 localStorage.setItem('exp', characterState.exp)
-                localStorage.setItem('exp', characterState.exp)
                 localStorage.setItem('proficiency', characterState.proficiency)
                 localStorage.setItem('inspiration', characterState.inspiration)
                 localStorage.setItem('strength', characterState.strength)
@@ -269,6 +268,16 @@ const Character = () => {
                             onChange={characterState.handleInputChange} />
                     </Col>
                 </FormGroup>
+                <FormGroup row>
+                    <Label for="exp" sm={2}>Proficiency</Label>
+                    <Col sm={10}>
+                        <input type="proficiency"
+                            name="proficiency"
+                            value={characterState.proficiency}
+                            onChange={characterState.handleInputChange} />
+                    </Col>
+                </FormGroup>
+
 
                 <Col sm={{ size: 10, offset: 2 }}>
                     <Button onClick={characterState.handleCreateCharacter}>Create Character</Button>
