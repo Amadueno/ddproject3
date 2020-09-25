@@ -122,98 +122,10 @@ const Home = () => {
           </Col>
         </Row>
       </div>
-      {/* <h1>Search for Movies & TV Shows</h1>
-      <form>
-        <p>
-          <label htmlFor='search'>search</label>
-          <input
-            type='text'
-            name='search'
-            value={userState.search}
-            onChange={userState.handleInputChange}
-          />
-        </p>
-        <p>
-          <button onClick={userState.handleSearchOMDB}>Search OMDB</button>
-        </p>
-      </form>
-      {
-        userState.user.length > 0 ? (
-          userState.user.map(user => (
-            <div key={user.imdbID}>
-              <img src={user.poster} alt={user.title} />
-              <h3>{user.title}</h3>
-              <h4>Type: {user.type}</h4>
-              <h4>Year: {user.year}</h4>
-              <h5>imdbID: {user.imdbID}</h5>
-              <button onClick={() => userState.handleSaveuser(user.imdbID)}>Save</button>
-            </div>
-          ))
-        ) : null
-      } */}
+     
     </>
   )
 }
 
 export default Home
 
-// import React, { useState } from 'react'
-
-// import API from '../../utils/API'
-
-// import {
-//   ButtonToggle,
-//   Form,
-//   FormGroup,
-//   Label,
-//   Input,
-//   FormText,
-//   Row,
-//   Col,
-//   Container
-// } from 'reactstrap'
-
-// const Home = (props) => {
-//   const [userState, setUserState] = useState({
-//     name: ' ',
-//     password: ' ',
-//     users: []
-//   })
-//   userState.handleInputChange = event => {
-//     setUserState({ ...userState, [event.target.name]: event.target.value })
-//     console.log('hi')
-//   }
-//   userState.handleCreateUser = event => {
-//     event.preventDefault()
-//     axios.post('/api/users/register', {
-//       username: document.getElementById('rUsername').value,
-//       password: document.getElementById('rPassword').value
-//     })
-//       .then(() => {
-//         Toastify({
-//           text: 'Registered! Please Sign In!',
-//           duration: 3000
-//         }).showToast()
-//         document.getElementById('rUsername').value = ''
-//         document.getElementById('rPassword').value = ''
-//       })
-//       .catch(err => {
-//         console.error(err)
-//         Toastify({
-//           text: 'Woops! Something went wrong. Try again.',
-//           backgroundColor: 'red',
-//           duration: 3000
-//         }).showToast()
-//       })
-//     // axios.post
-//     // send the req.body=characterState
-//   }
-//   return (
-//     <>
-
-{ /* </ > */ }
-//     </>
-//   )
-// }
-
-// export default Home
