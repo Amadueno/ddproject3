@@ -50,7 +50,7 @@ const App = () => {
           <Route path='/user' component={User} />
           <Route path='/character' component={Character} />
           <Route path='/dice' component={Dice} />
-          <Route path='/notes' component={Notes} />
+          {/* <Route path='/notes' component={Notes} /> */}
         </Switch>
       </div>
     </Router>

@@ -21,9 +21,45 @@ const Character = () => {
     faction: ' ',
     alignment: ' ',
     exp: ' ',
+    proficiency: ' ',
+    inspiration: ' ',
+    strength: ' ',
+    athletics: ' ',
+    dexterity: ' ',
+    acrobatics: ' ',
+    sleight_of_hand: ' ',
+    stealth: ' ',
+    constitution: ' ',
+    intelligent: ' ',
+    arcana: ' ',
+    history: ' ',
+    investigation: ' ',
+    nature: ' ',
+    religion: ' ',
+    wisdom: ' ',
+    animal_handling: ' ',
+    insight: ' ',
+    medicine: ' ',
+    perception: ' ',
+    survival: ' ',
+    charisma: ' ',
+    deception: ' ',
+    intimidation: ' ',
+    performance: ' ',
+    persuasion: ' ',
+    armor_class: ' ',
+    initiative: ' ',
+    speed: ' ',
+    HP: ' ',
+    temp_HP: ' ',
+    hit_dice: ' ',
+    death_save: ' ',
+    successes: ' ',
+    failures: ' ',
     character: []
   })
   characterState.handleInputChange = event => {
+    setCharacterState({ ...characterState, [event.target.name]: localStorage.getItem(`${event.target.name}`) })
     setCharacterState({ ...characterState, [event.target.name]: event.target.value })
     console.log('hi')
   }
@@ -44,25 +80,25 @@ const Character = () => {
                 <FormGroup row>
                   <Label for='CharacterName' sm={2}>Character Name</Label>
                   <br />
-                  <Input type='characterName' name='characterName' id='CharacterName' />
+                  <Input type='characterName' name='characterName' id='CharacterName' defaultValue={localStorage.getItem('name')} />
                 </FormGroup>
                 <Row>
                   <Col xs={4}>
                     <FormGroup row>
                       <Label for='PlayerName' sm={2}>Player</Label>
-                      <Input type='player' name='player' id='PlayerName' />
+                      <Input type='player' name='player' id='PlayerName' defaultValue={localStorage.getItem('username')} />
                     </FormGroup>
                   </Col>
                   <Col xs={4}>
                     <FormGroup row>
                       <Label for='Class' sm={2}>Class</Label>
-                      <Input type='class' name='class' id='Class' />
+                      <Input type='class' name='class' id='Class' defaultValue={localStorage.getItem('class')} />
                     </FormGroup>
                   </Col>
                   <Col xs={4}>
                     <FormGroup row>
                       <Label for='background' sm={2}>Background</Label>
-                      <Input type='background' name='background' id='background' />
+                      <Input type='background' name='background' id='background' defaultValue={localStorage.getItem('background')} />
                     </FormGroup>
                   </Col>
                 </Row>
@@ -70,19 +106,19 @@ const Character = () => {
                   <Col xs={4}>
                     <FormGroup row>
                       <Label for='Race' sm={2}>Race</Label>
-                      <Input type='race' name='race' id='Race' />
+                      <Input type='race' name='race' id='Race' defaultValue={localStorage.getItem('race')} />
                     </FormGroup>
                   </Col>
                   <Col xs={4}>
                     <FormGroup row>
                       <Label for='alignment' sm={2}>Alignment</Label>
-                      <Input type='alignment' name='alignment' id='alignment' />
+                      <Input type='alignment' name='alignment' id='alignment' defaultValue={localStorage.getItem('alignment')} />
                     </FormGroup>
                   </Col>
                   <Col xs={4}>
                     <FormGroup row>
                       <Label for='Exp' sm={2}>Exp</Label>
-                      <Input type='exp' name='exp' id='Exp' />
+                      <Input type='exp' name='exp' id='Exp' defaultValue={localStorage.getItem('exp')} />
                     </FormGroup>
                   </Col>
                 </Row>
@@ -99,14 +135,14 @@ const Character = () => {
                   <hr />
                   <FormGroup>
                     <Label for='proficiency'>Profieciency Bonus</Label>
-                    <Input type='text' name='proficiency' id='proficiency' />
+                    <Input type='text' name='proficiency' id='proficiency' defaultValue={localStorage.getItem('proficiency')} />
                     <Label for='inspiration'>Inspiration</Label>
-                    <Input type='text' name='inspiration' id='inspiration' />
+                    <Input type='text' name='inspiration' id='inspiration' defaultValue={localStorage.getItem('inspiration')} />
                   </FormGroup>
                   <hr />
                   <FormGroup>
                     <Label for='strength'>Strength</Label>
-                    <Input type='text' name='strength' id='strength' />
+                    <Input type='text' name='strength' id='strength' defaultValue={localStorage.getItem('strength')} />
                   </FormGroup>
                   <FormGroup check inline>
                     <Label check>
@@ -116,7 +152,7 @@ const Character = () => {
                   <hr />
                   <FormGroup>
                     <Label for='dexterity'>Dexterity</Label>
-                    <Input type='text' name='dexterity' id='dexterity' />
+                    <Input type='text' name='dexterity' id='dexterity' defaultValue={localStorage.getItem('dexterity')} />
                   </FormGroup>
                   <FormGroup check inline>
                     <Label check>
@@ -136,12 +172,12 @@ const Character = () => {
                   <hr />
                   <FormGroup>
                     <Label for='constitution'>Constitution</Label>
-                    <Input type='text' name='constitution' id='constitution' />
+                    <Input type='text' name='constitution' id='constitution' defaultValue={localStorage.getItem('constitution')} />
                   </FormGroup>
                   <hr />
                   <FormGroup>
                     <Label for='intelligence'>Intelligence</Label>
-                    <Input type='text' name='intelligence' id='intelligence' />
+                    <Input type='text' name='intelligence' id='intelligence' defaultValue={localStorage.getItem('intelligence')} />
                   </FormGroup>
                   <FormGroup check inline>
                     <Label check>
@@ -171,7 +207,7 @@ const Character = () => {
                   <hr />
                   <FormGroup>
                     <Label for='wisdom'>Wisdom</Label>
-                    <Input type='text' name='wisdom' id='wisdom' />
+                    <Input type='text' name='wisdom' id='wisdom' defaultValue={localStorage.getItem('wisdom')} />
                   </FormGroup>
                   <FormGroup check inline>
                     <Label check>
@@ -201,7 +237,7 @@ const Character = () => {
                   <hr />
                   <FormGroup>
                     <Label for='charisma'>Charisma</Label>
-                    <Input type='text' name='charisma' id='charisma' />
+                    <Input type='text' name='charisma' id='charisma' defaultValue={localStorage.getItem('charisma')} />
                   </FormGroup>
                   <FormGroup check inline>
                     <Label check>
@@ -237,35 +273,35 @@ const Character = () => {
                     <Col md={3}>
                       <FormGroup>
                         <Label for='armor'>Armor Class</Label>
-                        <Input type='text' name='armor' id='armor' />
+                        <Input type='text' name='armor' id='armor' defaultValue={localStorage.getItem('armor')} />
                       </FormGroup>
                     </Col>
                     <Col md={3}>
                       <FormGroup>
                         <Label for='initiviate'>Initiative</Label>
-                        <Input type='text' name='initiative' id='initiviate' />
+                        <Input type='text' name='initiative' id='initiviate' defaultValue={localStorage.getItem('initiative')} />
                       </FormGroup>
                     </Col>
                     <Col md={3}>
                       <FormGroup>
                         <Label for='speed'>Speed</Label>
-                        <Input type='text' name='speed' id='speed' />
+                        <Input type='text' name='speed' id='speed' defaultValue={localStorage.getItem('speed')} />
                       </FormGroup>
                     </Col>
                   </Row>
                   <FormGroup>
                     <Label for='hitPoints'>Hit Points</Label>
-                    <Input type='text' name='hitPoints' id='hitPoints' />
+                    <Input type='text' name='hitPoints' id='hitPoints' defaultValue={localStorage.getItem('HP')} />
                   </FormGroup>
                   <FormGroup>
                     <Label for='tempHitPoints'>Temporary Hit Points</Label>
-                    <Input type='text' name='tempHitPoints' id='tempHitPoints' />
+                    <Input type='text' name='tempHitPoints' id='tempHitPoints' defaultValue={localStorage.getItem('temp_HP')} />
                   </FormGroup>
                   <Row>
                     <Col md={6}>
                       <FormGroup>
                         <Label for='hitDice'>Hit Dice</Label>
-                        <Input type='text' name='hitDice' id='hitDice' />
+                        <Input type='text' name='hitDice' id='hitDice' defaultValue={localStorage.getItem('hit_dice')} />
                         <br />
                       </FormGroup>
                     </Col>
