@@ -117,6 +117,7 @@ router.post('/characters/bulk', passport.authenticate('jwt'), (req, res) => {
 })
 
 router.put('/characters/:id', passport.authenticate('jwt'), (req, res) => {
+  console.log(req.body)
   Character.findByIdAndUpdate(req.params.id, req.body)
     .then(() => res.sendStatus(200))
     .catch(err => console.log(err))
@@ -160,8 +161,6 @@ router.put('/characters/:id', passport.authenticate('jwt'), (req, res) => {
 //     .then(character => res.json(character))
 //     .catch(err => console.log(err))
 // })
-
-
 
 // router.delete('/character/:id', (req, res) => {
 //   Character.findById(req.params.id)
