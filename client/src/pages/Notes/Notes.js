@@ -28,10 +28,11 @@ const Notes = () => {
             <Card>
               <CardImgOverlay>
                 <CardTitle>Note Title</CardTitle>
-                <input type="input"
+                <textarea type="input"
                   name="input"
                   value={noteState.input}
-                  onChange={noteState.handleInputChange}/>
+                  onChange={noteState.handleInputChange}>
+                </textarea>
                   <small className="text-muted">
                     <Moment />
                   </small>
