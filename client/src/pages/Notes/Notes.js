@@ -1,12 +1,22 @@
-// import React from 'react'
-// import { Button, Card, CardTitle, CardText, CardImg, CardImgOverlay, Col, Container, Row } from 'reactstrap'
-// import Moment from 'react-moment'
+import React, { useState } from 'react'
+import { Button, Card, CardTitle, CardText, CardImg, CardImgOverlay, Col, Container, Row } from 'reactstrap'
+import Moment from 'react-moment'
 
 // import Component from '../../components'
 
 // class Notes extends Component {
 const Notes = () => {
 {
+  const [noteState, setNoteState] = useState({
+    input:'',
+    notes:[]
+
+ })
+
+noteState.handleInputChange = event => {
+    setNoteState({ ...noteState, [event.target.name]: event.target.value })
+    console.log('hi')
+}
   return (
     <div>
       <Container>
@@ -15,12 +25,15 @@ const Notes = () => {
       </Container>
       <Container>
         <Row>
-          <Col md="auto">
+          <Col >
             <Card>
               {/* <CardImg width="100%" src="/assets/318x270.svg" alt="parchment" /> */}
               <CardImgOverlay>
                 <CardTitle>Note Title</CardTitle>
-                <CardText> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque aliquam excepturi sapiente vero optio doloribus commodi ab quaerat, eum, ratione cumque. Optio exercitationem nihil reprehenderit suscipit voluptatibus maxime officia ex!</CardText>
+                <input type="input"
+                            name="input"
+                            value={noteState.input}
+                            onChange={noteState.handleInputChange} />
                 <CardText>
                   <small className="text-muted">
                     <Moment />
@@ -36,4 +49,4 @@ const Notes = () => {
   )}
 }
 
-// export default Notes
+export default Notes

@@ -57,11 +57,12 @@ const Character = () => {
     character: []
   })
 
-  const class = []
-  const race = []
-  const background = []
-  const alignment = []
-  const faction = []
+  // const class = ["barbarian", 'bard', 'cleric', 'druid', 'fighter', 'monk', 'paladin', 'ranger', 'rogue', 'sorcerer', 'warlock', 'wizard']
+  // const race = []
+  // const background = []
+  // const alignment = []
+  // const faction = []
+
   
   characterState.handleInputChange = event => {
     setCharacterState({ ...characterState, [event.target.name]: event.target.value })
