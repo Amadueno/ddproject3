@@ -1,6 +1,6 @@
-// import React from 'react'
-// import { Button, Card, CardTitle, CardText, CardImg, CardImgOverlay, Col, Container, Row } from 'reactstrap'
-// import Moment from 'react-moment'
+import React, { useState } from 'react'
+import { Button, Card, CardTitle, CardText, CardImg, CardImgOverlay, Col, Container, Row } from 'reactstrap'
+import Moment from 'react-moment'
 
 // class Notes extends Component {
 
@@ -70,8 +70,25 @@
 
 // class Notes extends Component {
 const Notes = () => {
-  {
-    return (
+  const [noteState, setNoteState] = useState({
+    text: String,
+    notes: []
+  })
+
+  // const class = []
+  // const race = []
+  // const background = []
+  // const alignment = []
+  // const faction = []
+
+  noteState.handleInputChange = event => {
+    // setNoteState({ ...noteState, [event.target.name]: localStorage.getItem(`${event.target.name}`) })
+    setNoteState({ ...noteState, [event.target.name]: event.target.value })
+    console.log('hi')
+  }
+
+  return (
+    <>
       <div>
         <Container>
           <h3>Campaign Notes</h3>
@@ -97,8 +114,8 @@ const Notes = () => {
           </Row>
         </Container>
       </div>
-    )
-  }
+    </>
+  )
 }
 
-// export default Notes
+export default Notes

@@ -43,7 +43,7 @@ const Home = () => {
           localStorage.setItem('username', userState.username)
           localStorage.setItem('user', token)
           console.log(token)
-          window.location.pathname = '../User/User.js'
+          window.location.pathname = '../Character/Character.js'
           // window.location = '/index.html'
         } else {
           console.log('Wrong credential')
