@@ -1,12 +1,11 @@
 import React from 'react'
-import { Button, Card, CardTitle, CardText, CardImg, CardImgOverlay, Col, Container, Row } from 'reactstrap'
+import { Button, Card, CardTitle, CardText, CardImgOverlay, Col, Container, Row } from 'reactstrap'
 import Moment from 'react-moment'
 
 // import Component from '../../components'
 
 // class Notes extends Component {
 const Notes = () => {
-{
   return (
     <div>
       <Container>
@@ -15,9 +14,8 @@ const Notes = () => {
       </Container>
       <Container>
         <Row>
-          <Col md="auto">
+          <Col>
             <Card>
-              {/* <CardImg width="100%" src="/assets/318x270.svg" alt="parchment" /> */}
               <CardImgOverlay>
                 <CardTitle>Note Title</CardTitle>
                 <CardText> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque aliquam excepturi sapiente vero optio doloribus commodi ab quaerat, eum, ratione cumque. Optio exercitationem nihil reprehenderit suscipit voluptatibus maxime officia ex!</CardText>
@@ -33,7 +31,7 @@ const Notes = () => {
         </Row>
       </Container>
     </div>
-  )}
+  )
 }
 
 export default Notes

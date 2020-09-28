@@ -22,11 +22,11 @@ const Character = () => {
     character: []
   })
 
-  const class = []
-  const race = []
-  const background = []
-  const alignment = []
-  const faction = []
+  // const class = []
+  // const race = []
+  // const background = []
+  // const alignment = []
+  // const faction = []
   
   characterState.handleInputChange = event => {
     setCharacterState({ ...characterState, [event.target.name]: event.target.value })
@@ -129,11 +129,13 @@ const Character = () => {
         </div>
         <Button color='danger' onClick={characterState.handleCreateCharacter}
         style={{
-          margin: '5px'
+          margin: '5px',
+          marginBottom: '20px'
         }}>Create Character</Button>
         <Button color='danger' onClick={characterState.handleCreateCharacter}
         style={{
-          margin: '5px'
+          margin: '5px',
+          marginBottom: '20px'
         }}>Random Character</Button>
         <div className='row'>
           <div className='col-md-4'>
@@ -209,37 +211,55 @@ const Character = () => {
                 </div>
               </div>
               <div className='col-8'>
-                <FormGroup>
-                  <Label>
-                    <Input type="text" name="inspiration" id="inspiration" /> Inspiration
-                  </Label>
-                </FormGroup>
-                <FormGroup>
-                  <Label>
-                    <Input type="text" name="proficiency" id="proficiency" /> Proficiency Bonus
-                  </Label>
-                </FormGroup>
+                <div className='d-and-d-statrow'>
+                  <div className='d-and-d-statrow-value'>
+                    <input
+                      type='text'/>
+                  </div>
+                  <div className='d-and-d-statrow-label'>
+                    <label>Inspiration</label>
+                  </div>
+                </div>
+                <div className='d-and-d-statrow'>
+                  <div className='d-and-d-statrow-value'>
+                    <input
+                      type='text' />
+                  </div>
+                  <div className='d-and-d-statrow-label'>
+                    <label>Proficiency Bonus</label>
+                  </div>
+                </div>
                 <div className='d-and-d-box'>
-                  <div style={{ textAlign: 'left ' }}>
-                    <Input type='text' label='Strength'
-                      name='strSave'
-                    />Strength
-                    <Input type='text' label='Dexterity'
-                      name='dexSave'
-                    />Dexterity
-                    <Input type='text' label='Constitution'
-                      name='conSave'
-                    />Constitution
-                    <Input type='text' label='Intelligence'
-                      name='intSave'
-                    />Intelligence
-                    <Input type='text' label='Wisdom'
-                      name='wisSave'
-                    />Wisdom
-                    <Input type='text' label='Charisma'
-                      name='chaSave'
-                    />Charisma
-              </div>
+                  <div className='d-and-d-skill'>
+                    <input type='checkbox' />
+                    <input type='text' />
+                    <label>Strength</label>
+                  </div>
+                  <div className='d-and-d-skill'>
+                    <input type='checkbox' />
+                    <input type='text' />
+                    <label>Dexterity</label>
+                  </div>
+                  <div className='d-and-d-skill'>
+                    <input type='checkbox' />
+                    <input type='text' />
+                    <label>Constitution</label>
+                  </div>
+                  <div className='d-and-d-skill'>
+                    <input type='checkbox' />
+                    <input type='text' />
+                    <label>Intelligence</label>
+                  </div>
+                  <div className='d-and-d-skill'>
+                    <input type='checkbox' />
+                    <input type='text' />
+                    <label>Widsom</label>
+                  </div>
+                  <div className='d-and-d-skill'>
+                    <input type='checkbox' />
+                    <input type='text' />
+                    <label>Charisma</label>
+                  </div>
                   <label className='d-and-d-title'
                     style={{ marginTop: '10px' }}>
                     Saving Throws
@@ -247,84 +267,116 @@ const Character = () => {
                 </div>
                 <div className="d-and-d-box">
                   <div style=
-                  {{ textAlign: 'left', 
-                  marginLeft: '15px'}}>
-                    <Label check>
-                      <Input type="checkbox" /> Acrobatics
-                    </Label>
-                    <br />
-                    <Label check>
-                      <Input type="checkbox" /> Animal Handling
-                    </Label>
-                    <br />
-                    <Label check>
-                      <Input type="checkbox" /> Arcana
-                    </Label>
-                    <br />
-                    <Label check>
-                      <Input type="checkbox" /> Athletics
-                    </Label>
-                    <br />
-                    <Label check>
-                      <Input type="checkbox" /> Deception
-                   </Label>
-                   <br />
-                    <Label check>
-                      <Input type="checkbox" /> Deception
-                    </Label>
-                    <br />
-                    <Label check>
-                      <Input type="checkbox" /> History
-                    </Label>
-                    <br />
-                    <Label check>
-                      <Input type="checkbox" /> Insight
-                    </Label>
-                    <br />
-                    <Label check>
-                      <Input type="checkbox" /> Intimidation
-                    </Label>
-                    <br />
-                    <Label check>
-                      <Input type="checkbox" /> Investigation
-                   </Label>
-                    <br />
-                    <Label check>
-                      <Input type="checkbox" /> Medicine
-                    </Label>
-                    <br />
-                    <Label check>
-                      <Input type="checkbox" /> Nature
-                    </Label>
-                    <br />
-                    <Label check>
-                      <Input type="checkbox" /> Perception
-                    </Label>
-                    <br />
-                    <Label check>
-                      <Input type="checkbox" /> Performance
-                    </Label>
-                    <br />
-                    <Label check>
-                      <Input type="checkbox" /> Persuasion
-                    </Label>
-                    <br />
-                    <Label check>
-                      <Input type="checkbox" /> Religion
-                    </Label>
-                    <br />
-                    <Label check>
-                      <Input type="checkbox" /> Sleight of Hand
-                    </Label>
-                    <br />
-                    <Label check>
-                      <Input type="checkbox" /> Stealth
-                    </Label>
-                    <br />
-                    <Label check>
-                      <Input type="checkbox" /> Survival
-                    </Label>
-                    <br />
+                  {{ textAlign: 'left'}}>
+                    <div className='d-and-d-skill'>
+                      <input type='checkbox' />
+                      <input type='text'/>
+                      <label>Acrobatics</label>
+                      <span className='d-and-d-skill-hint'>Dex</span>
+                    </div>
+
+                    <div className='d-and-d-skill'>
+                      <input type='checkbox' />
+                      <input type='text' />
+                      <label>Animal Handling</label>
+                      <span className='d-and-d-skill-hint'>Wis</span>
+                    </div>
+                    <div className='d-and-d-skill'>
+                      <input type='checkbox' />
+                      <input type='text' />
+                      <label>Acrobatics</label>
+                      <span className='d-and-d-skill-hint'>Dex</span>
+                    </div>
+                    <div className='d-and-d-skill'>
+                      <input type='checkbox' />
+                      <input type='text' />
+                      <label>Arcana</label>
+                      <span className='d-and-d-skill-hint'>Int</span>
+                    </div>
+                    <div className='d-and-d-skill'>
+                      <input type='checkbox' />
+                      <input type='text' />
+                      <label>Athletics</label>
+                      <span className='d-and-d-skill-hint'>Str</span>
+                    </div>
+                    <div className='d-and-d-skill'>
+                      <input type='checkbox' />
+                      <input type='text' />
+                      <label>Deception</label>
+                      <span className='d-and-d-skill-hint'>Cha</span>
+                    </div>
+                    <div className='d-and-d-skill'>
+                      <input type='checkbox' />
+                      <input type='text' />
+                      <label>History</label>
+                      <span className='d-and-d-skill-hint'>Int</span>
+                    </div>
+                    <div className='d-and-d-skill'>
+                      <input type='checkbox' />
+                      <input type='text' />
+                      <label>Intimidation</label>
+                      <span className='d-and-d-skill-hint'>Cha</span>
+                    </div>
+                    <div className='d-and-d-skill'>
+                      <input type='checkbox' />
+                      <input type='text' />
+                      <label>Investigation</label>
+                      <span className='d-and-d-skill-hint'>Int</span>
+                    </div>
+                    <div className='d-and-d-skill'>
+                      <input type='checkbox' />
+                      <input type='text' />
+                      <label>Medicine</label>
+                      <span className='d-and-d-skill-hint'>Wis</span>
+                    </div>
+                    <div className='d-and-d-skill'>
+                      <input type='checkbox' />
+                      <input type='text' />
+                      <label>Nature</label>
+                      <span className='d-and-d-skill-hint'>Int</span>
+                    </div>
+                    <div className='d-and-d-skill'>
+                      <input type='checkbox' />
+                      <input type='text' />
+                      <label>Perception</label>
+                      <span className='d-and-d-skill-hint'>Wis</span>
+                    </div>
+                    <div className='d-and-d-skill'>
+                      <input type='checkbox' />
+                      <input type='text' />
+                      <label>Performance</label>
+                      <span className='d-and-d-skill-hint'>Cha</span>
+                    </div>
+                    <div className='d-and-d-skill'>
+                      <input type='checkbox' />
+                      <input type='text' />
+                      <label>Persuasion</label>
+                      <span className='d-and-d-skill-hint'>Cha</span>
+                    </div>
+                    <div className='d-and-d-skill'>
+                      <input type='checkbox' />
+                      <input type='text' />
+                      <label>Religion</label>
+                      <span className='d-and-d-skill-hint'>Int</span>
+                    </div>
+                    <div className='d-and-d-skill'>
+                      <input type='checkbox' />
+                      <input type='text' />
+                      <label>Sleight of Hand</label>
+                      <span className='d-and-d-skill-hint'>Dex</span>
+                    </div>
+                    <div className='d-and-d-skill'>
+                      <input type='checkbox' />
+                      <input type='text' />
+                      <label>Stealth</label>
+                      <span className='d-and-d-skill-hint'>Dex</span>
+                    </div>
+                    <div className='d-and-d-skill'>
+                      <input type='checkbox' />
+                      <input type='text' />
+                      <label>Survival</label>
+                      <span className='d-and-d-skill-hint'>Wis</span>
+                    </div>
                   </div>
                   <Label
                     className="d-and-d-title"
@@ -335,9 +387,15 @@ const Character = () => {
               </div>
             </div>
             <div className='mt-2'>
-              <Label>
-                <Input type="text" />Passive Widsom (Perception)
-              </Label>
+              <div className='d-and-d-statrow'>
+                <div className='d-and-d-statrow-value'>
+                  <input
+                    type='text' />
+                </div>
+                <div className='d-and-d-statrow-label'>
+                  <label>Passive Wisdom (Perception)</label>
+                </div>
+              </div>
             </div>
             <div className='d-and-d-box mt-4'>
               <textarea
@@ -352,22 +410,43 @@ const Character = () => {
             <div className='d-and-d-box gray'>
               <div className='row'>
                 <div className='col-4 pr-2'>
-                  <Input type='text' />
-                  <label>
-                    Armor Class
-              </label>
-                </div>
-                <div className='col-4 pr-2 pl-2'>
-                  <Input type='text' />
-                  <label>
-                    Initiative
-              </label>
+                  <div>
+                    <div className={'d-and-d-statbox type2'}>
+                      <div className='d-and-d-statbox-modifier'>
+                        <input
+                          type='text' />
+                      </div>
+                      <div>
+                        <label className='label-top'>{'Armour Class'}</label>
+                      </div>
+                    </div>
+                  </div>
                 </div>
                 <div className='col-4 pr-2'>
-                  <Input type='text' />
-                  <label>
-                    Speed
-              </label>
+                  <div>
+                    <div className={'d-and-d-statbox type2'}>
+                      <div className='d-and-d-statbox-modifier'>
+                        <input
+                          type='text' />
+                      </div>
+                      <div>
+                        <label className='label-top'>{'Initiative'}</label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className='col-4 pr-2'>
+                  <div>
+                    <div className={'d-and-d-statbox type2'}>
+                      <div className='d-and-d-statbox-modifier'>
+                        <input
+                          type='text' />
+                      </div>
+                      <div>
+                        <label className='label-top'>{'Speed'}</label>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
 
@@ -412,10 +491,12 @@ const Character = () => {
                 </div>
               </div>
               <div className='col-6 pl-1'>
-                <div className='d-and-d-box white mb-0'
-                  style={{ paddingBottom: '5px' }}>
+                <div className='d-and-d-box white mb-0'>
+                  <div className= 'd-and-d-deathsave'>
                   <FormGroup check inline>
-                    <Label check>
+                    <Label style={{
+                    marginBottom: '5px'
+                    }}check>
                       Sucesses
                   <Input type="checkbox" />
                     </Label>
@@ -429,7 +510,7 @@ const Character = () => {
                   <FormGroup check inline>
                     <Label check>
                       Failures
-              <Input type="checkbox" />
+                      <Input type="checkbox" />
                     </Label>
                     <Label check>
                       <Input type="checkbox" />
@@ -438,6 +519,7 @@ const Character = () => {
                       <Input type="checkbox" />
                     </Label>
                   </FormGroup>
+                  </div>
                   <label className='d-and-d-title'
                     style={{ marginTop: '6px' }}>
                     Death Saves
@@ -447,6 +529,26 @@ const Character = () => {
             </div>
           </div>
         <div className='d-and-d-box mt-3'>
+            <table className='d-and-d-table'>
+              <thead className='d-and-d-table'>
+                <tr>
+                  <th>Name </th>
+                  <th style={{ width: '70px' }}>Atk Bonus</th>
+                  <th>Damage/Type</th>
+                </tr>
+              </thead>
+            </table>
+              <tr className='d-and-d-table-row-'>
+                <td>
+                  <input type='text'/>
+                </td>
+                <td>
+                  <input type='text'/>
+                </td>
+                <td>
+                  <input type='text'/>
+                </td>
+              </tr>
           <textarea
             rows={6} />
           <label className='d-and-d-title' style={{ marginTop: '10px' }}>
