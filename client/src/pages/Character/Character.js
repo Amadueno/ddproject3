@@ -21,6 +21,13 @@ const Character = () => {
     exp: ' ',
     character: []
   })
+
+  const class = []
+  const race = []
+  const background = []
+  const alignment = []
+  const faction = []
+  
   characterState.handleInputChange = event => {
     setCharacterState({ ...characterState, [event.target.name]: event.target.value })
     console.log('hi')
