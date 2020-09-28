@@ -1,14 +1,14 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import DiceRoller from 'dice-roller-dnd'
 import {
-  Row, 
+  Row,
   Card,
   CardBody,
   Button
 } from 'reactstrap'
 
 const dice = new DiceRoller()
-    console.log(dice.d20())
+console.log(dice.d20())
 
 // { dice.d20().rolls }
 const Dice = () => {
@@ -17,15 +17,15 @@ const Dice = () => {
   })
 
   diceState.handleD4 = event => {
-    let newRoll = dice.d4().rolls[0]
-    setDiceState({ ...diceState,roll: newRoll})
+    const newRoll = dice.d4().rolls[0]
+    setDiceState({ ...diceState, roll: newRoll })
     console.log(dice.d4().rolls[0])
     console.log(diceState)
     console.log(event.target)
   }
 
   diceState.handleD6 = event => {
-    let newRoll = dice.d6().rolls[0]
+    const newRoll = dice.d6().rolls[0]
     setDiceState({ ...diceState, roll: newRoll })
     console.log(dice.d6().rolls[0])
     console.log(diceState)
@@ -33,7 +33,7 @@ const Dice = () => {
   }
 
   diceState.handleD8 = event => {
-    let newRoll = dice.d8().rolls[0]
+    const newRoll = dice.d8().rolls[0]
     setDiceState({ ...diceState, roll: newRoll })
     console.log(dice.d8().rolls[0])
     console.log(diceState)
@@ -41,7 +41,7 @@ const Dice = () => {
   }
 
   diceState.handleD10 = event => {
-    let newRoll = dice.d10().rolls[0]
+    const newRoll = dice.d10().rolls[0]
     setDiceState({ ...diceState, roll: newRoll })
     console.log(dice.d10().rolls[0])
     console.log(diceState)
@@ -49,7 +49,7 @@ const Dice = () => {
   }
 
   diceState.handleD20 = event => {
-    let newRoll = dice.d20().rolls[0]
+    const newRoll = dice.d20().rolls[0]
     setDiceState({ ...diceState, roll: newRoll })
     console.log(dice.d20().rolls[0])
     console.log(diceState)
@@ -62,12 +62,12 @@ const Dice = () => {
         <Card>
           <CardBody>
             <h2>Select Dice Type:</h2>
-            <hr/>
-            <Button color="danger" onClick={diceState.handleD4}>d4</Button>
-            <Button color="danger" onClick={diceState.handleD6}>d6</Button>
-            <Button color="danger" onClick={diceState.handleD8}>d8</Button>
-            <Button color="danger" onClick={diceState.handleD10}>d10</Button>
-            <Button color="danger" onClick={diceState.handleD20}>d20</Button>
+            <hr />
+            <Button color='danger' onClick={diceState.handleD4}>d4</Button>
+            <Button color='danger' onClick={diceState.handleD6}>d6</Button>
+            <Button color='danger' onClick={diceState.handleD8}>d8</Button>
+            <Button color='danger' onClick={diceState.handleD10}>d10</Button>
+            <Button color='danger' onClick={diceState.handleD20}>d20</Button>
           </CardBody>
         </Card>
         <Card>

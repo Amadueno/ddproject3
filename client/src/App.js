@@ -1,4 +1,4 @@
-import React, { useState }from 'react'
+import React, { useState } from 'react'
 import Home from './pages/Home'
 import User from './pages/User'
 import Dice from './pages/Dice'
@@ -18,29 +18,29 @@ import {
 // import './App.css'
 
 const App = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false)
 
   const toggle = () => setIsOpen(!isOpen)
 
   return (
     <Router>
       <div>
-        <Navbar color="light" light expand="md">
-          <NavbarBrand href="/">Dungeon Sheets</NavbarBrand>
+        <Navbar color='light' light expand='md'>
+          <NavbarBrand href='/'>Dungeon Sheets</NavbarBrand>
           <NavbarToggler onClick={toggle} />
           <Collapse isOpen={isOpen} navbar>
-            <Nav className="mr-auto" navbar>
+            <Nav className='mr-auto' navbar>
               {/* <NavItem>
-                <NavLink href="/user/">User</NavLink>
+                <NavLink href='/user/'>User</NavLink>
               </NavItem> */}
               <NavItem>
-                <NavLink href="/character/">Character</NavLink>
+                <NavLink href='/character/'>Character</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="/dice/">Dice</NavLink>
+                <NavLink href='/dice/'>Dice</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="/notes/">Notes</NavLink>
+                <NavLink href='/notes/'>Notes</NavLink>
               </NavItem>
             </Nav>
           </Collapse>

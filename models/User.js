@@ -8,6 +8,10 @@ const User = new Schema({
   characters: [{
     type: Schema.Types.ObjectId,
     ref: 'Character'
+  }],
+  notes: [{
+    type: Schema.Types.ObjectId,
+    ref: 'note'
   }]
 })
 

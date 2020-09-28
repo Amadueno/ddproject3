@@ -18,7 +18,42 @@ router.post('/characters', passport.authenticate('jwt'), (req, res) => {
     faction: req.body.faction,
     alignmnent: req.body.alignment,
     exp: req.body.exp,
-    user: req.user._id
+    user: req.user._id,
+    proficiency: req.body.proficiency,
+    inspiration: req.body.inspiration,
+    strength: req.body.strength,
+    athletics: req.body.athletics,
+    dexterity: req.body.dexterity,
+    acrobatics: req.body.acrobatics,
+    sleight_of_hand: req.body.sleight_of_hand,
+    stealth: req.body.stealth,
+    constitution: req.body.constitution,
+    intelligent: req.body.intelligent,
+    arcana: req.body.arcana,
+    history: req.body.history,
+    investigation: req.body.investigation,
+    nature: req.body.nature,
+    religion: req.body.religion,
+    wisdom: req.body.wisdom,
+    animal_handling: req.body.animal_handling,
+    insight: req.body.insight,
+    medicine: req.body.medicine,
+    perception: req.body.perception,
+    survival: req.body.survival,
+    charisma: req.body.charisma,
+    deception: req.body.deception,
+    intimidation: req.body.intimidation,
+    performance: req.body.performance,
+    persuasion: req.body.persuasion,
+    armor_class: req.body.armor_class,
+    initiative: req.body.initiative,
+    speed: req.body.speed,
+    HP: req.body.HP,
+    temp_HP: req.body.temp_HP,
+    hit_dice: req.body.hit_dice,
+    death_save: req.body.death_save,
+    successes: req.body.successes,
+    failures: req.body.failures
   })
     .then(character => {
       User.findByIdAndUpdate(character.user, { $push: { characters: character._id } })
@@ -81,6 +116,13 @@ router.post('/characters/bulk', passport.authenticate('jwt'), (req, res) => {
     })
 })
 
+router.put('/characters/:id', passport.authenticate('jwt'), (req, res) => {
+  console.log(req.body)
+  Character.findByIdAndUpdate(req.params.id, req.body)
+    .then(() => res.sendStatus(200))
+    .catch(err => console.log(err))
+})
+
 // router.post('/characters/bulk', passport.authenticate('jwt'), (req, res) => {
 //   const characters = req.body.map(characters => ({
 //     ...characters,
@@ -119,12 +161,6 @@ router.post('/characters/bulk', passport.authenticate('jwt'), (req, res) => {
 //     .then(character => res.json(character))
 //     .catch(err => console.log(err))
 // })
-
-// // router.put('/character/:id', (req, res) => {
-// //   character.findByIdAndUpdate(req.params.id, req.body)
-// //     .then(character => res.json(character))
-// //     .catch(err => console.log(err))
-// // })
 
 // router.delete('/character/:id', (req, res) => {
 //   Character.findById(req.params.id)
