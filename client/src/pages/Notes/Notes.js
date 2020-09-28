@@ -13,7 +13,7 @@ const Notes = () => {
         </Container>
         <Container>
           <Row>
-            <Col md='auto'>
+            <Col>
               <Card>
                 {/* <CardImg width="100%" src="/assets/318x270.svg" alt="parchment" /> */}
                 <CardImgOverlay>
