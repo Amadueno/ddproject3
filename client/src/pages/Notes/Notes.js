@@ -20,14 +20,14 @@ const Notes = () => {
     <div>
       <Container>
         <h3>Campaign Notes</h3>
-        <Button color="danger">✏️</Button>
+        {/* <Button color="danger">✏️</Button> */}
       </Container>
       <Container>
         <Row>
           <Col>
             <Card>
               <CardImgOverlay>
-                <CardTitle>Note Title</CardTitle>
+                {/* <CardTitle>Note Title</CardTitle> */}
                 <textarea type="input"
                   name="input"
                   value={noteState.input}
@@ -36,7 +36,7 @@ const Notes = () => {
                   <small className="text-muted">
                     <Moment />
                   </small>
-                <Button color="danger">❌</Button>
+                {/* <Button color="danger">❌</Button> */}
               </CardImgOverlay>
             </Card>
           </Col>
