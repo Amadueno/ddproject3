@@ -1,6 +1,8 @@
 import React from 'react'
 import { Button, Card, CardTitle, CardText, CardImg, CardImgOverlay, Col, Container, Row } from 'reactstrap'
 import Moment from 'react-moment'
+// import Component from '../../components'
+// class Notes extends Component {
 const Notes = () => {
   {
     return (
