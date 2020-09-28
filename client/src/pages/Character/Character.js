@@ -894,10 +894,6 @@ const Character = () => {
           </div>
         </div>
       </div>
-      <Button color='danger' onClick={characterState.handleCreateCharacter}>Create Character</Button>
-      <Button color='danger' onClick={characterState.handleDicePage}>Dice Page</Button>
-      <Button color='danger' onClick={characterState.handleNotePage}>Notes Page</Button>
-    </div>
   )
 }
 export default Character
