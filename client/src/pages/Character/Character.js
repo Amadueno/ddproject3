@@ -22,11 +22,17 @@ const Character = () => {
     character: []
   })
 
-  // const class = []
-  // const race = []
-  // const background = []
-  // const alignment = []
-  // const faction = []
+  const randClass =['barbarian', 'bard', 'cleric', 'druid', 'fighter', 'monk', 'paladin', 'ranger', 'rogue', 'sorcerer', 'warlock', 'wizard']
+  const randRace = ['dragonborn', 'dwarf', 'elf', 'gnome', 'half-elf', 'halfling', 'half-orc', 'human', 'tiefling']
+  const randBackground = ['acolyte', 'charlatan', 'criminal', 'entertainer', 'folk hero', 'guild artisan', 'hermit', 'outlander', 'noble', 'sage', 'sailor', 'solider', 'urchin']
+  const randAlignment = ['lawful good', 'neutral good', 'chaotic good', 'lawful neutral', 'neutral', 'chaotic neutral', 'lawful evil',' neutral evil', 'chaotic evil']
+  const randFaction = ['Harpers', 'Order of the Gauntlet', 'Emerald Enclave', 'Lords Alliance', 'Zhentarim']
+
+  var Generate = {
+    
+  }
+
+
   
   characterState.handleInputChange = event => {
     setCharacterState({ ...characterState, [event.target.name]: event.target.value })
