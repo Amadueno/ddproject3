@@ -11,7 +11,8 @@ router.get('/notes', passport.authenticate('jwt'), (req, res) => {
 
 router.post('/notes', passport.authenticate('jwt'), (req, res) => {
   Note.create({
-    input: req.body.input
+    input: req.body.input,
+    user: req.user._id
   })
     .then(note => {
       User.findByIdAndUpdate(note.user, { $push: { characters: note._id } })
@@ -46,3 +47,4 @@ router.put('/notes/:id', passport.authenticate('jwt'), (req, res) => {
     .then(() => res.sendStatus(200))
     .catch(err => console.log(err))
 })
+module.exports = router
