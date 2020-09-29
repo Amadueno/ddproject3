@@ -35,6 +35,24 @@ const Notes = () => {
           console.error(err)
         })
     }
+
+    noteState.handleRemoveNote = event => {
+      console.log(event.target.dataset)
+      localStorage.setItem('input', '')
+      window.location.pathname = '../Notes/Notes.js'
+      // axios.get('/api/notes', {
+      //   headers: {
+      //     Authorization: `Bearer ${localStorage.getItem('user')}`
+      //   }
+      // })
+      //   .then(res => console.log(res.data))
+      //   // axios.delete(`/api/notes/${event.target.dataset.id}`)
+      //   //   .then(() => {
+      //   //     event.target.parentNode.remove()
+      //   //     localStorage.removeItem('input')
+      //   //   })
+      //   .catch(err => console.error(err))
+    }
     return (
       <div >
         <Container
@@ -55,13 +73,14 @@ const Notes = () => {
                       defaultValue={localStorage.getItem('input')}
                       onChange={noteState.handleInputChange}
                       style={{width: '100%', height: '23rem'}}>
-                    </textarea>
-                    <small className="text-muted">
-                      <Moment />
-                    </small>
-                    <Button onClick={noteState.handleCreateNote} color="danger">log note 💾</Button>
-                    <Button color="danger">❌</Button>
-                  </CardImgOverlay>
+                  </textarea>
+                    <Button onClick={noteState.handleCreateNote} color="danger">Log Note 💾</Button>
+                    <Button color='danger' onClick={noteState.handleRemoveNote}>❌</Button>
+                  <small className="text-muted">
+                    <p>Today's time and date is:</p>
+                    <Moment />
+                  </small>
+                </CardImgOverlay>
               </Card>
             </Col>
           </Row>

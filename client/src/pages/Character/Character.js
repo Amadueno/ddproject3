@@ -30,6 +30,11 @@ const Character = () => {
     exp: localStorage.getItem('exp'),
     proficiency: ' ',
     inspiration: ' ',
+    strengthValue: ' ',
+    wisdomValue: ' ',
+    dexterityValue: ' ',
+    intelligenceValue: ' ',
+    charismaValue: ' ',
     strength: ' ',
     athletics: ' ',
     dexterity: ' ',
@@ -89,19 +94,24 @@ const Character = () => {
       proficiency: localStorage.getItem('proficiency'),
       inspiration: localStorage.getItem('inspiration'),
       strength: localStorage.getItem('strength'),
+      strengthValue: localStorage.getItem('strengthValue'),
       athletics: localStorage.getItem('athletics'),
       dexterity: localStorage.getItem('dexterity'),
+      dexterityValue: localStorage.getItem('dexterityValue'),
       acrobatics: localStorage.getItem('acrobatics'),
       sleight_of_hand: localStorage.getItem('sleight_of_hand'),
       stealth: localStorage.getItem('stealth'),
       constitution: localStorage.getItem('constitution'),
+      constitutionValue: localStorage.getItem('constitutionValue'),
       intelligent: localStorage.getItem('intelligent'),
+      intelligenceValue: localStorage.getItem('intelligenceValue'),
       arcana: localStorage.getItem('arcana'),
       history: localStorage.getItem('history'),
       investigation: localStorage.getItem('investigation'),
       nature: localStorage.getItem('nature'),
       religion: localStorage.getItem('religion'),
       wisdom: localStorage.getItem('wisdom'),
+      wisdomValue: localStorage.getItem('wisdomValue'),
       animal_handling: localStorage.getItem('animal_handling'),
       insight: localStorage.getItem('insight'),
       medicine: localStorage.getItem('medicine'),
@@ -109,6 +119,7 @@ const Character = () => {
       other_pro_lang: localStorage.getItem('other_pro_lang'),
       survival: localStorage.getItem('survival'),
       charisma: localStorage.getItem('charisma'),
+      charismaValue: localStorage.getItem('charismaValue'),
       deception: localStorage.getItem('deception'),
       intimidation: localStorage.getItem('intimidation'),
       performance: localStorage.getItem('performance'),
@@ -150,6 +161,12 @@ const Character = () => {
     console.log(event.target.name)
     console.log(characterState.name)
   }
+  characterState.handleCheckBoxInput = event => {
+    setCharacterState({ ...characterState, [event.target.name]: event.target.checked })
+    localStorage.setItem(`${event.target.name}`, event.target.checked)
+    console.log('hi')
+    console.log(event.target.checked)
+  }
   characterState.handleDicePage = event => {
     window.location.pathname = '../Dice/Dice.js'
   }
@@ -171,19 +188,24 @@ const Character = () => {
       proficiency: localStorage.getItem('profiency'),
       inspiration: localStorage.getItem('inspiration'),
       strength: localStorage.getItem('strength'),
+      strengthValue: localStorage.getItem('strengthValue'),
       athletics: localStorage.getItem('athletics'),
       dexterity: localStorage.getItem('dexterity'),
+      dexterityValue: localStorage.getItem('dexterityValue'),
       acrobatics: localStorage.getItem('acrobatics'),
       sleight_of_hand: localStorage.getItem('sleight_of_hand'),
       stealth: localStorage.getItem('stealth'),
       constitution: localStorage.getItem('constitution'),
+      constitutionValue: localStorage.getItem('constitutionValue'),
       intelligent: localStorage.getItem('intelligent'),
+      intelligenceValue: localStorage.getItem('intelligenceValue'),
       arcana: localStorage.getItem('arcana'),
       history: localStorage.getItem('history'),
       investigation: localStorage.getItem('investigation'),
       nature: localStorage.getItem('nature'),
       religion: localStorage.getItem('religion'),
       wisdom: localStorage.getItem('wisdom'),
+      wisdomValue: localStorage.getItem('wisdomValue'),
       animal_handling: localStorage.getItem('animal_handling'),
       insight: localStorage.getItem('insight'),
       medicine: localStorage.getItem('medicine'),
@@ -191,6 +213,7 @@ const Character = () => {
       other_pro_lang: localStorage.getItem('other_pro_lang'),
       survival: localStorage.getItem('survival'),
       charisma: localStorage.getItem('charisma'),
+      charismaValue: localStorage.getItem('charismaValue'),
       deception: localStorage.getItem('deception'),
       intimidation: localStorage.getItem('intimidation'),
       performance: localStorage.getItem('performance'),
@@ -229,19 +252,24 @@ const Character = () => {
       proficiency: characterState.proficiency,
       inspiration: characterState.inspiration,
       strength: characterState.strength,
+      strengthValue: characterState.strengthValue,
       athletics: characterState.athletics,
       dexterity: characterState.dexterity,
+      dexterityValue: characterState.dexterityValue,
       acrobatics: characterState.acrobatics,
       sleight_of_hand: characterState.sleight_of_hand,
       stealth: characterState.stealth,
       constitution: characterState.constitution,
+      constitutionValue: characterState.constitutionValue,
       intelligent: characterState.intelligent,
+      intelligenceValue: characterState.intelligenceValue,
       arcana: characterState.arcana,
       history: characterState.history,
       investigation: characterState.investigation,
       nature: characterState.nature,
       religion: characterState.religion,
       wisdom: characterState.wisdom,
+      wisdomValue: characterState.wisdomValue,
       animal_handling: characterState.animal_handling,
       insight: characterState.insight,
       medicine: characterState.medicine,
@@ -249,6 +277,7 @@ const Character = () => {
       perception: characterState.perception,
       survival: characterState.survival,
       charisma: characterState.charisma,
+      charismaValue: characterState.charismaValue,
       deception: characterState.deception,
       intimidation: characterState.intimidation,
       performance: characterState.performance,
@@ -280,6 +309,7 @@ const Character = () => {
         Authorization: `Bearer ${localStorage.getItem('user')}`
       }
     })
+    
       .then(res => {
         // setCharacterState({
         //   ...characterState,
@@ -397,9 +427,76 @@ const Character = () => {
         // localStorage.setItem('bonds', characterState.bonds)
         // localStorage.setItem('flaws', characterState.flaws)
       })
+      
       .catch(err => {
         console.error(err)
       })
+    characterState.handleRemoveCharacter = event => {
+      console.log(event.target.dataset)
+      localStorage.setItem('name', '')
+      localStorage.setItem('class', '')
+      localStorage.setItem('background', '')
+      localStorage.setItem('race', '')
+      localStorage.setItem('faction', '')
+      localStorage.setItem('alignment', '')
+      localStorage.setItem('exp', '')
+      localStorage.setItem('proficiency', '')
+      localStorage.setItem('inspiration', '')
+      localStorage.setItem('strength', '')
+      localStorage.setItem('strengthValue', '')
+      localStorage.setItem('athletics', '')
+      localStorage.setItem('dexterity', '')
+      localStorage.setItem('dexterityValue', '')
+      localStorage.setItem('acrobatics', '')
+      localStorage.setItem('sleight_of_hand', '')
+      localStorage.setItem('stealth', '')
+      localStorage.setItem('constitution', '')
+      localStorage.setItem('constitutionValue', '')
+      localStorage.setItem('intelligent', '')
+      localStorage.setItem('intelligenceValue', '')
+      localStorage.setItem('arcana', '')
+      localStorage.setItem('history', '')
+      localStorage.setItem('investigation', '')
+      localStorage.setItem('nature', '')
+      localStorage.setItem('religion', '')
+      localStorage.setItem('wisdom', '')
+      localStorage.setItem('wisdomValue', '')
+      localStorage.setItem('animal_handling', '')
+      localStorage.setItem('insight', '')
+      localStorage.setItem('medicine', '')
+      localStorage.setItem('perception', '')
+      localStorage.setItem('other_pro_lang', '')
+      localStorage.setItem('survival', '')
+      localStorage.setItem('charisma', '')
+      localStorage.setItem('charismaValue', '')
+      localStorage.setItem('deception', '')
+      localStorage.setItem('intimidation', '')
+      localStorage.setItem('performance', '')
+      localStorage.setItem('persuasion', '')
+      localStorage.setItem('armor_class', '')
+      localStorage.setItem('initiative', '')
+      localStorage.setItem('speed', '')
+      localStorage.setItem('HP', '')
+      localStorage.setItem('temp_HP', '')
+      localStorage.setItem('hit_dice', '')
+      localStorage.setItem('death_save', '')
+      localStorage.setItem('successes', '')
+      localStorage.setItem('failures', '')
+      localStorage.setItem('att_spell_name', '')
+      localStorage.setItem('att_spell_bonus', '')
+      localStorage.setItem('att_spell_type', '')
+      localStorage.setItem('CP', '')
+      localStorage.setItem('SP', '')
+      localStorage.setItem('EP', '')
+      localStorage.setItem('GP', '')
+      localStorage.setItem('PP', '')
+      localStorage.setItem('equipments', '')
+      localStorage.setItem('traits', '')
+      localStorage.setItem('ideals', '')
+      localStorage.setItem('bonds', '')
+      localStorage.setItem('flaws', '')
+      window.location.pathname = '../Character/Character.js'
+    }
   }
   // characterState.handleCreateCharacter = event => {
   //   event.preventDefault()
@@ -548,6 +645,26 @@ const Character = () => {
 
   return (
     <div className='d-and-d-character-sheet container-xl mt-5 mb-5'>
+      <Button color='danger' onClick={characterState.handleCreateCharacter}
+        style={{
+          margin: '5px',
+          marginBottom: '20px'
+        }}>Create Character</Button>
+      <Button
+        color='danger' onClick={characterState.handleRandomize}
+        style={{
+          margin: '5px',
+          marginBottom: '20px'
+        }}>Random Character
+        </Button>
+      <Button
+        color='danger'
+        style={{
+          margin: '5px',
+          marginBottom: '20px'
+        }} onClick={characterState.handleRemoveCharacter}
+      >Remove Character
+        </Button>
       <h3>Character Sheet</h3>
       <div>
         <div className='row mb-4'>
@@ -653,18 +770,7 @@ const Character = () => {
             </div>
           </div>
         </div>
-        <Button color='danger' onClick={characterState.handleCreateCharacter}
-          style={{
-            margin: '5px',
-            marginBottom: '20px'
-          }}>Create Character</Button>
-        <Button
-          color='danger' onClick={characterState.handleRandomize}
-          style={{
-            margin: '5px',
-            marginBottom: '20px'
-          }}>Random Character
-        </Button>
+
         <div className='row'>
           <div className='col-md-4'>
             <div className='row'>
@@ -679,7 +785,7 @@ const Character = () => {
                     </div>
                     <div className='d-and-d-statbox-value'>
                       {/* <input type='text'/> */}
-                      <Input type='text' name='strength' id='strength' value={localStorage.getItem('strength')} onChange={characterState.handleInputChange} />
+                      <Input type='text' name='strengthValue' id='strengthValue' value={localStorage.getItem('strengthValue')} onChange={characterState.handleInputChange} />
                     </div>
                   </div>
                   <div>
@@ -691,7 +797,7 @@ const Character = () => {
                     </div>
                     <div className='d-and-d-statbox-value'>
                       {/* <input type='text'/> */}
-                      <Input type='text' name='dexterity' id='dexterity' value={localStorage.getItem('dexterity')} onChange={characterState.handleInputChange} />
+                      <Input type='text' name='dexterityValue' id='dexterityValue' value={localStorage.getItem('dexterityValue')} onChange={characterState.handleInputChange} />
                     </div>
                   </div>
                   <div>
@@ -701,7 +807,7 @@ const Character = () => {
                     </div>
                     <div className='d-and-d-statbox-value'>
                       {/* <input type='text'/> */}
-                      <Input type='text' name='constitution' id='constitution' value={localStorage.getItem('constitution')} onChange={characterState.handleInputChange} />
+                      <Input type='text' name='constitutionValue' id='constitutionValue' value={localStorage.getItem('constitutionValue')} onChange={characterState.handleInputChange} />
                     </div>
                   </div>
                   <div>
@@ -711,7 +817,7 @@ const Character = () => {
                     </div>
                     <div className='d-and-d-statbox-value'>
                       {/* <input type='text'/> */}
-                      <Input type='text' name='intelligence' id='intelligence' value={localStorage.getItem('intelligence')} onChange={characterState.handleInputChange} />
+                      <Input type='text' name='intelligenceValue' id='intelligenceValue' value={localStorage.getItem('intelligenceValue')} onChange={characterState.handleInputChange} />
                     </div>
                   </div>
                   <div>
@@ -721,7 +827,7 @@ const Character = () => {
                     </div>
                     <div className='d-and-d-statbox-value'>
                       {/* <input type='text'/> */}
-                      <Input type='text' name='wisdom' id='wisdom' value={localStorage.getItem('wisdom')} onChange={characterState.handleInputChange} />
+                      <Input type='text' name='wisdomValue' id='wisdomValue' value={localStorage.getItem('wisdomValue')} onChange={characterState.handleInputChange} />
                     </div>
                   </div>
                   <div>
@@ -731,7 +837,7 @@ const Character = () => {
                     </div>
                     <div className='d-and-d-statbox-value'>
                       {/* <input type='text'/> */}
-                      <Input type='text' name='charisma' id='charisma' value={localStorage.getItem('charisma')} onChange={characterState.handleInputChange} />
+                      <Input type='text' name='charismaValue' id='charismaValue' value={localStorage.getItem('charismaValue')} onChange={characterState.handleInputChange} />
                     </div>
                   </div>
                 </div>
@@ -757,32 +863,32 @@ const Character = () => {
                 </div>
                 <div className='d-and-d-box'>
                   <div className='d-and-d-skill'>
-                    <input type='checkbox' />
+                    <input type='checkbox' name='strength' onChange={characterState.handleCheckBoxInput} />
                     <input type='text' />
                     <label>Strength</label>
                   </div>
                   <div className='d-and-d-skill'>
-                    <input type='checkbox' />
+                    <input type='checkbox' name='dexterity' onChange={characterState.handleCheckBoxInput} />
                     <input type='text' />
                     <label>Dexterity</label>
                   </div>
                   <div className='d-and-d-skill'>
-                    <input type='checkbox' />
+                    <input type='checkbox' name='constitution' onChange={characterState.handleCheckBoxInput} />
                     <input type='text' />
                     <label>Constitution</label>
                   </div>
                   <div className='d-and-d-skill'>
-                    <input type='checkbox' />
+                    <input type='checkbox' name='intelligent' onChange={characterState.handleCheckBoxInput} />
                     <input type='text' />
                     <label>Intelligence</label>
                   </div>
                   <div className='d-and-d-skill'>
-                    <input type='checkbox' />
+                    <input type='checkbox' name='wisdom' onChange={characterState.handleCheckBoxInput} />
                     <input type='text' />
-                    <label>Widsom</label>
+                    <label>Wisdom</label>
                   </div>
                   <div className='d-and-d-skill'>
-                    <input type='checkbox' />
+                    <input type='checkbox' name='charisma' onChange={characterState.handleCheckBoxInput} />
                     <input type='text' />
                     <label>Charisma</label>
                   </div>
@@ -795,110 +901,110 @@ const Character = () => {
                   <div style=
                     {{ textAlign: 'left' }}>
                     <div className='d-and-d-skill'>
-                      <input type='checkbox' />
+                      <input type='checkbox' name='acrobatics' onChange={characterState.handleCheckBoxInput} />
                       <input type='text' />
                       <label>Acrobatics</label>
                       <span className='d-and-d-skill-hint'>Dex</span>
                     </div>
 
                     <div className='d-and-d-skill'>
-                      <input type='checkbox' />
+                      <input type='checkbox' name='animal_handling' onChange={characterState.handleCheckBoxInput} />
                       <input type='text' />
                       <label>Animal Handling</label>
                       <span className='d-and-d-skill-hint'>Wis</span>
                     </div>
                     <div className='d-and-d-skill'>
-                      <input type='checkbox' />
+                      <input type='checkbox' name='arcana' onChange={characterState.handleCheckBoxInput} />
                       <input type='text' />
                       <label>Arcana</label>
                       <span className='d-and-d-skill-hint'>Int</span>
                     </div>
                     <div className='d-and-d-skill'>
-                      <input type='checkbox' />
+                      <input type='checkbox' name='athletics' onChange={characterState.handleCheckBoxInput} />
                       <input type='text' />
                       <label>Athletics</label>
                       <span className='d-and-d-skill-hint'>Str</span>
                     </div>
                     <div className='d-and-d-skill'>
-                      <input type='checkbox' />
+                      <input type='checkbox' name='deception' onChange={characterState.handleCheckBoxInput} />
                       <input type='text' />
                       <label>Deception</label>
                       <span className='d-and-d-skill-hint'>Cha</span>
                     </div>
                     <div className='d-and-d-skill'>
-                      <input type='checkbox' />
+                      <input type='checkbox' name='history' onChange={characterState.handleCheckBoxInput} />
                       <input type='text' />
                       <label>History</label>
                       <span className='d-and-d-skill-hint'>Int</span>
                     </div>
                     <div className='d-and-d-skill'>
-                      <input type='checkbox' />
+                      <input type='checkbox' name='insight' onChange={characterState.handleCheckBoxInput} />
                       <input type='text' />
                       <label>Insight</label>
                       <span className='d-and-d-skill-hint'>Wis</span>
                     </div>
                     <div className='d-and-d-skill'>
-                      <input type='checkbox' />
+                      <input type='checkbox' name='intimidation' onChange={characterState.handleCheckBoxInput} />
                       <input type='text' />
                       <label>Intimidation</label>
                       <span className='d-and-d-skill-hint'>Cha</span>
                     </div>
                     <div className='d-and-d-skill'>
-                      <input type='checkbox' />
+                      <input type='checkbox' name='investigation' onChange={characterState.handleCheckBoxInput} />
                       <input type='text' />
                       <label>Investigation</label>
                       <span className='d-and-d-skill-hint'>Int</span>
                     </div>
                     <div className='d-and-d-skill'>
-                      <input type='checkbox' />
+                      <input type='checkbox' name='medicine' onChange={characterState.handleCheckBoxInput} />
                       <input type='text' />
                       <label>Medicine</label>
                       <span className='d-and-d-skill-hint'>Wis</span>
                     </div>
                     <div className='d-and-d-skill'>
-                      <input type='checkbox' />
+                      <input type='checkbox' name='nature' onChange={characterState.handleCheckBoxInput} />
                       <input type='text' />
                       <label>Nature</label>
                       <span className='d-and-d-skill-hint'>Int</span>
                     </div>
                     <div className='d-and-d-skill'>
-                      <input type='checkbox' />
+                      <input type='checkbox' name='perception' onChange={characterState.handleCheckBoxInput} />
                       <input type='text' />
                       <label>Perception</label>
                       <span className='d-and-d-skill-hint'>Wis</span>
                     </div>
                     <div className='d-and-d-skill'>
-                      <input type='checkbox' />
+                      <input type='checkbox' name='performance' onChange={characterState.handleCheckBoxInput} />
                       <input type='text' />
                       <label>Performance</label>
                       <span className='d-and-d-skill-hint'>Cha</span>
                     </div>
                     <div className='d-and-d-skill'>
-                      <input type='checkbox' />
+                      <input type='checkbox' name='persuasion' onChange={characterState.handleCheckBoxInput} />
                       <input type='text' />
                       <label>Persuasion</label>
                       <span className='d-and-d-skill-hint'>Cha</span>
                     </div>
                     <div className='d-and-d-skill'>
-                      <input type='checkbox' />
+                      <input type='checkbox' name='religion' onChange={characterState.handleCheckBoxInput} />
                       <input type='text' />
                       <label>Religion</label>
                       <span className='d-and-d-skill-hint'>Int</span>
                     </div>
                     <div className='d-and-d-skill'>
-                      <input type='checkbox' />
+                      <input type='checkbox' name='sleight_of_hand' onChange={characterState.handleCheckBoxInput} />
                       <input type='text' />
                       <label>Sleight of Hand</label>
                       <span className='d-and-d-skill-hint'>Dex</span>
                     </div>
                     <div className='d-and-d-skill'>
-                      <input type='checkbox' />
+                      <input type='checkbox' name='stealth' onChange={characterState.handleCheckBoxInput} />
                       <input type='text' />
                       <label>Stealth</label>
                       <span className='d-and-d-skill-hint'>Dex</span>
                     </div>
                     <div className='d-and-d-skill'>
-                      <input type='checkbox' />
+                      <input type='checkbox' name='survival' onChange={characterState.handleCheckBoxInput} />
                       <input type='text' />
                       <label>Survival</label>
                       <span className='d-and-d-skill-hint'>Wis</span>
@@ -1045,25 +1151,25 @@ const Character = () => {
                           marginBottom: '5px'
                         }} check>
                           Sucesses
-                  <Input type="checkbox" />
+                         <input type='checkbox' name='sucesses' onChange={characterState.handleCheckBoxInput} />
                         </Label>
                         <Label check>
-                          <Input type="checkbox" />
+                          <input type='checkbox' name='sucesses' onChange={characterState.handleCheckBoxInput} />
                         </Label>
                         <Label check>
-                          <Input type="checkbox" />
+                          <input type='checkbox' name='sucesses' onChange={characterState.handleCheckBoxInput} />
                         </Label>
                       </FormGroup>
                       <FormGroup check inline>
                         <Label check>
                           Failures
-                      <Input type="checkbox" />
+                          <input type='checkbox' name='failures' onChange={characterState.handleCheckBoxInput} />
                         </Label>
                         <Label check>
-                          <Input type="checkbox" />
+                          <input type='checkbox' name='failures' onChange={characterState.handleCheckBoxInput} />
                         </Label>
                         <Label check>
-                          <Input type="checkbox" />
+                          <input type='checkbox' name='failures' onChange={characterState.handleCheckBoxInput} />
                         </Label>
                       </FormGroup>
                     </div>
