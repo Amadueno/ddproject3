@@ -31,9 +31,9 @@ const App = () => {
           <NavbarToggler onClick={toggle} />
           <Collapse isOpen={isOpen} navbar>
             <Nav className='mr-auto' navbar>
-              {/* <NavItem>
+              <NavItem>
                 <NavLink href='/user/'>User</NavLink>
-              </NavItem> */}
+              </NavItem>
               <NavItem>
                 <NavLink href='/character/'>Character</NavLink>
               </NavItem>
@@ -43,19 +43,19 @@ const App = () => {
               <NavItem>
                 <NavLink href='/notes/'>Notes</NavLink>
               </NavItem>
-              <NavItem>
+              {/* <NavItem>
                 <NavLink href='/saved/'>Saved</NavLink>
-              </NavItem>
+              </NavItem> */}
             </Nav>
           </Collapse>
         </Navbar>
         <Switch>
           <Route exact path="/" component={Home} />
-          {/* <Route path="/user" component={User} /> */}
+          <Route path="/user" component={User} />
           <Route path="/character" component={Character} />
           <Route path="/dice" component={Dice} />
           <Route path="/notes" component={Notes} />
-          <Route path="/saved" component={Saved} />
+          {/* <Route path="/saved" component={Saved} /> */}
         </Switch>
       </div>
     </Router>

@@ -5,9 +5,17 @@ const Saved = () => {
     saved: []
   })
   useEffect(() => {
-    axios.get('/api/characters/')
+    // axios.get('/api/characters')
+    axios.get('/api/users/characters', {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('user')}`
+      }
+    })
       .then(({ data }) => {
-        setSavedState({ ...savedState, saved: data })
+        console.log(data)
+        setSavedState({ ...savedState, saved: data.characters })
+        console.log(savedState)
+        console.log(data.characters)
       })
   }, [])
   return (

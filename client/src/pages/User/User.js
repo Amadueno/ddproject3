@@ -2,11 +2,11 @@ import React, { useState } from 'react'
 import { Col, Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap'
 import axios from 'axios'
 
-const randClass = ['barbarian', 'bard', 'cleric', 'druid', 'fighter', 'monk', 'paladin', 'ranger', 'rogue', 'sorcerer', 'warlock', 'wizard']
-const randRace = ['dragonborn', 'dwarf', 'elf', 'gnome', 'half-elf', 'halfling', 'half-orc', 'human', 'tiefling']
-const randBackground = ['acolyte', 'charlatan', 'criminal', 'entertainer', 'folk hero', 'guild artisan', 'hermit', 'outlander', 'noble', 'sage', 'sailor', 'solider', 'urchin']
-const randAlignment = ['lawful good', 'neutral good', 'chaotic good', 'lawful neutral', 'neutral', 'chaotic neutral', 'lawful evil', ' neutral evil', 'chaotic evil']
-const randFaction = ['Harpers', 'Order of the Gauntlet', 'Emerald Enclave', 'Lords Alliance', 'Zhentarim']
+const randClasses = ['Barbarian', 'Bard', 'Cleric', 'Druid', 'Fighter', 'Monk', 'Paladin', 'Ranger', 'Rogue', 'Sorcerer', 'Warlock', 'Wizard']
+const randRaces = ['Dragonborn', 'Dwarf', 'Elf', 'Gnome', 'Half-elf', 'Halfling', 'Half-orc', 'Human', 'Tiefling']
+const randBackgrounds = ['Acolyte', 'Charlatan', 'Criminal', 'Entertainer', 'Folk Hero', 'Guild Artisan', 'Hermit', 'Outlander', 'Noble', 'Sage', 'Sailor', 'Soldier', 'Urchin']
+const randAlignments = ['Lawful Good', 'Neutral Good', 'Chaotic good', 'Lawful Neutral', 'Neutral', 'Chaotic Neutral', 'Lawful Evil', 'Neutral Evil', 'Chaotic Evil']
+const randFactions = ['Harpers', 'Order of the Gauntlet', 'Emerald Enclave', 'Lords Alliance', 'Zhentarim']
 
 var Generate = {
 
@@ -14,13 +14,13 @@ var Generate = {
 
 const Character = () => {
   const [characterState, setCharacterState] = useState({
-    name: ' ',
-    class: ' ',
-    background: ' ',
-    race: ' ',
-    faction: ' ',
-    alignment: ' ',
-    exp: ' ',
+    name: localStorage.getItem('name'),
+    class: localStorage.getItem('class'),
+    background: localStorage.getItem('background'),
+    race: localStorage.getItem('race'),
+    faction: localStorage.getItem('faction'),
+    alignment: localStorage.getItem('alignment'),
+    exp: localStorage.getItem('exp'),
     proficiency: ' ',
     inspiration: ' ',
     strength: ' ',
@@ -57,17 +57,36 @@ const Character = () => {
     successes: ' ',
     failures: ' ',
     character: []
-
   })
 
+  characterState.handleRandomize = event => {
+    event.preventDefault()
+    const randClass = randClasses[Math.floor(Math.random() * randClasses.length)]
+    const randRace = randRaces[Math.floor(Math.random() * randRaces.length)]
+    const randBackground = randBackgrounds[Math.floor(Math.random() * randBackgrounds.length)]
+    const randAlignment = randAlignments[Math.floor(Math.random() * randAlignments.length)]
+    const randFaction = randFactions[Math.floor(Math.random() * randFactions.length)]
+    localStorage.setItem('class', randClass)
+    localStorage.setItem('race', randRace)
+    localStorage.setItem('background', randBackground)
+    localStorage.setItem('alignment', randAlignment)
+    localStorage.setItem('faction', randFaction)
+    window.location.reload()
+  }
+
   characterState.handleInputChange = event => {
+    setCharacterState({ ...characterState, [event.target.name]: localStorage.getItem(`${event.target.name}`) })
     setCharacterState({ ...characterState, [event.target.name]: event.target.value })
     console.log('hi')
   }
-
+  characterState.handleDicePage = event => {
+    window.location.pathname = '../Dice/Dice.js'
+  }
+  characterState.handleNotePage = event => {
+    window.location.pathname = '../Notes/Notes.js'
+  }
   characterState.handleCreateCharacter = event => {
     event.preventDefault()
-
     axios.post('/api/characters', {
       name: characterState.name,
       class: characterState.class,
@@ -81,27 +100,27 @@ const Character = () => {
       strength: characterState.strength,
       athletics: characterState.athletics,
       dexterity: characterState.dexterity,
-      acrobatics: characterState.acrobatics,
-      sleight_of_hand: characterState.sleight_of_hand,
-      stealth: characterState.stealth,
       constitution: characterState.constitution,
       intelligent: characterState.intelligent,
+      acrobatics: characterState.acrobatics,
       arcana: characterState.arcana,
-      history: characterState.history,
-      investigation: characterState.investigation,
-      nature: characterState.nature,
-      religion: characterState.religion,
-      wisdom: characterState.wisdom,
       animal_handling: characterState.animal_handling,
+      history: characterState.history,
+      wisdom: characterState.wisdom,
+      intimidation: characterState.intimidation,
       insight: characterState.insight,
+      investigation: characterState.investigation,
       medicine: characterState.medicine,
+      nature: characterState.nature,
       perception: characterState.perception,
+      performance: characterState.performance,
+      persuasion: characterState.persuasion,
+      religion: characterState.religion,
+      sleight_of_hand: characterState.sleight_of_hand,
+      stealth: characterState.stealth,
       survival: characterState.survival,
       charisma: characterState.charisma,
       deception: characterState.deception,
-      intimidation: characterState.intimidation,
-      performance: characterState.performance,
-      persuasion: characterState.persuasion,
       armor_class: characterState.armor_class,
       initiative: characterState.initiative,
       speed: characterState.speed,
@@ -291,20 +310,17 @@ const Character = () => {
             />
           </Col>
         </FormGroup>
-        <FormGroup row>
-          <Label for='exp' sm={2}>Proficiency</Label>
-          <Col sm={10}>
-            <input
-              type='proficiency'
-              name='proficiency'
-              value={characterState.proficiency}
-              onChange={characterState.handleInputChange}
-            />
-          </Col>
-        </FormGroup>
-
         <Col sm={{ size: 10, offset: 2 }}>
-          <Button onClick={characterState.handleCreateCharacter}>Create Character</Button>
+          <Button color='danger' onClick={characterState.handleCreateCharacter}
+            style={{
+              margin: '5px',
+              marginBottom: '20px'
+            }}>Create Character</Button>
+          <Button color='danger' onClick={characterState.handleRandomize}
+            style={{
+              margin: '5px',
+              marginBottom: '20px'
+            }}>Random Character</Button>
         </Col>
 
       </Form>

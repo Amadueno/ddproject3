@@ -1,5 +1,4 @@
 const { model, Schema } = require('mongoose')
-
 const Character = new Schema({
   name: String,
   class: String, // class & level
@@ -28,6 +27,7 @@ const Character = new Schema({
   insight: String,
   medicine: String,
   perception: String,
+  other_pro_lang: String,
   survival: String,
   charisma: String,
   deception: String,
@@ -37,13 +37,26 @@ const Character = new Schema({
   armor_class: String,
   initiative: String,
   speed: String,
+  maxHP: String,
   HP: String,
   temp_HP: String,
   hit_dice: String,
   death_save: String,
   successes: String,
   failures: String,
+  att_spell_name: String,
+  att_spell_bonus: String,
+  att_spell_type: String,
+  CP: String,
+  SP: String,
+  EP: String,
+  GP: String,
+  PP: String,
+  equipments: String,
+  traits: String,
+  ideals: String,
+  bonds: String,
+  flaws: String,
   user: { type: Schema.Types.ObjectId, ref: 'User' }
 })
-
 module.exports = model('Character', Character)
