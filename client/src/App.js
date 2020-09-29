@@ -16,7 +16,8 @@ import {
   NavItem,
   NavLink
 } from 'reactstrap'
-// import './App.css'
+
+import './app.css'
 
 const App = () => {
   const [isOpen, setIsOpen] = useState(false)
