@@ -1,31 +1,62 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Home from './pages/Home'
 import User from './pages/User'
 import Dice from './pages/Dice'
+import Notes from './pages/Notes'
+import Saved from './pages/Saved'
 import Character from './pages/Character'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
 import {
-  BrowserRouter as Router,
-  Route,
-  Switch,
-  Link
-} from 'react-router-dom'
+  Collapse,
+  Navbar,
+  NavbarToggler,
+  NavbarBrand,
+  Nav,
+  NavItem,
+  NavLink
+} from 'reactstrap'
+
+import './app.css'
 
 const App = () => {
+  const [isOpen, setIsOpen] = useState(false)
+
+  const toggle = () => setIsOpen(!isOpen)
+
   return (
     <Router>
       <div>
-        <nav>
-          <Link to='/'>Home</Link>
-          <Link to='/user'>User</Link>
-          <Link to='/dice'>Dice</Link>
-          <Link to='/character'>Character</Link>
-        </nav>
+        <Navbar color='danger' light expand='md'>
+          <NavbarBrand href='/'>Dungeon Sheets</NavbarBrand>
+          <NavbarToggler onClick={toggle} />
+          <Collapse isOpen={isOpen} navbar>
+            <Nav className='mr-auto' navbar>
+              {/* <NavItem>
+                <NavLink href='/user/'>User</NavLink>
+              </NavItem> */}
+              <NavItem>
+                <NavLink href='/character/'>Character</NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink href='/dice/'>Dice</NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink href='/notes/'>Notes</NavLink>
+              </NavItem>
+              {/* <NavItem>
+                <NavLink href='/saved/'>Saved</NavLink>
+              </NavItem> */}
+            </Nav>
+          </Collapse>
+        </Navbar>
         <Switch>
-          <Route exact path='/' component={Home} />
-          <Route path='/user' component={User} />
-          <Route path='/dice' component={Dice} />
-          <Route path='/character' component={Character} />
+          <Route exact path="/" component={Home} />
+          {/* <Route path="/user" component={User} /> */}
+          <Route path="/character" component={Character} />
+          <Route path="/dice" component={Dice} />
+          <Route path="/notes" component={Notes} />
+          {/* <Route path="/saved" component={Saved} /> */}
         </Switch>
       </div>
     </Router>
