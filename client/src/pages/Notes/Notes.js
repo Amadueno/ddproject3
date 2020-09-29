@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Button, Card, CardTitle, CardText, CardImg, CardImgOverlay, Col, Container, Row } from 'reactstrap'
 import Moment from 'react-moment'
+import axios from 'axios'
 
 // import Component from '../../components'
 
@@ -17,11 +18,39 @@ noteState.handleInputChange = event => {
     setNoteState({ ...noteState, [event.target.name]: event.target.value })
     console.log('hi')
 }
+noteState.handleCreateNote = event => {
+  event.preventDefault()
+
+  axios.post('/api/Notes', {
+    input: noteState.input
+    
+    
+  }, {
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem('Notes')}`
+    }
+  })
+    .then(res => {
+      setNoteState({
+        ...noteState,
+        input: ' ',
+       
+        
+      })
+      localStorage.setItem('input', noteState.input)
+      
+      
+      
+    })
+    .catch(err => {
+      console.error(err)
+    })
+}
   return (
     <div>
       <Container>
         <h3>Campaign Notes</h3>
-        <Button color="danger">✏️</Button>
+        <Button onClick={noteState.handleCreateNote} color="danger">✏️</Button>
       </Container>
       <Container>
         <Row>
