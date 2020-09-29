@@ -6,6 +6,7 @@ import axios from 'axios'
 // import Component from '../../components'
 
 // class Notes extends Component {
+
 const Notes = () => {
 {
   const [noteState, setNoteState] = useState({
@@ -54,20 +55,18 @@ noteState.handleCreateNote = event => {
       </Container>
       <Container>
         <Row>
-          <Col >
+          <Col>
             <Card>
-              {/* <CardImg width="100%" src="/assets/318x270.svg" alt="parchment" /> */}
               <CardImgOverlay>
                 <CardTitle>Note Title</CardTitle>
-                <input type="input"
-                            name="input"
-                            value={noteState.input}
-                            onChange={noteState.handleInputChange} />
-                <CardText>
+                <textarea type="input"
+                  name="input"
+                  value={noteState.input}
+                  onChange={noteState.handleInputChange}>
+                </textarea>
                   <small className="text-muted">
                     <Moment />
                   </small>
-                </CardText>
                 <Button color="danger">❌</Button>
               </CardImgOverlay>
             </Card>
@@ -75,7 +74,8 @@ noteState.handleCreateNote = event => {
         </Row>
       </Container>
     </div>
-  )}
+  )
+}
 }
 
 export default Notes
