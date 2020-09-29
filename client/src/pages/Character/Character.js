@@ -12,6 +12,13 @@ import {
   Button
 } from 'reactstrap'
 import axios from 'axios'
+
+const randClasses = ['barbarian', 'bard', 'cleric', 'druid', 'fighter', 'monk', 'paladin', 'ranger', 'rogue', 'sorcerer', 'warlock', 'wizard']
+const randRaces = ['dragonborn', 'dwarf', 'elf', 'gnome', 'half-elf', 'halfling', 'half-orc', 'human', 'tiefling']
+const randBackgrounds = ['acolyte', 'charlatan', 'criminal', 'entertainer', 'folk hero', 'guild artisan', 'hermit', 'outlander', 'noble', 'sage', 'sailor', 'solider', 'urchin']
+const randAlignments = ['lawful good', 'neutral good', 'chaotic good', 'lawful neutral', 'neutral', 'chaotic neutral', 'lawful evil', ' neutral evil', 'chaotic evil']
+const randFactions = ['Harpers', 'Order of the Gauntlet', 'Emerald Enclave', 'Lords Alliance', 'Zhentarim']
+
 const Character = () => {
   const [characterState, setCharacterState] = useState({
     name: ' ',
@@ -59,20 +66,23 @@ const Character = () => {
     character: []
   })
 
-  const randClass = ['barbarian', 'bard', 'cleric', 'druid', 'fighter', 'monk', 'paladin', 'ranger', 'rogue', 'sorcerer', 'warlock', 'wizard']
-  const randRace = ['dragonborn', 'dwarf', 'elf', 'gnome', 'half-elf', 'halfling', 'half-orc', 'human', 'tiefling']
-  const randBackground = ['acolyte', 'charlatan', 'criminal', 'entertainer', 'folk hero', 'guild artisan', 'hermit', 'outlander', 'noble', 'sage', 'sailor', 'solider', 'urchin']
-  const randAlignment = ['lawful good', 'neutral good', 'chaotic good', 'lawful neutral', 'neutral', 'chaotic neutral', 'lawful evil', ' neutral evil', 'chaotic evil']
-  const randFaction = ['Harpers', 'Order of the Gauntlet', 'Emerald Enclave', 'Lords Alliance', 'Zhentarim']
-
   // var Generate = {
 
   // }
 
   characterState.handleInputChange = event => {
-    setCharacterState({ ...characterState, [event.target.name]: localStorage.getItem(`${event.target.name}`) })
+    // if (event.target.name !== 'characterName') {
     setCharacterState({ ...characterState, [event.target.name]: event.target.value })
+
+    localStorage.setItem(`${event.target.name}`, event.target.value)
+    // } else {
+    //   setCharacterState({ ...characterState, name: localStorage.getItem('characterName') })
+
+    //   localStorage.setItem('characterName', event.target.value)
+    // }
     console.log('hi')
+    console.log(event.target.name)
+    console.log(characterState.name)
   }
 
   characterState.handleDicePage = event => {
@@ -83,8 +93,81 @@ const Character = () => {
     window.location.pathname = '../Note/Note.js'
   }
 
+  characterState.handleRandomize = event => {
+    const randClass = randClasses[Math.floor(Math.random() * randClasses.length)]
+    const randRace = randClasses[Math.floor(Math.random() * randClasses.length)]
+    const randBackground = randBackgrounds[Math.floor(Math.random() * randBackgrounds.length)]
+    const randAlignment = randAlignments[Math.floor(Math.random() * randAlignments.length)]
+    const randFaction = randFactions[Math.floor(Math.random() * randFactions.length)]
+
+    localStorage.setItem('class', randClass)
+    localStorage.setItem('race', randRace)
+    localStorage.setItem('background', randBackground)
+    localStorage.setItem('alignment', randAlignment)
+    localStorage.setItem('faction', randFaction)
+
+    setCharacterState({
+      ...characterState,
+      name: localStorage.getItem('name'),
+      class: randClass,
+      race: randRace,
+      background: randBackground,
+      alignment: randAlignment,
+      faction: randFaction,
+      exp: localStorage.getItem('exp')
+    })
+
+    console.log(characterState)
+  }
+
   characterState.handleCreateCharacter = event => {
     event.preventDefault()
+
+    setCharacterState({
+      ...characterState,
+      name: localStorage.getItem('name'),
+      class: localStorage.getItem('class'),
+      background: localStorage.getItem('background'),
+      race: localStorage.getItem('race'),
+      faction: localStorage.getItem('race'),
+      alignment: localStorage.getItem('alignment'),
+      exp: localStorage.getItem('exp'),
+      proficiency: localStorage.getItem('profiency'),
+      inspiration: localStorage.getItem('inspiration'),
+      strength: localStorage.getItem('strength'),
+      athletics: localStorage.getItem('athletics'),
+      dexterity: localStorage.getItem('dexterity'),
+      acrobatics: localStorage.getItem('acrobatics'),
+      sleight_of_hand: localStorage.getItem('sleight_of_hand'),
+      stealth: localStorage.getItem('stealth'),
+      constitution: localStorage.getItem('constitution'),
+      intelligent: localStorage.getItem('intelligent'),
+      arcana: localStorage.getItem('arcana'),
+      history: localStorage.getItem('history'),
+      investigation: localStorage.getItem('investigation'),
+      nature: localStorage.getItem('nature'),
+      religion: localStorage.getItem('religion'),
+      wisdom: localStorage.getItem('wisdom'),
+      animal_handling: localStorage.getItem('animal_handling'),
+      insight: localStorage.getItem('insight'),
+      medicine: localStorage.getItem('medicine'),
+      perception: localStorage.getItem('perception'),
+      survival: localStorage.getItem('survival'),
+      charisma: localStorage.getItem('charisma'),
+      deception: localStorage.getItem('deception'),
+      intimidation: localStorage.getItem('intimidation'),
+      performance: localStorage.getItem('performance'),
+      persuasion: localStorage.getItem('persuasion'),
+      armor_class: localStorage.getItem('armor_class'),
+      initiative: localStorage.getItem('initiative'),
+      speed: localStorage.getItem('speed'),
+      HP: localStorage.getItem('HP'),
+      temp_HP: localStorage.getItem('temp_HP'),
+      hit_dice: localStorage.getItem('hit_dice'),
+      death_save: localStorage.getItem('death_save'),
+      successes: localStorage.getItem('successes'),
+      failures: localStorage.getItem('failures')
+    })
 
     axios.post('/api/characters', {
       name: characterState.name,
@@ -180,7 +263,7 @@ const Character = () => {
           successes: ' ',
           failures: ' '
         })
-        localStorage.setItem('name', characterState.name)
+        localStorage.setItem('characterName', characterState.name)
         localStorage.setItem('class', characterState.class)
         localStorage.setItem('background', characterState.background)
         localStorage.setItem('race', characterState.race)
@@ -242,7 +325,7 @@ const Character = () => {
           <div className='col-md-3 pr-2 pl-2'>
             <div className='d-and-d-page-title' />
             <div className='d-and-d-attribute-collection char-name pr-3 pl-3'>
-              <Input type='characterName' name='characterName' id='CharacterName' value={localStorage.getItem('name')} />
+              <Input type='name' name='name' id='name' onChange={characterState.handleInputChange} />
             </div>
             <label
               style={{
@@ -259,7 +342,7 @@ const Character = () => {
             <div className='d-and-d-attribute-collection pr-3 pl-3'>
               <div className='row pl-3 pr-3'>
                 <div className='col-md-3 col-6 pl-0 pr-0'>
-                  <Input type='class' name='class' id='Class' value={localStorage.getItem('class')} />
+                  <Input type='class' name='class' id='Class' value={localStorage.getItem('class')} onChange={characterState.handleInputChange} />
                   <label
                     style={{
                       width: '100%',
@@ -271,7 +354,7 @@ const Character = () => {
                   </label>
                 </div>
                 <div className='col-md-3 col-6 pl-0 pr-0'>
-                  <Input type='background' name='background' id='background' value={localStorage.getItem('background')} />
+                  <Input type='background' name='background' id='background' value={localStorage.getItem('background')} onChange={characterState.handleInputChange} />
                   <label
                     style={{
                       width: '100%',
@@ -283,7 +366,7 @@ const Character = () => {
                   </label>
                 </div>
                 <div className='col-md-3 col-6 pl-0 pr-0'>
-                  <Input type='faction' name='faction' id='faction' value={localStorage.getItem('faction')} />
+                  <Input type='faction' name='faction' id='faction' value={localStorage.getItem('faction')} onChange={characterState.handleInputChange} />
                   <label
                     style={{
                       width: '100%',
@@ -297,7 +380,7 @@ const Character = () => {
               </div>
               <div className='row pl-3 pr-3'>
                 <div className='col-md-3 col-6 pl-0 pr-0'>
-                  <Input type='race' name='race' id='Race' value={localStorage.getItem('race')} />
+                  <Input type='race' name='race' id='Race' value={localStorage.getItem('race')} onChange={characterState.handleInputChange} />
                   <label
                     style={{
                       width: '100%',
@@ -309,7 +392,7 @@ const Character = () => {
                   </label>
                 </div>
                 <div className='col-md-3 col-6 pl-0 pr-0'>
-                  <Input type='alignment' name='alignment' id='Alignment' value={localStorage.getItem('alignment')} />
+                  <Input type='alignment' name='alignment' id='Alignment' value={localStorage.getItem('alignment')} onChange={characterState.handleInputChange} />
                   <label
                     style={{
                       width: '100%',
@@ -321,7 +404,7 @@ const Character = () => {
                   </label>
                 </div>
                 <div className='col-md-3 col-6 pl-0 pr-0'>
-                  <Input type='exp' name='exp' id='Exp' value={localStorage.getItem('exp')} />
+                  <Input type='exp' name='exp' id='Exp' onChange={characterState.handleInputChange} />
                   <label
                     style={{
                       width: '100%',
@@ -345,7 +428,7 @@ const Character = () => {
         >Create Character
         </Button>
         <Button
-          color='danger' onClick={characterState.handleCreateCharacter}
+          color='danger' onClick={characterState.handleRandomize}
           style={{
             margin: '5px',
             marginBottom: '20px'
@@ -485,8 +568,7 @@ const Character = () => {
                   </label>
                 </div>
                 <div className='d-and-d-box'>
-                  <div style={{ textAlign: 'left' }}
-                  >
+                  <div style={{ textAlign: 'left' }}>
                     <div className='d-and-d-skill'>
                       <input type='checkbox' />
                       <input type='text' />
@@ -633,7 +715,7 @@ const Character = () => {
               <div className='row'>
                 <div className='col-4 pr-2'>
                   <div>
-                    <div className="d-and-d-statbox type2">
+                    <div className='d-and-d-statbox type2'>
                       <div className='d-and-d-statbox-modifier'>
                         <input
                           type='text'
@@ -647,7 +729,7 @@ const Character = () => {
                 </div>
                 <div className='col-4 pr-2'>
                   <div>
-                    <div className="d-and-d-statbox type2">
+                    <div className='d-and-d-statbox type2'>
                       <div className='d-and-d-statbox-modifier'>
                         <input
                           type='text'
@@ -661,7 +743,7 @@ const Character = () => {
                 </div>
                 <div className='col-4 pr-2'>
                   <div>
-                    <div className="d-and-d-statbox type2">
+                    <div className='d-and-d-statbox type2'>
                       <div className='d-and-d-statbox-modifier'>
                         <input
                           type='text'
