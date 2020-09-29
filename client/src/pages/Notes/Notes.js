@@ -4,7 +4,6 @@ import Moment from 'react-moment'
 import axios from 'axios'
 
 // import Component from '../../components'
-
 // class Notes extends Component {
 
 const Notes = () => {
@@ -58,7 +57,7 @@ noteState.handleCreateNote = event => {
           <Col>
             <Card>
               <CardImgOverlay>
-                <CardTitle>Note Title</CardTitle>
+                {/* <CardTitle>Note Title</CardTitle> */}
                 <textarea type="input"
                   name="input"
                   value={noteState.input}
@@ -67,7 +66,7 @@ noteState.handleCreateNote = event => {
                   <small className="text-muted">
                     <Moment />
                   </small>
-                <Button color="danger">❌</Button>
+                {/* <Button color="danger">❌</Button> */}
               </CardImgOverlay>
             </Card>
           </Col>

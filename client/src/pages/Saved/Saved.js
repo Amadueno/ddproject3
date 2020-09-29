@@ -1,18 +1,15 @@
 import axios from 'axios'
 import React, { useState, useEffect } from 'react'
-
 const Saved = () => {
   const [savedState, setSavedState] = useState({
     saved: []
   })
-
   useEffect(() => {
     axios.get('/api/characters/')
       .then(({ data }) => {
         setSavedState({ ...savedState, saved: data })
       })
   }, [])
-
   return (
     <>
       <h1>Your saved Character Sheet </h1>
@@ -64,12 +61,7 @@ const Saved = () => {
                 {character.successes}
                 {character.failures}
               </p>
-
-
-
-
              )
-
             </div>
           ))
         ) : null
@@ -77,5 +69,4 @@ const Saved = () => {
     </>
   )
 }
-
 export default Saved

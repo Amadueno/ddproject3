@@ -1,1 +1,1 @@
-export { default } from './Notes.js'
+export {default} from './Notes.js'
