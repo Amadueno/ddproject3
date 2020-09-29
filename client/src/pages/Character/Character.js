@@ -7,10 +7,8 @@ import {
   FormGroup,
   Label,
   Col,
-  CardBody,
-  Row,
   Input,
-  Button
+  Button,
 } from 'reactstrap'
 
 const randClasses = ['Barbarian', 'Bard', 'Cleric', 'Druid', 'Fighter', 'Monk', 'Paladin', 'Ranger', 'Rogue', 'Sorcerer', 'Warlock', 'Wizard']
@@ -22,56 +20,56 @@ const randFactions = ['Harpers', 'Order of the Gauntlet', 'Emerald Enclave', 'Lo
     // }
 
 const Character = () => {
-    const [characterState, setCharacterState] = useState({
-      name: ' ',
-      class: ' ',
-      background: ' ',
-      faction: ' ',
-      race: ' ',
-      alignment: ' ',
-      exp: ' ',
-      inspiration: ' ',
-      proficiency: ' ',
-      strength: ' ',
-      dexterity: ' ',
-      constitution: ' ',
-      intelligent: ' ',
-      wisdom: ' ',
-      charisma: ' ',
-      acrobatics: ' ',
-      animal_handling: ' ',
-      arcana: ' ',
-      athletics: ' ',
-      deception: ' ',
-      history: ' ',
-      insight: ' ',
-      intimidation: ' ',
-      investigation: ' ',
-      medicine: ' ',
-      nature: ' ',
-      perception: ' ',
-      performance: ' ',
-      persuasion: ' ',
-      religion: ' ',
-      sleight_of_hand: ' ',
-      stealth: ' ',
-      survival: ' ',
-      armor_class: ' ',
-      initiative: ' ',
-      speed: ' ',
-      HP: ' ',
-      temp_HP: ' ',
-      hit_dice: ' ',
-      // death_save: ' ',
-      successes: ' ',
-      failures: ' ',
-      character: []
-    })
+  const [characterState, setCharacterState] = useState({
+    name: localStorage.getItem('name'),
+    class: localStorage.getItem('class'),
+    background: localStorage.getItem('background'),
+    race: localStorage.getItem('race'),
+    faction: localStorage.getItem('faction'),
+    alignment: localStorage.getItem('alignment'),
+    exp: localStorage.getItem('exp'),
+    proficiency: ' ',
+    inspiration: ' ',
+    strength: ' ',
+    athletics: ' ',
+    dexterity: ' ',
+    acrobatics: ' ',
+    sleight_of_hand: ' ',
+    stealth: ' ',
+    constitution: ' ',
+    intelligent: ' ',
+    arcana: ' ',
+    history: ' ',
+    investigation: ' ',
+    nature: ' ',
+    religion: ' ',
+    wisdom: ' ',
+    animal_handling: ' ',
+    insight: ' ',
+    medicine: ' ',
+    perception: ' ',
+    survival: ' ',
+    charisma: ' ',
+    deception: ' ',
+    intimidation: ' ',
+    performance: ' ',
+    persuasion: ' ',
+    armor_class: ' ',
+    initiative: ' ',
+    speed: ' ',
+    HP: ' ',
+    temp_HP: ' ',
+    hit_dice: ' ',
+    death_save: ' ',
+    successes: ' ',
+    failures: ' ',
+    character: []
+  })
 
   characterState.handleRandomize = event => {
     event.preventDefault()
     const randClass = randClasses[Math.floor(Math.random() * randClasses.length)]
-    const randRace = randClasses[Math.floor(Math.random() * randClasses.length)]
+    const randRace = randRaces[Math.floor(Math.random() * randRaces.length)]
     const randBackground = randBackgrounds[Math.floor(Math.random() * randBackgrounds.length)]
     const randAlignment = randAlignments[Math.floor(Math.random() * randAlignments.length)]
     const randFaction = randFactions[Math.floor(Math.random() * randFactions.length)]
@@ -245,9 +243,10 @@ const Character = () => {
       <div>
         <div className='row mb-4'>
           <div className='col-md-3 pr-2 pl-2'>
-            <div className='d-and-d-page-title' />
+            <div className='d-and-d-page-title'></div>
             <div className='d-and-d-attribute-collection char-name pr-3 pl-3'>
-              <Input type='characterName' name='characterName' id='CharacterName' value={localStorage.getItem('name')} />
+              <Input type="characterName" name="characterName" id="CharacterName" defaultValue={localStorage.getItem('name')}
+               onChange={characterState.handleInputChange} />
             </div>
             <label
               style={{
@@ -268,7 +267,7 @@ const Character = () => {
                   <input
                     type='class'
                     name='class'
-                    value={localStorage.getItem('class')}
+                    defaultValue={localStorage.getItem('class')}
                     onChange={characterState.handleRandomize}
                   />
                   <label
@@ -277,71 +276,59 @@ const Character = () => {
                       textAlign: 'right',
                       textTransform: 'uppercase',
                       fontSize: '11px'
-                    }}
-                  >Class & Level
-                  </label>
+                    }}>Class & Level</label>
                 </div>
                 <div className='col-md-3 col-6 pl-0 pr-0'>
-                  <Input type='background' name='background' id='background' value={localStorage.getItem('background')} />
+                  <Input type="background" name="background" id="background" defaultValue={localStorage.getItem('background')} />
                   <label
                     style={{
                       width: '100%',
                       textAlign: 'right',
                       textTransform: 'uppercase',
                       fontSize: '11px'
-                    }}
-                  >Background
-                  </label>
+                    }}>Background</label>
                 </div>
                 <div className='col-md-3 col-6 pl-0 pr-0'>
-                  <Input type='faction' name='faction' id='faction' value={localStorage.getItem('faction')} />
+                  <Input type="faction" name="faction" id="faction" defaultValue={localStorage.getItem('faction')} />
                   <label
                     style={{
                       width: '100%',
                       textAlign: 'right',
                       textTransform: 'uppercase',
                       fontSize: '11px'
-                    }}
-                  >Faction
-                  </label>
+                    }}>Faction</label>
                 </div>
               </div>
               <div className='row pl-3 pr-3'>
                 <div className='col-md-3 col-6 pl-0 pr-0'>
-                  <Input type='race' name='race' id='Race' value={localStorage.getItem('race')} />
+                  <Input type="race" name="race" id="Race" defaultValue={localStorage.getItem('race')} />
                   <label
                     style={{
                       width: '100%',
                       textAlign: 'right',
                       textTransform: 'uppercase',
                       fontSize: '11px'
-                    }}
-                  >Race
-                  </label>
+                    }}>Race</label>
                 </div>
                 <div className='col-md-3 col-6 pl-0 pr-0'>
-                  <Input type='alignment' name='alignment' id='Alignment' value={localStorage.getItem('alignment')} />
+                  <Input type="alignment" name="alignment" id="Alignment" defaultValue={localStorage.getItem('alignment')} />
                   <label
                     style={{
                       width: '100%',
                       textAlign: 'right',
                       textTransform: 'uppercase',
                       fontSize: '11px'
-                    }}
-                  >Alignment
-                  </label>
+                    }}>Alignment</label>
                 </div>
                 <div className='col-md-3 col-6 pl-0 pr-0'>
-                  <Input type='exp' name='exp' id='Exp' value={localStorage.getItem('exp')} />
+                  <Input type="exp" name="exp" id="Exp" defaultValue={localStorage.getItem('exp')} />
                   <label
                     style={{
                       width: '100%',
                       textAlign: 'right',
                       textTransform: 'uppercase',
                       fontSize: '11px'
-                    }}
-                  >Experience Points
-                  </label>
+                    }}>Experience Points</label>
                 </div>
               </div>
             </div>
@@ -363,9 +350,9 @@ const Character = () => {
               <div className='col-4 pr-1'>
                 <div className='d-and-d-box gray'>
                   <div>
-                    <div className='d-and-d-statbox'>
+                    <div className={'d-and-d-statbox'}>
                       <label>Strength</label>
-                      <div className='d-and-d-statbox-modifier' />
+                      <div className='d-and-d-statbox-modifier'><input type='text'></input></div>
                     </div>
                     <div className='d-and-d-statbox-value'>
                       <input
@@ -374,9 +361,9 @@ const Character = () => {
                     </div>
                   </div>
                   <div>
-                    <div className='d-and-d-statbox'>
+                    <div className={'d-and-d-statbox'}>
                       <label>Dexterity</label>
-                      <div className='d-and-d-statbox-modifier' />
+                      <div className='d-and-d-statbox-modifier'><input type='text'></input></div>
                     </div>
                     <div className='d-and-d-statbox-value'>
                       <input
@@ -385,9 +372,9 @@ const Character = () => {
                     </div>
                   </div>
                   <div>
-                    <div className='d-and-d-statbox'>
+                    <div className={'d-and-d-statbox'}>
                       <label>Constitution</label>
-                      <div className='d-and-d-statbox-modifier' />
+                      <div className='d-and-d-statbox-modifier'><input type='text'></input></div>
                     </div>
                     <div className='d-and-d-statbox-value'>
                       <input
@@ -396,9 +383,9 @@ const Character = () => {
                     </div>
                   </div>
                   <div>
-                    <div className='d-and-d-statbox'>
+                    <div className={'d-and-d-statbox'}>
                       <label>Intelligence</label>
-                      <div className='d-and-d-statbox-modifier' />
+                      <div className='d-and-d-statbox-modifier'><input type='text'></input></div>
                     </div>
                     <div className='d-and-d-statbox-value'>
                       <input
@@ -407,9 +394,9 @@ const Character = () => {
                     </div>
                   </div>
                   <div>
-                    <div className='d-and-d-statbox'>
-                      <label>Wisdom</label>
-                      <div className='d-and-d-statbox-modifier' />
+                    <div className={'d-and-d-statbox'}>
+                        <label>Wisdom</label>
+                      <div className='d-and-d-statbox-modifier'><input type='text'></input></div>
                     </div>
                     <div className='d-and-d-statbox-value'>
                       <input
@@ -418,14 +405,14 @@ const Character = () => {
                     </div>
                   </div>
                   <div>
-                    <div className='d-and-d-statbox'>
-                      <label>Charisma</label>
-                      <div className='d-and-d-statbox-modifier' />
+                    <div className={'d-and-d-statbox'}>
+                        <label>Charisma</label>
+                      <div className='d-and-d-statbox-modifier'><input type='text'></input></div>
                     </div>
                     <div className='d-and-d-statbox-value'>
-                      <input
-                        type='text'
-                      />
+                        <input
+                          type='text'
+                        />
                     </div>
                   </div>
                 </div>
@@ -434,8 +421,7 @@ const Character = () => {
                 <div className='d-and-d-statrow'>
                   <div className='d-and-d-statrow-value'>
                     <input
-                      type='text'
-                    />
+                      type='text'/>
                   </div>
                   <div className='d-and-d-statrow-label'>
                     <label>Inspiration</label>
@@ -444,8 +430,7 @@ const Character = () => {
                 <div className='d-and-d-statrow'>
                   <div className='d-and-d-statrow-value'>
                     <input
-                      type='text'
-                    />
+                      type='text' />
                   </div>
                   <div className='d-and-d-statrow-label'>
                     <label>Proficiency Bonus</label>
@@ -482,19 +467,17 @@ const Character = () => {
                     <input type='text' />
                     <label>Charisma</label>
                   </div>
-                  <label
-                    className='d-and-d-title'
-                    style={{ marginTop: '10px' }}
-                  >
+                  <label className='d-and-d-title'
+                    style={{ marginTop: '10px' }}>
                     Saving Throws
                   </label>
                 </div>
-                <div className='d-and-d-box'>
-                  <div style={{ textAlign: 'left' }}
-                  >
+                <div className="d-and-d-box">
+                  <div style=
+                  {{ textAlign: 'left'}}>
                     <div className='d-and-d-skill'>
                       <input type='checkbox' />
-                      <input type='text' />
+                      <input type='text'/>
                       <label>Acrobatics</label>
                       <span className='d-and-d-skill-hint'>Dex</span>
                     </div>
@@ -603,9 +586,8 @@ const Character = () => {
                     </div>
                   </div>
                   <Label
-                    className='d-and-d-title'
-                    style={{ marginTop: '10px' }}
-                  >
+                    className="d-and-d-title"
+                    style={{ marginTop: '10px' }}>
                     Skills
                   </Label>
                 </div>
@@ -615,8 +597,7 @@ const Character = () => {
               <div className='d-and-d-statrow'>
                 <div className='d-and-d-statrow-value'>
                   <input
-                    type='text'
-                  />
+                    type='text' />
                 </div>
                 <div className='d-and-d-statrow-label'>
                   <label>Passive Wisdom (Perception)</label>
@@ -625,11 +606,10 @@ const Character = () => {
             </div>
             <div className='d-and-d-box mt-4'>
               <textarea
-                rows={12}
-              />
+                rows={12} />
               <label className='d-and-d-title' style={{ marginTop: '10px' }}>
                 Other Proficiencies and Languages
-              </label>
+            </label>
             </div>
           </div>
 
@@ -638,113 +618,124 @@ const Character = () => {
               <div className='row'>
                 <div className='col-4 pr-2'>
                   <div>
-                    <div className="d-and-d-statbox type2">
+                    <div className={'d-and-d-statbox type2'}>
                       <div className='d-and-d-statbox-modifier'>
                         <input
-                          type='text'
-                        />
+                          type='text' />
                       </div>
                       <div>
-                        <label className='label-top'>Armour Class</label>
+                        <label className='label-top'>{'Armour Class'}</label>
                       </div>
                     </div>
                   </div>
                 </div>
                 <div className='col-4 pr-2'>
                   <div>
-                    <div className="d-and-d-statbox type2">
+                    <div className={'d-and-d-statbox type2'}>
                       <div className='d-and-d-statbox-modifier'>
                         <input
-                          type='text'
-                        />
+                          type='text' />
                       </div>
                       <div>
-                        <label className='label-top'>Initiative</label>
+                        <label className='label-top'>{'Initiative'}</label>
                       </div>
                     </div>
                   </div>
                 </div>
                 <div className='col-4 pr-2'>
                   <div>
-                    <div className="d-and-d-statbox type2">
+                    <div className={'d-and-d-statbox type2'}>
                       <div className='d-and-d-statbox-modifier'>
                         <input
-                          type='text'
-                        />
+                          type='text' />
                       </div>
                       <div>
-                        <label className='label-top'>Speed</label>
+                        <label className='label-top'>{'Speed'}</label>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
 
-              <div
-                className='d-and-d-box white'
-                style={{
-                  borderRadius: '8px 8px 0 0',
-                  marginBottom: '5px',
-                  paddingBottom: '5px'
-                }}
-              >
+              <div className='d-and-d-box white'
+              style={{
+                borderRadius: '8px 8px 0 0',
+                marginBottom: '5px',
+                paddingBottom: '5px'
+              }}
+            >
                 <div className='d-and-d-gray-text'>
-                  <label style={{ width: '95px' }}>Hit Point Maximum</label>
-                  <Input
+                <label style={{ width: '95px' }}>Hit Point Maximum</label>
+                <Input type='text'
+                  style={{ width: 'calc(100% = 95px)' }}
+                  className='d-and-d-linput' />
+              </div>
+              <Input
+                type='text'
+                className='d-and-d-cinput' />
+              <label className='d-and-d-title' style={{ marginTop: '5px' }}>Current Hit Points</label>
+            </div>
+            <div className='d-and-d-box white mb-2'
+              style={{ borderRadius: '0 0 8px 8px', paddingBottom: '5px' }}>
+              <input type='text'></input>
+              <label className='d-and-d-title' style={{ marginTop: '5px' }}>Temporary Hit Points</label>
+            </div>
+            <div className='row mt-1'>
+              <div className='col-6 pr-1'>
+                <div className='d-and-d-box white mb-0'
+                  style={{ paddingBottom: '5px' }}>
+                  <div className='d-and-d-gray-text'>
+                    <label style={{ width: '25px' }}>Total</label>
+                    <input type='text'
+                      style={{ width: 'calc(100% - 25px' }}
+                      className='d-and-d-linput'></input>
+                  </div>
+                  <input
                     type='text'
-                    style={{ width: 'calc(100% = 95px)' }}
-                    className='d-and-d-linput'
-                  />
+                    className='d-and-d-cinput'></input>
+                  <label className='d-and-d-title'
+                    style={{ marginTop: '5px' }}>Hit Dice</label>
                 </div>
-                <Input
-                  type='text'
-                  className='d-and-d-cinput'
-                />
-                <label className='d-and-d-title' style={{ marginTop: '5px' }}>Current Hit Points</label>
               </div>
               <div className='col-6 pl-1'>
                 <div className='d-and-d-box white mb-0'>
-                  <div className='d-and-d-deathsave'>
-                    <FormGroup check inline>
-                      <Label
-                        style={{
-                          marginBottom: '5px'
-                        }} check
-                      >
-                        Sucesses
-                        <Input type='checkbox' />
-                      </Label>
-                      <Label check>
-                        <Input type='checkbox' />
-                      </Label>
-                      <Label check>
-                        <Input type='checkbox' />
-                      </Label>
-                    </FormGroup>
-                    <FormGroup check inline>
-                      <Label check>
-                        Failures
-                        <Input type='checkbox' />
-                      </Label>
-                      <Label check>
-                        <Input type='checkbox' />
-                      </Label>
-                      <Label check>
-                        <Input type='checkbox' />
-                      </Label>
-                    </FormGroup>
+                  <div className= 'd-and-d-deathsave'>
+                  <FormGroup check inline>
+                    <Label style={{
+                    marginBottom: '5px'
+                    }}check>
+                      Sucesses
+                  <Input type="checkbox" />
+                    </Label>
+                    <Label check>
+                      <Input type="checkbox" />
+                    </Label>
+                    <Label check>
+                      <Input type="checkbox" />
+                    </Label>
+                  </FormGroup>
+                  <FormGroup check inline>
+                    <Label check>
+                      Failures
+                      <Input type="checkbox" />
+                    </Label>
+                    <Label check>
+                      <Input type="checkbox" />
+                    </Label>
+                    <Label check>
+                      <Input type="checkbox" />
+                    </Label>
+                  </FormGroup>
                   </div>
-                  <label
-                    className='d-and-d-title'
-                    style={{ marginTop: '6px' }}
-                  >
+                  <label className='d-and-d-title'
+                    style={{ marginTop: '6px' }}>
                     Death Saves
                   </label>
                 </div>
               </div>
             </div>
           </div>
-          <div className='d-and-d-box mt-3'>
+        <div className='d-and-d-box mt-3'>
             <table className='d-and-d-table'>
               <thead className='d-and-d-table'>
                 <tr>
@@ -754,115 +745,109 @@ const Character = () => {
                 </tr>
               </thead>
             </table>
-            <tr className='d-and-d-table-row-'>
-              <td>
-                <input type='text' />
-              </td>
-              <td>
-                <input type='text' />
-              </td>
-              <td>
-                <input type='text' />
-              </td>
-            </tr>
-            <textarea
-              rows={6}
-            />
-            <label className='d-and-d-title' style={{ marginTop: '10px' }}>
-              Attacks & Spellcasting
-            </label>
-          </div>
-          <div className='d-and-d-box mt-4'>
-            <div className='row'>
-              <div style={{ width: '100px' }}>
-                <div className='d-and-d-currency'>
-                  <div className='d-and-d-currency-label'>
-                    <label>CP</label>
+              <tr className='d-and-d-table-row-'>
+                <td>
+                  <input type='text'/>
+                </td>
+                <td>
+                  <input type='text'/>
+                </td>
+                <td>
+                  <input type='text'/>
+                </td>
+              </tr>
+          <textarea
+            rows={6} />
+          <label className='d-and-d-title' style={{ marginTop: '10px' }}>
+            Attacks & Spellcasting
+          </label>
+        </div>
+        <div className='d-and-d-box mt-4'>
+          <div className='row'>
+                <div style={{ width: '100px'}}>
+                  <div className='d-and-d-currency'>
+                    <div className='d-and-d-currency-label'>
+                      <label>CP</label>
+                    </div>
+                    <div className='d-and-d-currency-value'>
+                      <input
+                        type='text'
+                      />
+                    </div>
                   </div>
-                  <div className='d-and-d-currency-value'>
-                    <input
-                      type='text'
-                    />
+                  <div className='d-and-d-currency'>
+                    <div className='d-and-d-currency-label'>
+                      <label>SP</label>
+                    </div>
+                    <div className='d-and-d-currency-value'>
+                      <input
+                        type='text'
+                      />
+                    </div>
                   </div>
-                </div>
-                <div className='d-and-d-currency'>
-                  <div className='d-and-d-currency-label'>
-                    <label>SP</label>
+                  <div className='d-and-d-currency'>
+                    <div className='d-and-d-currency-label'>
+                      <label>EP</label>
+                    </div>
+                    <div className='d-and-d-currency-value'>
+                      <input
+                        type='text'
+                      />
+                    </div>
                   </div>
-                  <div className='d-and-d-currency-value'>
-                    <input
-                      type='text'
-                    />
+                  <div className='d-and-d-currency'>
+                    <div className='d-and-d-currency-label'>
+                      <label>GP</label>
+                    </div>
+                    <div className='d-and-d-currency-value'>
+                      <input
+                        type='text'
+                      />
+                    </div>
                   </div>
-                </div>
-                <div className='d-and-d-currency'>
-                  <div className='d-and-d-currency-label'>
-                    <label>EP</label>
+                  <div className='d-and-d-currency'>
+                    <div className='d-and-d-currency-label'>
+                      <label>PP</label>
+                    </div>
+                    <div className='d-and-d-currency-value'>
+                      <input
+                        type='text'
+                      />
+                    </div>
                   </div>
-                  <div className='d-and-d-currency-value'>
-                    <input
-                      type='text'
-                    />
-                  </div>
-                </div>
-                <div className='d-and-d-currency'>
-                  <div className='d-and-d-currency-label'>
-                    <label>GP</label>
-                  </div>
-                  <div className='d-and-d-currency-value'>
-                    <input
-                      type='text'
-                    />
-                  </div>
-                </div>
-                <div className='d-and-d-currency'>
-                  <div className='d-and-d-currency-label'>
-                    <label>PP</label>
-                  </div>
-                  <div className='d-and-d-currency-value'>
-                    <input
-                      type='text'
-                    />
-                  </div>
-                </div>
-              </div>
-              <div className='col'>
-                <textarea
-                  className='d-and-d-equipment-indent'
-                  rows={10}
-                />
-              </div>
+            </div>
+            <div className='col'>
+              <textarea
+                className='d-and-d-equipment-indent'
+                rows={10}></textarea>
+            </div>
               <div className='col-md-12'>
                 <textarea
-                  rows={4}
-                />
+                  rows={4}></textarea>
               </div>
-              <label className='d-and-d-title' style={{ marginTop: '10px' }}>
-                Equipment
-              </label>
-            </div>
+            <label className='d-and-d-title' style={{ marginTop: '10px' }}>
+              Equipment
+            </label>
           </div>
         </div>
+        </div>
+
 
         <div className='col-md-4'>
-          <div
-            className='d-and-d-box gray'
-            style={{ marginBottom: '17px' }}
-          >
-            <div
-              className='d-and-d-box white'
+          <div className='d-and-d-box gray'
+          style={{ marginBottom: '17px'}}>
+            <div className='d-and-d-box white'
               style={{
                 borderRadius: '8px 8px 0 0',
                 marginBottom: '5px',
                 paddingTop: '1px',
                 paddingBottom: '5px'
-              }}
-            >
+              }}>
               <textarea
                 rows={3}
               />
               <label className='d-and-d-title'>Personality Traits</label>
-            </div>
+              </div>
             <div
               className='d-and-d-box white'
               style={{
@@ -870,8 +855,7 @@ const Character = () => {
                 marginBottom: '5px',
                 paddingTop: '1px',
                 paddingBottom: '5px'
-              }}
-            >
+              }}>
               <textarea
                 rows={3}
               />
@@ -884,9 +868,8 @@ const Character = () => {
                 marginBottom: '5px',
                 paddingTop: '1px',
                 paddingBottom: '5px'
-              }}
-            >
-              <textarea rows={2} />
+              }}>
+              <textarea rows={2}/>
               <label className='d-and-d-title'>Bonds</label>
             </div>
             <div
@@ -896,22 +879,19 @@ const Character = () => {
                 marginBottom: '0px',
                 paddingTop: '1px',
                 paddingBottom: '4px'
-              }}
-            >
-              <textarea rows={2} />
+              }}>
+              <textarea rows={2}/>
               <label className='d-and-d-title'>Flaws</label>
             </div>
-          </div>
+        </div>
           <div className='d-and-d-box mt-3'>
             <textarea
               style={{ paddingBottom: '5px' }}
-              rows={27}
-            />
+              rows={27}/>
             <label className='d-and-d-title' style={{ marginTop: '10px' }}>
               Features & Traits
             </label>
           </div>
-        </div>
       </div>
     </div>
   </div>
@@ -926,7 +906,7 @@ const Character = () => {
           marginBottom: '20px'
         }}onClick={characterState.handleDicePage}>Dice Roller</Button>
       <Button color='danger' 
-        style={{
+      style={{
           margin: '5px',
           marginBottom: '20px'
         }}onClick={characterState.handleNotePage}>NotePad</Button>
