@@ -48,6 +48,7 @@ const Character = () => {
     insight: ' ',
     medicine: ' ',
     perception: ' ',
+    other_pro_lang: ' ',
     survival: ' ',
     charisma: ' ',
     deception: ' ',
@@ -63,6 +64,19 @@ const Character = () => {
     death_save: ' ',
     successes: ' ',
     failures: ' ',
+    att_spell_name: ' ',
+    att_spell_bonus: ' ',
+    att_spell_type: ' ',
+    CP: ' ',
+    SP: ' ',
+    EP: ' ',
+    GP: ' ',
+    PP: ' ',
+    equipments: ' ',
+    traits: ' ',
+    ideals: ' ',
+    bonds: ' ',
+    flaws: ' ',
     character: []
   })
 
@@ -95,7 +109,7 @@ const Character = () => {
 
   characterState.handleRandomize = event => {
     const randClass = randClasses[Math.floor(Math.random() * randClasses.length)]
-    const randRace = randClasses[Math.floor(Math.random() * randClasses.length)]
+    const randRace = randRaces[Math.floor(Math.random() * randRaces.length)]
     const randBackground = randBackgrounds[Math.floor(Math.random() * randBackgrounds.length)]
     const randAlignment = randAlignments[Math.floor(Math.random() * randAlignments.length)]
     const randFaction = randFactions[Math.floor(Math.random() * randFactions.length)]
@@ -114,7 +128,56 @@ const Character = () => {
       background: randBackground,
       alignment: randAlignment,
       faction: randFaction,
-      exp: localStorage.getItem('exp')
+      exp: localStorage.getItem('exp'),
+      proficiency: localStorage.getItem('proficiency'),
+      inspiration: localStorage.getItem('inspiration'),
+      strength: localStorage.getItem('strength'),
+      athletics: localStorage.getItem('athletics'),
+      dexterity: localStorage.getItem('dexterity'),
+      acrobatics: localStorage.getItem('acrobatics'),
+      sleight_of_hand: localStorage.getItem('sleight_of_hand'),
+      stealth: localStorage.getItem('stealth'),
+      constitution: localStorage.getItem('constitution'),
+      intelligent: localStorage.getItem('intelligent'),
+      arcana: localStorage.getItem('arcana'),
+      history: localStorage.getItem('history'),
+      investigation: localStorage.getItem('investigation'),
+      nature: localStorage.getItem('nature'),
+      religion: localStorage.getItem('religion'),
+      wisdom: localStorage.getItem('wisdom'),
+      animal_handling: localStorage.getItem('animal_handling'),
+      insight: localStorage.getItem('insight'),
+      medicine: localStorage.getItem('medicine'),
+      perception: localStorage.getItem('perception'),
+      other_pro_lang: localStorage.getItem('other_pro_lang'),
+      survival: localStorage.getItem('survival'),
+      charisma: localStorage.getItem('charisma'),
+      deception: localStorage.getItem('deception'),
+      intimidation: localStorage.getItem('intimidation'),
+      performance: localStorage.getItem('performance'),
+      persuasion: localStorage.getItem('persuasion'),
+      armor_class: localStorage.getItem('armor_class'),
+      initiative: localStorage.getItem('initiative'),
+      speed: localStorage.getItem('speed'),
+      HP: localStorage.getItem('HP'),
+      temp_HP: localStorage.getItem('temp_HP'),
+      hit_dice: localStorage.getItem('hit_dice'),
+      death_save: localStorage.getItem('death_save'),
+      successes: localStorage.getItem('successes'),
+      failures: localStorage.getItem('failures'),
+      att_spell_name: localStorage.getItem('att_spell_name'),
+      att_spell_bonus: localStorage.getItem('att_spell_bonus'),
+      att_spell_type: localStorage.getItem('att_spell_type'),
+      CP: localStorage.getItem('CP'),
+      SP: localStorage.getItem('SP'),
+      EP: localStorage.getItem('EP'),
+      GP: localStorage.getItem('GP'),
+      PP: localStorage.getItem('PP'),
+      equipments: localStorage.getItem('equipments'),
+      traits: localStorage.getItem('traits'),
+      ideals: localStorage.getItem('ideals'),
+      bonds: localStorage.getItem('bonds'),
+      flaws: localStorage.getItem('flaws')
     })
 
     console.log(characterState)
@@ -152,12 +215,14 @@ const Character = () => {
       insight: localStorage.getItem('insight'),
       medicine: localStorage.getItem('medicine'),
       perception: localStorage.getItem('perception'),
+      other_pro_lang: localStorage.getItem('other-pro_lang'),
       survival: localStorage.getItem('survival'),
       charisma: localStorage.getItem('charisma'),
       deception: localStorage.getItem('deception'),
       intimidation: localStorage.getItem('intimidation'),
       performance: localStorage.getItem('performance'),
       persuasion: localStorage.getItem('persuasion'),
+      other_pro_lang: localStorage.getItem('other_pro_lang'),
       armor_class: localStorage.getItem('armor_class'),
       initiative: localStorage.getItem('initiative'),
       speed: localStorage.getItem('speed'),
@@ -166,8 +231,65 @@ const Character = () => {
       hit_dice: localStorage.getItem('hit_dice'),
       death_save: localStorage.getItem('death_save'),
       successes: localStorage.getItem('successes'),
-      failures: localStorage.getItem('failures')
+      failures: localStorage.getItem('failures'),
+      att_spell_name: localStorage.getItem('att_spell_name'),
+      att_spell_bonus: localStorage.getItem('att_spell_bonus'),
+      att_spell_type: localStorage.getItem('att_spell_type'),
+      CP: localStorage.getItem('CP'),
+      SP: localStorage.getItem('SP'),
+      EP: localStorage.getItem('EP'),
+      GP: localStorage.getItem('GP'),
+      PP: localStorage.getItem('PP'),
+      equipments: localStorage.getItem('equipments'),
+      traits: localStorage.getItem('traits'),
+      ideals: localStorage.getItem('ideals'),
+      bonds: localStorage.getItem('bonds'),
+      flaws: localStorage.getItem('flaws')
     })
+
+    localStorage.setItem('characterName', characterState.name)
+    localStorage.setItem('class', characterState.class)
+    localStorage.setItem('background', characterState.background)
+    localStorage.setItem('race', characterState.race)
+    localStorage.setItem('faction', characterState.faction)
+    localStorage.setItem('alignment', characterState.alignment)
+    localStorage.setItem('exp', characterState.exp)
+    localStorage.setItem('proficiency', characterState.proficiency)
+    localStorage.setItem('inspiration', characterState.inspiration)
+    localStorage.setItem('strength', characterState.strength)
+    localStorage.setItem('athletics', characterState.athletics)
+    localStorage.setItem('dexterity', characterState.dexterity)
+    localStorage.setItem('acrobatics', characterState.acrobatics)
+    localStorage.setItem('sleight_of_hand', characterState.sleight_of_hand)
+    localStorage.setItem('stealth', characterState.stealth)
+    localStorage.setItem('constitution', characterState.constitution)
+    localStorage.setItem('intelligent', characterState.intelligent)
+    localStorage.setItem('arcana', characterState.arcana)
+    localStorage.setItem('history', characterState.history)
+    localStorage.setItem('investigation', characterState.investigation)
+    localStorage.setItem('nature', characterState.nature)
+    localStorage.setItem('religion', characterState.religion)
+    localStorage.setItem('wisdom', characterState.wisdom)
+    localStorage.setItem('animal_handling', characterState.animal_handling)
+    localStorage.setItem('insight', characterState.insight)
+    localStorage.setItem('medicine', characterState.medicine)
+    localStorage.setItem('perception', characterState.perception)
+    localStorage.setItem('other_pro_lang', characterState.other_pro_lang)
+    localStorage.setItem('survival', characterState.survival)
+    localStorage.setItem('charisma', characterState.charisma)
+    localStorage.setItem('deception', characterState.deception)
+    localStorage.setItem('intimidation', characterState.intimidation)
+    localStorage.setItem('performance', characterState.performance)
+    localStorage.setItem('persuasion', characterState.persuasion)
+    localStorage.setItem('armor_class', characterState.armor_class)
+    localStorage.setItem('initiative', characterState.initiative)
+    localStorage.setItem('speed', characterState.speed)
+    localStorage.setItem('HP', characterState.HP)
+    localStorage.setItem('temp_HP', characterState.temp_HP)
+    localStorage.setItem('hit_dice', characterState.hit_dice)
+    localStorage.setItem('death_save', characterState.death_save)
+    localStorage.setItem('successes', characterState.successes)
+    localStorage.setItem('failures', characterState.failures)
 
     axios.post('/api/characters', {
       name: characterState.name,
@@ -197,6 +319,7 @@ const Character = () => {
       insight: characterState.insight,
       medicine: characterState.medicine,
       perception: characterState.perception,
+      other_pro_lang: characterState.other_pro_lang,
       survival: characterState.survival,
       charisma: characterState.charisma,
       deception: characterState.deception,
@@ -211,7 +334,20 @@ const Character = () => {
       hit_dice: characterState.hit_dice,
       death_save: characterState.death_save,
       successes: characterState.successes,
-      failures: characterState.failures
+      failures: characterState.failures,
+      att_spell_name: characterState.att_spell_name,
+      att_spell_bonus: characterState.att_spell_bonus,
+      att_spell_type: characterState.att_spell_type,
+      CP: characterState.CP,
+      SP: characterState.SP,
+      EP: characterState.EP,
+      GP: characterState.GP,
+      PP: characterState.PP,
+      equipments: characterState.equipments,
+      traits: characterState.traits,
+      ideals: characterState.ideals,
+      bonds: characterState.bonds,
+      flaws: characterState.flaws
     }, {
       headers: {
         Authorization: `Bearer ${localStorage.getItem('user')}`
@@ -247,6 +383,7 @@ const Character = () => {
           insight: ' ',
           medicine: ' ',
           perception: ' ',
+          other_pro_lang: ' ',
           survival: ' ',
           charisma: ' ',
           deception: ' ',
@@ -261,7 +398,20 @@ const Character = () => {
           hit_dice: ' ',
           death_save: ' ',
           successes: ' ',
-          failures: ' '
+          failures: ' ',
+          att_spell_name: ' ',
+          att_spell_bonus: ' ',
+          att_spell_type: ' ',
+          CP: ' ',
+          SP: ' ',
+          EP: ' ',
+          GP: ' ',
+          PP: ' ',
+          equipments: ' ',
+          traits: ' ',
+          ideals: ' ',
+          bonds: ' ',
+          flaws: ' '
         })
         localStorage.setItem('characterName', characterState.name)
         localStorage.setItem('class', characterState.class)
@@ -290,6 +440,7 @@ const Character = () => {
         localStorage.setItem('insight', characterState.insight)
         localStorage.setItem('medicine', characterState.medicine)
         localStorage.setItem('perception', characterState.perception)
+        localStorage.setItem('other_pro_lang', characterState.other_pro_lang)
         localStorage.setItem('survival', characterState.survival)
         localStorage.setItem('charisma', characterState.charisma)
         localStorage.setItem('deception', characterState.deception)
@@ -305,6 +456,7 @@ const Character = () => {
         localStorage.setItem('death_save', characterState.death_save)
         localStorage.setItem('successes', characterState.successes)
         localStorage.setItem('failures', characterState.failures)
+
         window.location.pathname = '../Character/Character.js'
       })
       .catch(err => {
@@ -446,9 +598,7 @@ const Character = () => {
                       <div className='d-and-d-statbox-modifier' />
                     </div>
                     <div className='d-and-d-statbox-value'>
-                      <input
-                        type='text'
-                      />
+                      <Input type='strength' name='strength' id='strength' onChange={characterState.handleInputChange} />
                     </div>
                   </div>
                   <div>
@@ -457,9 +607,7 @@ const Character = () => {
                       <div className='d-and-d-statbox-modifier' />
                     </div>
                     <div className='d-and-d-statbox-value'>
-                      <input
-                        type='text'
-                      />
+                      <Input type='dexterity' name='dexterity' id='dexterity' onChange={characterState.handleInputChange} />
                     </div>
                   </div>
                   <div>
@@ -468,9 +616,7 @@ const Character = () => {
                       <div className='d-and-d-statbox-modifier' />
                     </div>
                     <div className='d-and-d-statbox-value'>
-                      <input
-                        type='text'
-                      />
+                      <Input type='constitution' name='constitution' id='constitution' onChange={characterState.handleInputChange} />
                     </div>
                   </div>
                   <div>
@@ -479,9 +625,7 @@ const Character = () => {
                       <div className='d-and-d-statbox-modifier' />
                     </div>
                     <div className='d-and-d-statbox-value'>
-                      <input
-                        type='text'
-                      />
+                      <Input type='intelligence' name='intelligence' id='intelligence' onChange={characterState.handleInputChange} />
                     </div>
                   </div>
                   <div>
@@ -490,9 +634,7 @@ const Character = () => {
                       <div className='d-and-d-statbox-modifier' />
                     </div>
                     <div className='d-and-d-statbox-value'>
-                      <input
-                        type='text'
-                      />
+                      <Input type='wisdom' name='wisdom' id='wisdom' onChange={characterState.handleInputChange} />
                     </div>
                   </div>
                   <div>
@@ -501,9 +643,7 @@ const Character = () => {
                       <div className='d-and-d-statbox-modifier' />
                     </div>
                     <div className='d-and-d-statbox-value'>
-                      <input
-                        type='text'
-                      />
+                      <Input type='charisma' name='charisma' id='charisma' onChange={characterState.handleInputChange} />
                     </div>
                   </div>
                 </div>
@@ -511,9 +651,7 @@ const Character = () => {
               <div className='col-8'>
                 <div className='d-and-d-statrow'>
                   <div className='d-and-d-statrow-value'>
-                    <input
-                      type='text'
-                    />
+                    <Input type='inspiration' name='inspiration' id='inspiration' onChange={characterState.handleInputChange} />
                   </div>
                   <div className='d-and-d-statrow-label'>
                     <label>Inspiration</label>
@@ -521,9 +659,7 @@ const Character = () => {
                 </div>
                 <div className='d-and-d-statrow'>
                   <div className='d-and-d-statrow-value'>
-                    <input
-                      type='text'
-                    />
+                    <Input type='text' name='proficiency' id='proficiency' onChange={characterState.handleInputChange} />
                   </div>
                   <div className='d-and-d-statrow-label'>
                     <label>Proficiency Bonus</label>
@@ -691,9 +827,7 @@ const Character = () => {
             <div className='mt-2'>
               <div className='d-and-d-statrow'>
                 <div className='d-and-d-statrow-value'>
-                  <input
-                    type='text'
-                  />
+                  <Input type='text' name='perception' id='perception' onChange={characterState.handleInputChange} />
                 </div>
                 <div className='d-and-d-statrow-label'>
                   <label>Passive Wisdom (Perception)</label>
@@ -703,6 +837,7 @@ const Character = () => {
             <div className='d-and-d-box mt-4'>
               <textarea
                 rows={12}
+                type='text' name='other_pro_lang' id='other_pro_lang' onChange={characterState.handleInputChange}
               />
               <label className='d-and-d-title' style={{ marginTop: '10px' }}>
                 Other Proficiencies and Languages
@@ -717,9 +852,7 @@ const Character = () => {
                   <div>
                     <div className='d-and-d-statbox type2'>
                       <div className='d-and-d-statbox-modifier'>
-                        <input
-                          type='text'
-                        />
+                        <Input type='armor-class' name='armor-class' id='armor-class' onChange={characterState.handleInputChange} />
                       </div>
                       <div>
                         <label className='label-top'>Armour Class</label>
@@ -731,9 +864,7 @@ const Character = () => {
                   <div>
                     <div className='d-and-d-statbox type2'>
                       <div className='d-and-d-statbox-modifier'>
-                        <input
-                          type='text'
-                        />
+                        <Input type='inititive' name='inititive' id='inititive' onChange={characterState.handleInputChange} />
                       </div>
                       <div>
                         <label className='label-top'>Initiative</label>
@@ -745,9 +876,7 @@ const Character = () => {
                   <div>
                     <div className='d-and-d-statbox type2'>
                       <div className='d-and-d-statbox-modifier'>
-                        <input
-                          type='text'
-                        />
+                        <Input type='speed' name='speed' id='speed' onChange={characterState.handleInputChange} />
                       </div>
                       <div>
                         <label className='label-top'>Speed</label>
@@ -771,11 +900,13 @@ const Character = () => {
                     type='text'
                     style={{ width: 'calc(100% = 95px)' }}
                     className='d-and-d-linput'
+                    name='HP' id='HP' onChange={characterState.handleInputChange}
                   />
                 </div>
                 <Input
                   type='text'
                   className='d-and-d-cinput'
+                  name='temp_HP' id='temp_HP' onChange={characterState.handleInputChange}
                 />
                 <label className='d-and-d-title' style={{ marginTop: '5px' }}>Current Hit Points</label>
               </div>
@@ -833,13 +964,16 @@ const Character = () => {
             </table>
             <tr className='d-and-d-table-row-'>
               <td>
-                <input type='text' />
+                <Input type='att_spell_name' name='att_spell_name' id='att_spell_name' onChange={characterState.handleInputChange} />
+
               </td>
               <td>
-                <input type='text' />
+                <Input type='att_spell_bonus' name='att_spell_bonus' id='att_spell_bonus' onChange={characterState.handleInputChange} />
+
               </td>
               <td>
-                <input type='text' />
+                <Input type='att_spell_type' name='att_spell_type' id='att_spell_type' onChange={characterState.handleInputChange} />
+
               </td>
             </tr>
             <textarea
@@ -857,9 +991,7 @@ const Character = () => {
                     <label>CP</label>
                   </div>
                   <div className='d-and-d-currency-value'>
-                    <input
-                      type='text'
-                    />
+                    <Input type='CP' name='CP' id='CP' onChange={characterState.handleInputChange} />
                   </div>
                 </div>
                 <div className='d-and-d-currency'>
@@ -867,9 +999,7 @@ const Character = () => {
                     <label>SP</label>
                   </div>
                   <div className='d-and-d-currency-value'>
-                    <input
-                      type='text'
-                    />
+                    <Input type='SP' name='SP' id='SP' onChange={characterState.handleInputChange} />
                   </div>
                 </div>
                 <div className='d-and-d-currency'>
@@ -877,9 +1007,7 @@ const Character = () => {
                     <label>EP</label>
                   </div>
                   <div className='d-and-d-currency-value'>
-                    <input
-                      type='text'
-                    />
+                    <Input type='EP' name='EP' id='EP' onChange={characterState.handleInputChange} />
                   </div>
                 </div>
                 <div className='d-and-d-currency'>
@@ -887,9 +1015,7 @@ const Character = () => {
                     <label>GP</label>
                   </div>
                   <div className='d-and-d-currency-value'>
-                    <input
-                      type='text'
-                    />
+                    <Input type='GP' name='GP' id='GP' onChange={characterState.handleInputChange} />
                   </div>
                 </div>
                 <div className='d-and-d-currency'>
@@ -897,23 +1023,22 @@ const Character = () => {
                     <label>PP</label>
                   </div>
                   <div className='d-and-d-currency-value'>
-                    <input
-                      type='text'
-                    />
+                    <Input type='PP' name='PP' id='PP' onChange={characterState.handleInputChange} />
                   </div>
                 </div>
               </div>
               <div className='col'>
                 <textarea
                   className='d-and-d-equipment-indent'
-                  rows={10}
+                  rows={14}
+                  type='equipments' name='equipments' id='equipments' onChange={characterState.handleInputChange}
                 />
               </div>
-              <div className='col-md-12'>
+              {/* <div className='col-md-12'>
                 <textarea
                   rows={4}
                 />
-              </div>
+              </div> */}
               <label className='d-and-d-title' style={{ marginTop: '10px' }}>
                 Equipment
               </label>
@@ -937,6 +1062,7 @@ const Character = () => {
             >
               <textarea
                 rows={3}
+                type='traits' name='traits' id='traits' onChange={characterState.handleInputChange}
               />
               <label className='d-and-d-title'>Personality Traits</label>
             </div>
@@ -951,6 +1077,7 @@ const Character = () => {
             >
               <textarea
                 rows={3}
+                type='ideals' name='ideals' id='ideals' onChange={characterState.handleInputChange}
               />
               <label className='d-and-d-title'>Ideals</label>
             </div>
@@ -963,7 +1090,10 @@ const Character = () => {
                 paddingBottom: '5px'
               }}
             >
-              <textarea rows={2} />
+              <textarea
+                rows={2}
+                type='bonds' name='bonds' id='bonds' onChange={characterState.handleInputChange}
+              />
               <label className='d-and-d-title'>Bonds</label>
             </div>
             <div
@@ -975,7 +1105,10 @@ const Character = () => {
                 paddingBottom: '4px'
               }}
             >
-              <textarea rows={2} />
+              <textarea
+                rows={2}
+                type='flaws' name='flaws' id='flaws' onChange={characterState.handleInputChange}
+              />
               <label className='d-and-d-title'>Flaws</label>
             </div>
           </div>

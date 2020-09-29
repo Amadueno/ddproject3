@@ -39,6 +39,7 @@ router.post('/characters', passport.authenticate('jwt'), (req, res) => {
     insight: req.body.insight,
     medicine: req.body.medicine,
     perception: req.body.perception,
+    other_pro_lang: req.body.other_pro_lang,
     survival: req.body.survival,
     charisma: req.body.charisma,
     deception: req.body.deception,
@@ -48,12 +49,26 @@ router.post('/characters', passport.authenticate('jwt'), (req, res) => {
     armor_class: req.body.armor_class,
     initiative: req.body.initiative,
     speed: req.body.speed,
+    maxHP: req.body.maxHP,
     HP: req.body.HP,
     temp_HP: req.body.temp_HP,
     hit_dice: req.body.hit_dice,
     death_save: req.body.death_save,
     successes: req.body.successes,
-    failures: req.body.failures
+    failures: req.body.failures,
+    att_spell_name: req.body.att_spell_name,
+    att_spell_bonus: req.body.att_spell_bonus,
+    att_spell_type: req.body.att_spell_type,
+    CP: req.body.CP,
+    SP: req.body.SP,
+    EP: req.body.EP,
+    GP: req.body.GP,
+    PP: req.body.PP,
+    equipments: req.body.equipments,
+    traits: req.body.traits,
+    ideals: req.body.ideals,
+    bonds: req.body.bonds,
+    flaws: req.body.flaws
   })
     .then(character => {
       User.findByIdAndUpdate(character.user, { $push: { characters: character._id } })
