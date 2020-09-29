@@ -36,28 +36,32 @@ const Notes = () => {
         })
     }
     return (
-      <div>
-        <Container>
+      <div >
+        <Container
+        style={{color: "whitesmoke"}}>
+          <br/>
           <h3>Campaign Notes</h3>
           {/* <Button onClick={noteState.handleCreateNote} color="danger">📝</Button> */}
         </Container>
-        <Container>
+        <Container >
           <Row>
-            <Col>
-              <Card>
+            <Col >
+              <Card >
+                {/* <CardImg width="auto" src="assets/parchment.jpg" alt="parchment"/> */}
                 <CardImgOverlay>
-                  {/* <CardTitle>Note Title</CardTitle> */}
-                  <textarea type="input"
-                    name="input"
-                    defaultValue={localStorage.getItem('input')}
-                    onChange={noteState.handleInputChange}>
-                  </textarea>
-                  <small className="text-muted">
-                    <Moment />
-                  </small>
-                  <Button onClick={noteState.handleCreateNote} color="danger">log note 💾</Button>
-                  <Button color="danger">❌</Button>
-                </CardImgOverlay>
+                    {/* <CardTitle>Note Title</CardTitle> */}
+                  <textarea className="noteCard" type="input"
+                      name="input"
+                      defaultValue={localStorage.getItem('input')}
+                      onChange={noteState.handleInputChange}
+                      style={{width: '100%', height: '23rem'}}>
+                    </textarea>
+                    <small className="text-muted">
+                      <Moment />
+                    </small>
+                    <Button onClick={noteState.handleCreateNote} color="danger">log note 💾</Button>
+                    <Button color="danger">❌</Button>
+                  </CardImgOverlay>
               </Card>
             </Col>
           </Row>

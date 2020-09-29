@@ -1,3 +1,7 @@
+* {
+  font-family: 'David Libre', serif;
+}
+
 body {
   background-image: url(./assets/background.jpg)
 }
@@ -5,3 +9,26 @@ body {
 container {
   background-color: whitesmoke;
 }
+
+.homePage {
+  color: whitesmoke;
+}
+
+.diceCard {
+  margin: 25px;
+  margin-left: 55px;
+  background-color: rgb(196, 196, 196);
+}
+
+.noteCard {
+  background: url("../src/assets/parchment.jpg");
+  /* background-size: contain; */
+  /* background-position: top; */
+  /* background: cover; */
+}
+
+/* .d20 {
+  background-image: url("./assets/d20a.png")
+  no-repeat center center fixed;
+  background-size: cover
+} */

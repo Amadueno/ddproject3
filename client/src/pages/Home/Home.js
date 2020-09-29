@@ -79,7 +79,7 @@ const Home = () => {
 
   return (
     <>
-      <div>
+      <div className="homePage">
         <Row>
           <Col xs='6'>
             <Form>
