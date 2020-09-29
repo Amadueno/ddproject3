@@ -27,8 +27,8 @@ router.post('/notes/bulk', passport.authenticate('jwt'), (req, res) => {
     user: req.user._id
   }))
 
-  Note.create(characters)
-    .then(characters => {
+  Note.create(users)
+    .then(users => {
       const noteIds = characters.map(note => note._id)
       User.findById(req.user._id)
         .then(user => {
