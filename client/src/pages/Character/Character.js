@@ -443,6 +443,7 @@ const Character = () => {
     localStorage.setItem('exp', '')
     localStorage.setItem('proficiency', '')
     localStorage.setItem('inspiration', '')
+    localStorage.setItem('maxHP', '')
     localStorage.setItem('strength', '')
     localStorage.setItem('strengthValue', '')
     localStorage.setItem('athletics', '')
@@ -1048,7 +1049,7 @@ const Character = () => {
                     <div className={'d-and-d-statbox type2'}>
                       <div className='d-and-d-statbox-modifier'>
                         {/* <input type='text' /> */}
-                        <Input type='armor-class' name='armor-class' id='armor-class' value={localStorage.getItem('armor-class')} onChange={characterState.handleInputChange} />
+                        <Input type='armor_class' name='armor_class' id='armor_class' value={localStorage.getItem('armor_class')} onChange={characterState.handleInputChange} />
                       </div>
                       <div>
                         <label className='label-top'>{'Armour Class'}</label>

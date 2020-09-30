@@ -17,13 +17,13 @@ import axios from 'axios'
 
 const Home = () => {
   const [userState, setUserState] = useState({
-    username: ' ',
-    password: ' '
+    username: '',
+    password: ''
   })
 
   const [newUserState, setNewUserState] = useState({
-    rUsername: ' ',
-    rPassword: ' '
+    rUsername: '',
+    rPassword: ''
   })
 
   userState.handleInputChange = event => {
@@ -69,7 +69,7 @@ const Home = () => {
       password: newUserState.rPassword
     })
       .then(res => {
-        setNewUserState({ ...newUserState, rUsername: ' ', rPassword: ' ' })
+        setNewUserState({ ...newUserState, rUsername: '', rPassword: '' })
         console.log('hi!')
       })
       .catch(err => {
@@ -118,7 +118,7 @@ const Home = () => {
               <FormGroup>
                 <Label for='rPassword'>Password</Label>
                 <Input
-                  type='text'
+                  type="password"
                   name='rPassword'
                   value={newUserState.rPassword}
                   onChange={newUserState.handleNewInputChange}
