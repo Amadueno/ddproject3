@@ -13,7 +13,7 @@ router.post('/notes', passport.authenticate('jwt'), (req, res) => {
     user: req.user._id
   })
     .then(note => {
-      User.findByIdAndUpdate(note.user, { $push: { characters: note._id } })
+      User.findByIdAndUpdate(note.user, { $push: { notes: note._id } })
         .then(() => res.json(note))
         .catch(err => console.log(err))
     })
@@ -39,6 +39,13 @@ router.post('/notes/bulk', passport.authenticate('jwt'), (req, res) => {
 router.put('/notes/:id', passport.authenticate('jwt'), (req, res) => {
   console.log(req.body)
   Note.findByIdAndUpdate(req.params.id, req.body)
+    .then(() => res.sendStatus(200))
+    .catch(err => console.log(err))
+})
+
+// DELETE one note
+router.delete('/notes/:id', (req, res) => {
+  User.findByIdAndDelete(req.params.id)
     .then(() => res.sendStatus(200))
     .catch(err => console.log(err))
 })

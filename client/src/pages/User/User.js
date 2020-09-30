@@ -136,94 +136,94 @@ const Character = () => {
       }
     })
       .then(res => {
-        setCharacterState({
-          ...characterState,
-          name: ' ',
-          class: ' ',
-          background: ' ',
-          race: ' ',
-          faction: ' ',
-          alignment: ' ',
-          exp: ' ',
-          proficiency: ' ',
-          inspiration: ' ',
-          strength: ' ',
-          athletics: ' ',
-          dexterity: ' ',
-          acrobatics: ' ',
-          sleight_of_hand: ' ',
-          stealth: ' ',
-          constitution: ' ',
-          intelligent: ' ',
-          arcana: ' ',
-          history: ' ',
-          investigation: ' ',
-          nature: ' ',
-          religion: ' ',
-          wisdom: ' ',
-          animal_handling: ' ',
-          insight: ' ',
-          medicine: ' ',
-          perception: ' ',
-          survival: ' ',
-          charisma: ' ',
-          deception: ' ',
-          intimidation: ' ',
-          performance: ' ',
-          persuasion: ' ',
-          armor_class: ' ',
-          initiative: ' ',
-          speed: ' ',
-          HP: ' ',
-          temp_HP: ' ',
-          hit_dice: ' ',
-          death_save: ' ',
-          successes: ' ',
-          failures: ' '
-        })
-        localStorage.setItem('name', characterState.name)
-        localStorage.setItem('class', characterState.class)
-        localStorage.setItem('background', characterState.background)
-        localStorage.setItem('race', characterState.race)
-        localStorage.setItem('faction', characterState.faction)
-        localStorage.setItem('alignment', characterState.alignment)
-        localStorage.setItem('exp', characterState.exp)
-        localStorage.setItem('proficiency', characterState.proficiency)
-        localStorage.setItem('inspiration', characterState.inspiration)
-        localStorage.setItem('strength', characterState.strength)
-        localStorage.setItem('athletics', characterState.athletics)
-        localStorage.setItem('dexterity', characterState.dexterity)
-        localStorage.setItem('acrobatics', characterState.acrobatics)
-        localStorage.setItem('sleight_of_hand', characterState.sleight_of_hand)
-        localStorage.setItem('stealth', characterState.stealth)
-        localStorage.setItem('constitution', characterState.constitution)
-        localStorage.setItem('intelligent', characterState.intelligent)
-        localStorage.setItem('arcana', characterState.arcana)
-        localStorage.setItem('history', characterState.history)
-        localStorage.setItem('investigation', characterState.investigation)
-        localStorage.setItem('nature', characterState.nature)
-        localStorage.setItem('religion', characterState.religion)
-        localStorage.setItem('wisdom', characterState.wisdom)
-        localStorage.setItem('animal_handling', characterState.animal_handling)
-        localStorage.setItem('insight', characterState.insight)
-        localStorage.setItem('medicine', characterState.medicine)
-        localStorage.setItem('perception', characterState.perception)
-        localStorage.setItem('survival', characterState.survival)
-        localStorage.setItem('charisma', characterState.charisma)
-        localStorage.setItem('deception', characterState.deception)
-        localStorage.setItem('intimidation', characterState.intimidation)
-        localStorage.setItem('performance', characterState.performance)
-        localStorage.setItem('persuasion', characterState.persuasion)
-        localStorage.setItem('armor_class', characterState.armor_class)
-        localStorage.setItem('initiative', characterState.initiative)
-        localStorage.setItem('speed', characterState.speed)
-        localStorage.setItem('HP', characterState.HP)
-        localStorage.setItem('temp_HP', characterState.temp_HP)
-        localStorage.setItem('hit_dice', characterState.hit_dice)
-        localStorage.setItem('death_save', characterState.death_save)
-        localStorage.setItem('successes', characterState.successes)
-        localStorage.setItem('failures', characterState.failures)
-        window.location.pathname = '../Character/Character.js'
+      //   setCharacterState({
+      //     ...characterState,
+      //     name: ' ',
+      //     class: ' ',
+      //     background: ' ',
+      //     race: ' ',
+      //     faction: ' ',
+      //     alignment: ' ',
+      //     exp: ' ',
+      //     proficiency: ' ',
+      //     inspiration: ' ',
+      //     strength: ' ',
+      //     athletics: ' ',
+      //     dexterity: ' ',
+      //     acrobatics: ' ',
+      //     sleight_of_hand: ' ',
+      //     stealth: ' ',
+      //     constitution: ' ',
+      //     intelligent: ' ',
+      //     arcana: ' ',
+      //     history: ' ',
+      //     investigation: ' ',
+      //     nature: ' ',
+      //     religion: ' ',
+      //     wisdom: ' ',
+      //     animal_handling: ' ',
+      //     insight: ' ',
+      //     medicine: ' ',
+      //     perception: ' ',
+      //     survival: ' ',
+      //     charisma: ' ',
+      //     deception: ' ',
+      //     intimidation: ' ',
+      //     performance: ' ',
+      //     persuasion: ' ',
+      //     armor_class: ' ',
+      //     initiative: ' ',
+      //     speed: ' ',
+      //     HP: ' ',
+      //     temp_HP: ' ',
+      //     hit_dice: ' ',
+      //     death_save: ' ',
+      //     successes: ' ',
+      //     failures: ' '
+      //   })
+      //   localStorage.setItem('name', characterState.name)
+      //   localStorage.setItem('class', characterState.class)
+      //   localStorage.setItem('background', characterState.background)
+      //   localStorage.setItem('race', characterState.race)
+      //   localStorage.setItem('faction', characterState.faction)
+      //   localStorage.setItem('alignment', characterState.alignment)
+      //   localStorage.setItem('exp', characterState.exp)
+      //   localStorage.setItem('proficiency', characterState.proficiency)
+      //   localStorage.setItem('inspiration', characterState.inspiration)
+      //   localStorage.setItem('strength', characterState.strength)
+      //   localStorage.setItem('athletics', characterState.athletics)
+      //   localStorage.setItem('dexterity', characterState.dexterity)
+      //   localStorage.setItem('acrobatics', characterState.acrobatics)
+      //   localStorage.setItem('sleight_of_hand', characterState.sleight_of_hand)
+      //   localStorage.setItem('stealth', characterState.stealth)
+      //   localStorage.setItem('constitution', characterState.constitution)
+      //   localStorage.setItem('intelligent', characterState.intelligent)
+      //   localStorage.setItem('arcana', characterState.arcana)
+      //   localStorage.setItem('history', characterState.history)
+      //   localStorage.setItem('investigation', characterState.investigation)
+      //   localStorage.setItem('nature', characterState.nature)
+      //   localStorage.setItem('religion', characterState.religion)
+      //   localStorage.setItem('wisdom', characterState.wisdom)
+      //   localStorage.setItem('animal_handling', characterState.animal_handling)
+      //   localStorage.setItem('insight', characterState.insight)
+      //   localStorage.setItem('medicine', characterState.medicine)
+      //   localStorage.setItem('perception', characterState.perception)
+      //   localStorage.setItem('survival', characterState.survival)
+      //   localStorage.setItem('charisma', characterState.charisma)
+      //   localStorage.setItem('deception', characterState.deception)
+      //   localStorage.setItem('intimidation', characterState.intimidation)
+      //   localStorage.setItem('performance', characterState.performance)
+      //   localStorage.setItem('persuasion', characterState.persuasion)
+      //   localStorage.setItem('armor_class', characterState.armor_class)
+      //   localStorage.setItem('initiative', characterState.initiative)
+      //   localStorage.setItem('speed', characterState.speed)
+      //   localStorage.setItem('HP', characterState.HP)
+      //   localStorage.setItem('temp_HP', characterState.temp_HP)
+      //   localStorage.setItem('hit_dice', characterState.hit_dice)
+      //   localStorage.setItem('death_save', characterState.death_save)
+      //   localStorage.setItem('successes', characterState.successes)
+      //   localStorage.setItem('failures', characterState.failures)
+      //   window.location.pathname = '../Character/Character.js'
       })
       .catch(err => {
         console.error(err)
@@ -311,16 +311,22 @@ const Character = () => {
           </Col>
         </FormGroup>
         <Col sm={{ size: 10, offset: 2 }}>
-          <Button color='danger' onClick={characterState.handleCreateCharacter}
+          <Button
+            color='danger' onClick={characterState.handleCreateCharacter}
             style={{
               margin: '5px',
               marginBottom: '20px'
-            }}>Create Character</Button>
-          <Button color='danger' onClick={characterState.handleRandomize}
+            }}
+          >Create Character
+          </Button>
+          <Button
+            color='danger' onClick={characterState.handleRandomize}
             style={{
               margin: '5px',
               marginBottom: '20px'
-            }}>Random Character</Button>
+            }}
+          >Random Character
+          </Button>
         </Col>
 
       </Form>

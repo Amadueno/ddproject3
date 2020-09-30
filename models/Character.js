@@ -22,7 +22,7 @@ const Character = new Schema({
   investigation: String,
   nature: String,
   religion: String,
-  wisdom: String,
+  wisdom: Boolean,
   animal_handling: String,
   insight: String,
   medicine: String,
