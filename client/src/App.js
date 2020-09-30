@@ -5,8 +5,8 @@ import Dice from './pages/Dice'
 import Notes from './pages/Notes'
 import Saved from './pages/Saved'
 import Character from './pages/Character'
+import img from './assets/dragon5.png'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
-
 
 import {
   Collapse,
@@ -28,10 +28,10 @@ const App = () => {
   return (
     <Router>
       <div>
-        <Navbar color='danger' dark expand='md'>
+        <Navbar color='danger' dark expand='md' sticky="top">
           <NavbarBrand href='/'>
-              <img src="../assets/dragon.jpg" width="30" height="30" className="d-inline-block align-top" />{' '}
-            Dungeon Sheets</NavbarBrand>
+              <img src= {img} width="55" height="47" className="d-inline-block align-top" style={{border: "none"}}/>{' '}
+              Dungeon Sheets</NavbarBrand>
           <NavbarToggler onClick={toggle} />
           <Collapse isOpen={isOpen} navbar>
             <Nav className='mr-auto' navbar>

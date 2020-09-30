@@ -37,6 +37,11 @@ container {
   height: 11rem
 }
 
+.image {
+  background-image: url("../src/assets/dragon5.png");
+  border: none;
+}
+
 .homePage {
   margin: 25px;
 }
@@ -58,3 +63,4 @@ container {
 h2 {
   text-align: center
 }
+
