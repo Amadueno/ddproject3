@@ -45,72 +45,23 @@ const Notes = () => {
       .catch(err => {
         console.error(err)
       })
-        .then(res => {
-          // setNoteState({
-          //   ...noteState,
-          //   input: ' ',
-          // })
-          localStorage.setItem('input', noteState.input)
-        })
-        .catch(err => {
-          console.error(err)
-        })
-    }
-    return (
-      <div >
-        <Container
-        style={{color: "whitesmoke"}}>
-          <br/>
-          <h3>Campaign Notes</h3>
-          {/* <Button onClick={noteState.handleCreateNote} color="danger">📝</Button> */}
-        </Container>
-        <Container >
-          <Row>
-            <Col >
-              <Card >
-                {/* <CardImg width="auto" src="assets/parchment.jpg" alt="parchment"/> */}
-                <CardImgOverlay>
-                    {/* <CardTitle>Note Title</CardTitle> */}
-                  <textarea className="noteCard" type="input"
-                      name="input"
-                      defaultValue={localStorage.getItem('input')}
-                      onChange={noteState.handleInputChange}
-                      style={{width: '100%', height: '23rem'}}>
-                    </textarea>
-                    <small className="text-muted">
-                      <Moment />
-                    </small>
-                    <Button onClick={noteState.handleCreateNote} color="danger">log note 💾</Button>
-                    <Button color="danger">❌</Button>
-                  </CardImgOverlay>
-              </Card>
-            </Col>
-          </Row>
-        </Container>
-      </div>
-    )
+      .then(res => {
+        // setNoteState({
+        //   ...noteState,
+        //   input: ' ',
+        // })
+        localStorage.setItem('input', noteState.input)
+      })
+      .catch(err => {
+        console.error(err)
+      })
   }
-  noteState.handleRemoveNote = event => {
-    console.log(event.target.dataset)
-    localStorage.setItem('input', '')
-    window.location.pathname = '../Notes/Notes.js'
-    // axios.get('/api/notes', {
-    //   headers: {
-    //     Authorization: `Bearer ${localStorage.getItem('user')}`
-    //   }
-    // })
-    //   .then(res => console.log(res.data))
-    //   // axios.delete(`/api/notes/${event.target.dataset.id}`)
-    //   //   .then(() => {
-    //   //     event.target.parentNode.remove()
-    //   //     localStorage.removeItem('input')
-    //   //   })
-    //   .catch(err => console.error(err))
-  }
-
   return (
     <div>
-      <Container>
+      <Container
+        style={{ color: 'whitesmoke' }}
+      >
+        <br />
         <h3>Campaign Notes</h3>
         {/* <Button onClick={noteState.handleCreateNote} color="danger">📝</Button> */}
       </Container>
@@ -118,19 +69,21 @@ const Notes = () => {
         <Row>
           <Col>
             <Card>
+              {/* <CardImg width="auto" src="assets/parchment.jpg" alt="parchment"/> */}
               <CardImgOverlay>
                 {/* <CardTitle>Note Title</CardTitle> */}
                 <textarea
-                  type='input'
+                  className='noteCard' type='input'
                   name='input'
                   defaultValue={localStorage.getItem('input')}
                   onChange={noteState.handleInputChange}
+                  style={{ width: '100%', height: '23rem' }}
                 />
                 <small className='text-muted'>
                   <Moment />
                 </small>
                 <Button onClick={noteState.handleCreateNote} color='danger'>log note 💾</Button>
-                <Button color='danger' onClick={noteState.handleRemoveNote}>❌</Button>
+                <Button color='danger'>❌</Button>
               </CardImgOverlay>
             </Card>
           </Col>
@@ -139,5 +92,53 @@ const Notes = () => {
     </div>
   )
 }
+// noteState.handleRemoveNote = event => {
+//   console.log(event.target.dataset)
+//   localStorage.setItem('input', '')
+//   window.location.pathname = '../Notes/Notes.js'
+// axios.get('/api/notes', {
+//   headers: {
+//     Authorization: `Bearer ${localStorage.getItem('user')}`
+//   }
+// })
+//   .then(res => console.log(res.data))
+//   // axios.delete(`/api/notes/${event.target.dataset.id}`)
+//   //   .then(() => {
+//   //     event.target.parentNode.remove()
+//   //     localStorage.removeItem('input')
+//   //   })
+//   .catch(err => console.error(err))
+
+// return (
+//   <div>
+//     <Container>
+//       <h3>Campaign Notes</h3>
+//       {/* <Button onClick={noteState.handleCreateNote} color="danger">📝</Button> */}
+//     </Container>
+//     <Container>
+//       <Row>
+//         <Col>
+//           <Card>
+//             <CardImgOverlay>
+//               {/* <CardTitle>Note Title</CardTitle> */}
+//               <textarea
+//                 type='input'
+//                 name='input'
+//                 defaultValue={localStorage.getItem('input')}
+//                 onChange={noteState.handleInputChange}
+//               />
+//               <small className='text-muted'>
+//                 <Moment />
+//               </small>
+//               <Button onClick={noteState.handleCreateNote} color='danger'>log note 💾</Button>
+//               <Button color='danger' onClick={noteState.handleRemoveNote}>❌</Button>
+//             </CardImgOverlay>
+//           </Card>
+//         </Col>
+//       </Row>
+//     </Container>
+//   </div>
+// )
+// }
 
 export default Notes

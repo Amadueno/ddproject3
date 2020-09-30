@@ -20,7 +20,6 @@ var Generate = {
 }
 
 const Character = () => {
-
   localStorage.setItem('failures', 0)
 
   const [characterState, setCharacterState] = useState({
