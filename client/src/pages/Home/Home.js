@@ -14,6 +14,11 @@ import {
   Container
 } from 'reactstrap'
 import axios from 'axios'
+import { toast, ToastContainer } from 'react-toastify'
+import { render } from 'react-dom'
+import 'react-toastify/dist/ReactToastify.css'
+
+toast.configure()
 
 const Home = () => {
   const [userState, setUserState] = useState({
@@ -70,10 +75,21 @@ const Home = () => {
     })
       .then(res => {
         setNewUserState({ ...newUserState, rUsername: '', rPassword: '' })
+        toast.success('Registration Successful, Please Login.', {
+          className: "success-toast",
+          autoClose: 4000,
+          position: toast.POSITION.TOP_CENTER,
+          pauseOnHover: true
+        })
         console.log('hi!')
       })
       .catch(err => {
         console.error(err)
+        toast.error('Registration Unsuccessful, Please Try Again.', {
+          autoClose: 4000,
+          position: toast.POSITION.TOP_CENTER,
+          pauseOnHover: true
+        })
       })
   }
 
@@ -95,7 +111,7 @@ const Home = () => {
               <FormGroup>
                 <Label for='password'>Password</Label>
                 <Input
-                  type='text'
+                  type="password"
                   name='password'
                   value={userState.password}
                   onChange={userState.handleInputChange}
@@ -129,9 +145,21 @@ const Home = () => {
           </Col>
         </Row>
       </div>
-
     </>
   )
 }
+// const Test = () => {
+//   return (
+//     <div>
+//       <ToastContainer />
+//     </div>
+//   )
+// }
+
+// render(
+//   <Test />,
+//   document.getElementById('root')
+// )
+
 
 export default Home

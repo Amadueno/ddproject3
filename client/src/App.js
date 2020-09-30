@@ -7,6 +7,7 @@ import Saved from './pages/Saved'
 import Character from './pages/Character'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
+
 import {
   Collapse,
   Navbar,
@@ -27,8 +28,10 @@ const App = () => {
   return (
     <Router>
       <div>
-        <Navbar color='danger' light expand='md'>
-          <NavbarBrand href='/'>Dungeon Sheets</NavbarBrand>
+        <Navbar color='danger' dark expand='md'>
+          <NavbarBrand href='/'>
+              <img src="../assets/dragon.jpg" width="30" height="30" className="d-inline-block align-top" />{' '}
+            Dungeon Sheets</NavbarBrand>
           <NavbarToggler onClick={toggle} />
           <Collapse isOpen={isOpen} navbar>
             <Nav className='mr-auto' navbar>
