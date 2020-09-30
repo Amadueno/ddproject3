@@ -27,14 +27,14 @@ const App = () => {
   return (
     <Router>
       <div>
-        <Navbar color='light' light expand='md'>
+        <Navbar color='danger' light expand='md'>
           <NavbarBrand href='/'>Dungeon Sheets</NavbarBrand>
           <NavbarToggler onClick={toggle} />
           <Collapse isOpen={isOpen} navbar>
             <Nav className='mr-auto' navbar>
-              <NavItem>
+              {/* <NavItem>
                 <NavLink href='/user/'>User</NavLink>
-              </NavItem>
+              </NavItem> */}
               <NavItem>
                 <NavLink href='/character/'>Character</NavLink>
               </NavItem>
@@ -52,7 +52,7 @@ const App = () => {
         </Navbar>
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route path="/user" component={User} />
+          {/* <Route path="/user" component={User} /> */}
           <Route path="/character" component={Character} />
           <Route path="/dice" component={Dice} />
           <Route path="/notes" component={Notes} />

@@ -45,6 +45,50 @@ const Notes = () => {
       .catch(err => {
         console.error(err)
       })
+        .then(res => {
+          // setNoteState({
+          //   ...noteState,
+          //   input: ' ',
+          // })
+          localStorage.setItem('input', noteState.input)
+        })
+        .catch(err => {
+          console.error(err)
+        })
+    }
+    return (
+      <div >
+        <Container
+        style={{color: "whitesmoke"}}>
+          <br/>
+          <h3>Campaign Notes</h3>
+          {/* <Button onClick={noteState.handleCreateNote} color="danger">📝</Button> */}
+        </Container>
+        <Container >
+          <Row>
+            <Col >
+              <Card >
+                {/* <CardImg width="auto" src="assets/parchment.jpg" alt="parchment"/> */}
+                <CardImgOverlay>
+                    {/* <CardTitle>Note Title</CardTitle> */}
+                  <textarea className="noteCard" type="input"
+                      name="input"
+                      defaultValue={localStorage.getItem('input')}
+                      onChange={noteState.handleInputChange}
+                      style={{width: '100%', height: '23rem'}}>
+                    </textarea>
+                    <small className="text-muted">
+                      <Moment />
+                    </small>
+                    <Button onClick={noteState.handleCreateNote} color="danger">log note 💾</Button>
+                    <Button color="danger">❌</Button>
+                  </CardImgOverlay>
+              </Card>
+            </Col>
+          </Row>
+        </Container>
+      </div>
+    )
   }
   noteState.handleRemoveNote = event => {
     console.log(event.target.dataset)
