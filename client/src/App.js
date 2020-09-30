@@ -6,6 +6,7 @@ import Notes from './pages/Notes'
 import Saved from './pages/Saved'
 import Character from './pages/Character'
 import img from './assets/dragon5.png'
+import footer from './assets/footer.png'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
 import {
@@ -61,6 +62,11 @@ const App = () => {
           <Route path="/notes" component={Notes} />
           {/* <Route path="/saved" component={Saved} /> */}
         </Switch>
+      </div>
+      <div>
+        <Navbar color='danger' dark expand='md' fixed="bottom">
+          <img className="foot" src={footer} height="47" />
+        </Navbar>
       </div>
     </Router>
   )

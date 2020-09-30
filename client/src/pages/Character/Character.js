@@ -19,6 +19,9 @@ const randFactions = ['Harpers', 'Order of the Gauntlet', 'Emerald Enclave', 'Lo
 var Generate = {
 }
 
+let failureCount = JSON.parse(localStorage.getItem('failures'))
+let successCount = JSON.parse(localStorage.getItem('successes'))
+
 const Character = () => {
   const [characterState, setCharacterState] = useState({
     name: localStorage.getItem('name'),
@@ -28,46 +31,65 @@ const Character = () => {
     faction: localStorage.getItem('faction'),
     alignment: localStorage.getItem('alignment'),
     exp: localStorage.getItem('exp'),
+    strengthValue: ' ',
+    dexterityValue: ' ',
+    constitutionValue: ' ',
+    intelligenceValue: ' ',
+    wisdomValue: ' ',
+    charismaValue: ' ',
     proficiency: ' ',
     inspiration: ' ',
-    strengthValue: ' ',
-    wisdomValue: ' ',
-    dexterityValue: ' ',
-    intelligenceValue: ' ',
-    charismaValue: ' ',
-    strength: 'false',
-    athletics: ' ',
-    dexterity: ' ',
-    acrobatics: ' ',
-    sleight_of_hand: ' ',
-    stealth: ' ',
-    constitution: ' ',
-    intelligent: ' ',
-    arcana: ' ',
-    history: ' ',
-    investigation: ' ',
-    nature: ' ',
-    religion: ' ',
-    wisdom: ' ',
-    animal_handling: ' ',
-    insight: ' ',
-    medicine: ' ',
-    perception: ' ',
-    survival: ' ',
-    charisma: ' ',
-    deception: ' ',
-    intimidation: ' ',
-    performance: ' ',
-    persuasion: ' ',
+    strength: JSON.parse(localStorage.getItem('strength')),
+    athletics: JSON.parse(localStorage.getItem('strength')),
+    dexterity: JSON.parse(localStorage.getItem('dexterity')),
+    acrobatics: JSON.parse(localStorage.getItem('acrobatics')),
+    sleight_of_hand: JSON.parse(localStorage.getItem('sleight_of_hand')),
+    stealth: JSON.parse(localStorage.getItem('stealth')),
+    constitution: JSON.parse(localStorage.getItem('constitution')),
+    intelligent: JSON.parse(localStorage.getItem('intelligent')),
+    arcana: JSON.parse(localStorage.getItem('arcana')),
+    history: JSON.parse(localStorage.getItem('history')),
+    investigation: JSON.parse(localStorage.getItem('investigation')),
+    nature: JSON.parse(localStorage.getItem('nature')),
+    religion: JSON.parse(localStorage.getItem('religion')),
+    wisdom: JSON.parse(localStorage.getItem('wisdom')),
+    animal_handling: JSON.parse(localStorage.getItem('animal_handling')),
+    insight: JSON.parse(localStorage.getItem('insight')),
+    medicine: JSON.parse(localStorage.getItem('medicine')),
+    perception: JSON.parse(localStorage.getItem('perception')),
+    other_pro_lang: ' ',
+    survival: JSON.parse(localStorage.getItem('survival')),
+    charisma: JSON.parse(localStorage.getItem('charisma')),
+    deception: JSON.parse(localStorage.getItem('deception')),
+    intimidation: JSON.parse(localStorage.getItem('intimidation')),
+    performance: JSON.parse(localStorage.getItem('performance')),
+    persuasion: JSON.parse(localStorage.getItem('persuasion')),
+    perceptionValue: localStorage.getItem('perceptionValue'),
     armor_class: ' ',
     initiative: ' ',
     speed: ' ',
     HP: ' ',
     temp_HP: ' ',
+    total: ' ',
     hit_dice: ' ',
     death_save: ' ',
     successes: ' ',
     failures: ' ',
+    att_spell_name: ' ',
+    att_spell_bonus: ' ',
+    att_spell_type: ' ',
+    atk_spell: ' ',
+    CP: ' ',
+    SP: ' ',
+    EP: ' ',
+    GP: ' ',
+    PP: ' ',
+    equipments: ' ',
+    traits: ' ',
+    ideals: ' ',
+    bonds: ' ',
+    flaws: ' ',
+    feat_traits: ' ',
     character: []
   })
 
@@ -167,6 +189,32 @@ const Character = () => {
     console.log('hi')
     console.log(event.target.checked)
   }
+  characterState.handleFailureInput = event => {
+    failureCount = JSON.parse(localStorage.getItem('failures'))
+    localStorage.setItem(`${event.target.name}`, event.target.checked)
+    setCharacterState({ ...characterState, [event.target.name]: event.target.checked })
+    if (event.target.checked) {
+      failureCount = failureCount + 1
+    } else {
+      failureCount = failureCount - 1
+    }
+    console.log(failureCount)
+    localStorage.setItem('failures', failureCount)
+    setCharacterState({ ...characterState, failures: localStorage.getItem('failures') })
+  }
+  characterState.handleSuccessInput = event => {
+    successCount = JSON.parse(localStorage.getItem('successes'))
+    localStorage.setItem(`${event.target.name}`, event.target.checked)
+    setCharacterState({ ...characterState, [event.target.name]: event.target.checked })
+    if (event.target.checked) {
+      successCount = successCount + 1
+    } else {
+      successCount = successCount - 1
+    }
+    localStorage.setItem('successes', successCount)
+    setCharacterState({ ...characterState, successes: localStorage.getItem('successes') })
+  }
+
   characterState.handleDicePage = event => {
     window.location.pathname = '../Dice/Dice.js'
   }
@@ -185,27 +233,28 @@ const Character = () => {
       faction: localStorage.getItem('race'),
       alignment: localStorage.getItem('alignment'),
       exp: localStorage.getItem('exp'),
+      strengthValue: localStorage.getItem('strengthValue'),
+      dexterityValue: localStorage.getItem('dexterityValue'),
+      constitutionValue: localStorage.getItem('constitutionValue'),
+      intelligenceValue: localStorage.getItem('intelligenceValue'),
+      wisdomValue: localStorage.getItem('wisdomValue'),
+      charismaValue: localStorage.getItem('charismaValue'),
       proficiency: localStorage.getItem('profiency'),
       inspiration: localStorage.getItem('inspiration'),
       strength: localStorage.getItem('strength'),
-      strengthValue: localStorage.getItem('strengthValue'),
       athletics: localStorage.getItem('athletics'),
       dexterity: localStorage.getItem('dexterity'),
-      dexterityValue: localStorage.getItem('dexterityValue'),
       acrobatics: localStorage.getItem('acrobatics'),
       sleight_of_hand: localStorage.getItem('sleight_of_hand'),
       stealth: localStorage.getItem('stealth'),
       constitution: localStorage.getItem('constitution'),
-      constitutionValue: localStorage.getItem('constitutionValue'),
       intelligent: localStorage.getItem('intelligent'),
-      intelligenceValue: localStorage.getItem('intelligenceValue'),
       arcana: localStorage.getItem('arcana'),
       history: localStorage.getItem('history'),
       investigation: localStorage.getItem('investigation'),
       nature: localStorage.getItem('nature'),
       religion: localStorage.getItem('religion'),
       wisdom: localStorage.getItem('wisdom'),
-      wisdomValue: localStorage.getItem('wisdomValue'),
       animal_handling: localStorage.getItem('animal_handling'),
       insight: localStorage.getItem('insight'),
       medicine: localStorage.getItem('medicine'),
@@ -213,7 +262,6 @@ const Character = () => {
       other_pro_lang: localStorage.getItem('other_pro_lang'),
       survival: localStorage.getItem('survival'),
       charisma: localStorage.getItem('charisma'),
-      charismaValue: localStorage.getItem('charismaValue'),
       deception: localStorage.getItem('deception'),
       intimidation: localStorage.getItem('intimidation'),
       performance: localStorage.getItem('performance'),
@@ -223,13 +271,20 @@ const Character = () => {
       speed: localStorage.getItem('speed'),
       HP: localStorage.getItem('HP'),
       temp_HP: localStorage.getItem('temp_HP'),
+      total: localStorage.getItem('total'),
       hit_dice: localStorage.getItem('hit_dice'),
-      death_save: localStorage.getItem('death_save'),
-      successes: localStorage.getItem('successes'),
-      failures: localStorage.getItem('failures'),
+      successes: JSON.parse(localStorage.getItem('successes')),
+      // success1: JSON.parse(localStorage.getItem('successes')),
+      // success2: JSON.parse(localStorage.getItem('successes')),
+      // success3: JSON.parse(localStorage.getItem('successes')),
+      failures: JSON.parse(localStorage.getItem('failures')),
+      // failure1: JSON.parse(localStorage.getItem('successes')),
+      // failure2: JSON.parse(localStorage.getItem('successes')),
+      // failure3: JSON.parse(localStorage.getItem('successes')),
       att_spell_name: localStorage.getItem('att_spell_name'),
       att_spell_bonus: localStorage.getItem('att_spell_bonus'),
       att_spell_type: localStorage.getItem('att_spell_type'),
+      atk_spell: localStorage.getItem('atk_spell'),
       CP: localStorage.getItem('CP'),
       SP: localStorage.getItem('SP'),
       EP: localStorage.getItem('EP'),
@@ -239,7 +294,8 @@ const Character = () => {
       traits: localStorage.getItem('traits'),
       ideals: localStorage.getItem('ideals'),
       bonds: localStorage.getItem('bonds'),
-      flaws: localStorage.getItem('flaws')
+      flaws: localStorage.getItem('flaws'),
+      feat_traits: localStorage.getItem('feat_traits')
     })
     axios.post('/api/characters', {
       name: characterState.name,
@@ -249,27 +305,28 @@ const Character = () => {
       faction: characterState.faction,
       alignment: characterState.alignment,
       exp: characterState.exp,
+      strengthValue: characterState.strengthValue,
+      dexterityValue: characterState.dexterityValue,
+      constitutionValue: characterState.constitutionValue,
+      intelligenceValue: characterState.intelligenceValue,
+      wisdomValue: characterState.wisdomValue,
+      charismaValue: characterState.charismaValue,
       proficiency: characterState.proficiency,
       inspiration: characterState.inspiration,
       strength: characterState.strength,
-      strengthValue: characterState.strengthValue,
       athletics: characterState.athletics,
       dexterity: characterState.dexterity,
-      dexterityValue: characterState.dexterityValue,
       acrobatics: characterState.acrobatics,
       sleight_of_hand: characterState.sleight_of_hand,
       stealth: characterState.stealth,
       constitution: characterState.constitution,
-      constitutionValue: characterState.constitutionValue,
       intelligent: characterState.intelligent,
-      intelligenceValue: characterState.intelligenceValue,
       arcana: characterState.arcana,
       history: characterState.history,
       investigation: characterState.investigation,
       nature: characterState.nature,
       religion: characterState.religion,
       wisdom: characterState.wisdom,
-      wisdomValue: characterState.wisdomValue,
       animal_handling: characterState.animal_handling,
       insight: characterState.insight,
       medicine: characterState.medicine,
@@ -277,7 +334,6 @@ const Character = () => {
       perception: characterState.perception,
       survival: characterState.survival,
       charisma: characterState.charisma,
-      charismaValue: characterState.charismaValue,
       deception: characterState.deception,
       intimidation: characterState.intimidation,
       performance: characterState.performance,
@@ -287,13 +343,14 @@ const Character = () => {
       speed: characterState.speed,
       HP: characterState.HP,
       temp_HP: characterState.temp_HP,
+      total: characterState.total,
       hit_dice: characterState.hit_dice,
-      death_save: characterState.death_save,
       successes: characterState.successes,
       failures: characterState.failures,
       att_spell_name: characterState.att_spell_name,
       att_spell_bonus: characterState.att_spell_bonus,
       att_spell_type: characterState.att_spell_type,
+      atk_spell: characterState.atk_spell,
       CP: characterState.CP,
       SP: characterState.SP,
       EP: characterState.EP,
@@ -303,135 +360,22 @@ const Character = () => {
       traits: characterState.traits,
       ideals: characterState.ideals,
       bonds: characterState.bonds,
-      flaws: characterState.flaws
+      flaws: characterState.flaws,
+      feat_traits: characterState.feat_traits
     }, {
       headers: {
         Authorization: `Bearer ${localStorage.getItem('user')}`
       }
     })
-    
-      .then(res => {
-        // setCharacterState({
-        //   ...characterState,
-        //   name: ' ',
-        //   class: ' ',
-        //   background: ' ',
-        //   race: ' ',
-        //   faction: ' ',
-        //   alignment: ' ',
-        //   exp: ' ',
-        //   proficiency: ' ',
-        //   inspiration: ' ',
-        //   strength: ' ',
-        //   athletics: ' ',
-        //   dexterity: ' ',
-        //   acrobatics: ' ',
-        //   sleight_of_hand: ' ',
-        //   stealth: ' ',
-        //   constitution: ' ',
-        //   intelligent: ' ',
-        //   arcana: ' ',
-        //   history: ' ',
-        //   investigation: ' ',
-        //   nature: ' ',
-        //   religion: ' ',
-        //   wisdom: ' ',
-        //   animal_handling: ' ',
-        //   insight: ' ',
-        //   medicine: ' ',
-        //   perception: ' ',
-        //   other_pro_lang: ' ',
-        //   survival: ' ',
-        //   charisma: ' ',
-        //   deception: ' ',
-        //   intimidation: ' ',
-        //   performance: ' ',
-        //   persuasion: ' ',
-        //   armor_class: ' ',
-        //   initiative: ' ',
-        //   speed: ' ',
-        //   HP: ' ',
-        //   temp_HP: ' ',
-        //   hit_dice: ' ',
-        //   death_save: ' ',
-        //   successes: ' ',
-        //   failures: ' ',
-        //   att_spell_name: ' ',
-        //   att_spell_bonus: ' ',
-        //   att_spell_type: ' ',
-        //   CP: ' ',
-        //   SP: ' ',
-        //   EP: ' ',
-        //   GP: ' ',
-        //   PP: ' ',
-        //   equipments: ' ',
-        //   traits: ' ',
-        //   ideals: ' ',
-        //   bonds: ' ',
-        //   flaws: ' '
-        // })
-        // localStorage.setItem('characterName', characterState.name)
-        // localStorage.setItem('class', characterState.class)
-        // localStorage.setItem('background', characterState.background)
-        // localStorage.setItem('race', characterState.race)
-        // localStorage.setItem('faction', characterState.faction)
-        // localStorage.setItem('alignment', characterState.alignment)
-        // localStorage.setItem('exp', characterState.exp)
-        // localStorage.setItem('proficiency', characterState.proficiency)
-        // localStorage.setItem('inspiration', characterState.inspiration)
-        // localStorage.setItem('strength', characterState.strength)
-        // localStorage.setItem('athletics', characterState.athletics)
-        // localStorage.setItem('dexterity', characterState.dexterity)
-        // localStorage.setItem('acrobatics', characterState.acrobatics)
-        // localStorage.setItem('sleight_of_hand', characterState.sleight_of_hand)
-        // localStorage.setItem('stealth', characterState.stealth)
-        // localStorage.setItem('constitution', characterState.constitution)
-        // localStorage.setItem('intelligent', characterState.intelligent)
-        // localStorage.setItem('arcana', characterState.arcana)
-        // localStorage.setItem('history', characterState.history)
-        // localStorage.setItem('investigation', characterState.investigation)
-        // localStorage.setItem('nature', characterState.nature)
-        // localStorage.setItem('religion', characterState.religion)
-        // localStorage.setItem('wisdom', characterState.wisdom)
-        // localStorage.setItem('animal_handling', characterState.animal_handling)
-        // localStorage.setItem('insight', characterState.insight)
-        // localStorage.setItem('medicine', characterState.medicine)
-        // localStorage.setItem('perception', characterState.perception)
-        // localStorage.setItem('other_pro_lang', characterState.other_pro_lang)
-        // localStorage.setItem('survival', characterState.survival)
-        // localStorage.setItem('charisma', characterState.charisma)
-        // localStorage.setItem('deception', characterState.deception)
-        // localStorage.setItem('intimidation', characterState.intimidation)
-        // localStorage.setItem('performance', characterState.performance)
-        // localStorage.setItem('persuasion', characterState.persuasion)
-        // localStorage.setItem('armor_class', characterState.armor_class)
-        // localStorage.setItem('initiative', characterState.initiative)
-        // localStorage.setItem('speed', characterState.speed)
-        // localStorage.setItem('HP', characterState.HP)
-        // localStorage.setItem('temp_HP', characterState.temp_HP)
-        // localStorage.setItem('hit_dice', characterState.hit_dice)
-        // localStorage.setItem('death_save', characterState.death_save)
-        // localStorage.setItem('successes', characterState.successes)
-        // localStorage.setItem('failures', characterState.failures)
-        // localStorage.setItem('att_spell_name', characterState.att_spell_name)
-        // localStorage.setItem('att_spell_bonus', characterState.att_spell_bonus)
-        // localStorage.setItem('att_spell_type', characterState.att_spell_type)
-        // localStorage.setItem('CP', characterState.CP)
-        // localStorage.setItem('SP', characterState.SP)
-        // localStorage.setItem('EP', characterState.EP)
-        // localStorage.setItem('GP', characterState.GP)
-        // localStorage.setItem('PP', characterState.PP)
-        // localStorage.setItem('equipments', characterState.equipments)
-        // localStorage.setItem('traits', characterState.traits)
-        // localStorage.setItem('ideals', characterState.ideals)
-        // localStorage.setItem('bonds', characterState.bonds)
-        // localStorage.setItem('flaws', characterState.flaws)
+      .then(() => {
+        console.log('Created successfully!')
+        window.location.pathname = '../Character/Character.js'
       })
-      
       .catch(err => {
         console.error(err)
       })
   }
+
   characterState.handleRemoveCharacter = event => {
     console.log(event.target.dataset)
     localStorage.setItem('name', '')
@@ -441,52 +385,60 @@ const Character = () => {
     localStorage.setItem('faction', '')
     localStorage.setItem('alignment', '')
     localStorage.setItem('exp', '')
-    localStorage.setItem('proficiency', '')
-    localStorage.setItem('inspiration', '')
-    localStorage.setItem('maxHP', '')
-    localStorage.setItem('strength', '')
-    localStorage.setItem('strengthValue', '')
-    localStorage.setItem('athletics', '')
-    localStorage.setItem('dexterity', '')
-    localStorage.setItem('dexterityValue', '')
-    localStorage.setItem('acrobatics', '')
-    localStorage.setItem('sleight_of_hand', '')
-    localStorage.setItem('stealth', '')
-    localStorage.setItem('constitution', '')
-    localStorage.setItem('constitutionValue', '')
-    localStorage.setItem('intelligent', '')
-    localStorage.setItem('intelligenceValue', '')
-    localStorage.setItem('arcana', '')
-    localStorage.setItem('history', '')
-    localStorage.setItem('investigation', '')
-    localStorage.setItem('nature', '')
-    localStorage.setItem('religion', '')
-    localStorage.setItem('wisdom', '')
-    localStorage.setItem('wisdomValue', '')
-    localStorage.setItem('animal_handling', '')
-    localStorage.setItem('insight', '')
-    localStorage.setItem('medicine', '')
-    localStorage.setItem('perception', '')
+    localStorage.setItem('strengthValue', ' ')
+    localStorage.setItem('dexterityValue', ' ')
+    localStorage.setItem('constitutionValue', ' ')
+    localStorage.setItem('intelligenceValue', ' ')
+    localStorage.setItem('wisdomValue', ' ')
+    localStorage.setItem('charismaValue', ' ')
+    localStorage.setItem('proficiency', ' ')
+    localStorage.setItem('inspiration', ' ')
+    localStorage.setItem('strength', false)
+    localStorage.setItem('athletics', false)
+    localStorage.setItem('dexterity', false)
+    localStorage.setItem('acrobatics', false)
+    localStorage.setItem('sleight_of_hand', false)
+    localStorage.setItem('stealth', false)
+    localStorage.setItem('constitution', false)
+    localStorage.setItem('intelligent', false)
+    localStorage.setItem('arcana', false)
+    localStorage.setItem('history', false)
+    localStorage.setItem('investigation', false)
+    localStorage.setItem('nature', false)
+    localStorage.setItem('religion', false)
+    localStorage.setItem('wisdom', false)
+    localStorage.setItem('animal_handling', false)
+    localStorage.setItem('insight', false)
+    localStorage.setItem('medicine', false)
+    localStorage.setItem('perception', false)
     localStorage.setItem('other_pro_lang', '')
-    localStorage.setItem('survival', '')
-    localStorage.setItem('charisma', '')
-    localStorage.setItem('charismaValue', '')
-    localStorage.setItem('deception', '')
-    localStorage.setItem('intimidation', '')
-    localStorage.setItem('performance', '')
-    localStorage.setItem('persuasion', '')
+    localStorage.setItem('survival', false)
+    localStorage.setItem('charisma', false)
+    localStorage.setItem('deception', false)
+    localStorage.setItem('intimidation', false)
+    localStorage.setItem('performance', false)
+    localStorage.setItem('persuasion', false)
+    localStorage.setItem('perceptionValue', '')
     localStorage.setItem('armor_class', '')
     localStorage.setItem('initiative', '')
     localStorage.setItem('speed', '')
+    localStorage.setItem('maxHP', '')
     localStorage.setItem('HP', '')
     localStorage.setItem('temp_HP', '')
+    localStorage.setItem('total', '')
     localStorage.setItem('hit_dice', '')
-    localStorage.setItem('death_save', '')
-    localStorage.setItem('successes', '')
-    localStorage.setItem('failures', '')
+    localStorage.setItem('successes', 0)
+    localStorage.setItem('success1', false)
+    localStorage.setItem('success2', false)
+    localStorage.setItem('success3', false)
+    localStorage.setItem('failures', 0)
+    localStorage.setItem('failure1', false)
+    localStorage.setItem('failure2', false)
+    localStorage.setItem('failure3', false)
     localStorage.setItem('att_spell_name', '')
     localStorage.setItem('att_spell_bonus', '')
     localStorage.setItem('att_spell_type', '')
+    localStorage.setItem('atk_spell', '')
     localStorage.setItem('CP', '')
     localStorage.setItem('SP', '')
     localStorage.setItem('EP', '')
@@ -497,6 +449,8 @@ const Character = () => {
     localStorage.setItem('ideals', '')
     localStorage.setItem('bonds', '')
     localStorage.setItem('flaws', '')
+    localStorage.setItem('feat_traits', '')
+    console.log('Removed successfully!')
     window.location.pathname = '../Character/Character.js'
   }
   // characterState.handleCreateCharacter = event => {
@@ -864,32 +818,32 @@ const Character = () => {
                 </div>
                 <div className='d-and-d-box'>
                   <div className='d-and-d-skill'>
-                    <input type='checkbox' name='strength' onChange={characterState.handleCheckBoxInput} />
+                    <input type='checkbox' name='strength' defaultChecked='false' checked={JSON.parse(localStorage.getItem('strength'))} onChange={characterState.handleCheckBoxInput} />
                     <input type='text' />
                     <label>Strength</label>
                   </div>
                   <div className='d-and-d-skill'>
-                    <input type='checkbox' name='dexterity' onChange={characterState.handleCheckBoxInput} />
+                    <input type='checkbox' name='dexterity' defaultChecked='false' checked={JSON.parse(localStorage.getItem('dexterity'))} onChange={characterState.handleCheckBoxInput} />
                     <input type='text' />
                     <label>Dexterity</label>
                   </div>
                   <div className='d-and-d-skill'>
-                    <input type='checkbox' name='constitution' onChange={characterState.handleCheckBoxInput} />
+                    <input type='checkbox' name='constitution' checked={JSON.parse(localStorage.getItem('constitution'))} onChange={characterState.handleCheckBoxInput} />
                     <input type='text' />
                     <label>Constitution</label>
                   </div>
                   <div className='d-and-d-skill'>
-                    <input type='checkbox' name='intelligent' onChange={characterState.handleCheckBoxInput} />
+                    <input type='checkbox' name='intelligent' checked={JSON.parse(localStorage.getItem('intelligent'))} onChange={characterState.handleCheckBoxInput} />
                     <input type='text' />
                     <label>Intelligence</label>
                   </div>
                   <div className='d-and-d-skill'>
-                    <input type='checkbox' name='wisdom' onChange={characterState.handleCheckBoxInput} />
+                    <input type='checkbox' name='wisdom' checked={JSON.parse(localStorage.getItem('wisdom'))} onChange={characterState.handleCheckBoxInput} />
                     <input type='text' />
                     <label>Wisdom</label>
                   </div>
                   <div className='d-and-d-skill'>
-                    <input type='checkbox' name='charisma' onChange={characterState.handleCheckBoxInput} />
+                    <input type='checkbox' name='charisma' checked={JSON.parse(localStorage.getItem('charisma'))} onChange={characterState.handleCheckBoxInput} />
                     <input type='text' />
                     <label>Charisma</label>
                   </div>
@@ -902,110 +856,110 @@ const Character = () => {
                   <div style=
                     {{ textAlign: 'left' }}>
                     <div className='d-and-d-skill'>
-                      <input type='checkbox' name='acrobatics' onChange={characterState.handleCheckBoxInput} />
+                      <input type='checkbox' name='acrobatics' checked={JSON.parse(localStorage.getItem('acrobatics'))} onChange={characterState.handleCheckBoxInput} />
                       <input type='text' />
                       <label>Acrobatics</label>
                       <span className='d-and-d-skill-hint'>Dex</span>
                     </div>
 
                     <div className='d-and-d-skill'>
-                      <input type='checkbox' name='animal_handling' onChange={characterState.handleCheckBoxInput} />
+                      <input type='checkbox' name='animal_handling' checked={JSON.parse(localStorage.getItem('animal_handling'))} onChange={characterState.handleCheckBoxInput} />
                       <input type='text' />
                       <label>Animal Handling</label>
                       <span className='d-and-d-skill-hint'>Wis</span>
                     </div>
                     <div className='d-and-d-skill'>
-                      <input type='checkbox' name='arcana' onChange={characterState.handleCheckBoxInput} />
+                      <input type='checkbox' name='arcana' checked={JSON.parse(localStorage.getItem('arcana'))} onChange={characterState.handleCheckBoxInput} />
                       <input type='text' />
                       <label>Arcana</label>
                       <span className='d-and-d-skill-hint'>Int</span>
                     </div>
                     <div className='d-and-d-skill'>
-                      <input type='checkbox' name='athletics' onChange={characterState.handleCheckBoxInput} />
+                      <input type='checkbox' name='athletics' checked={JSON.parse(localStorage.getItem('athletics'))} onChange={characterState.handleCheckBoxInput} />
                       <input type='text' />
                       <label>Athletics</label>
                       <span className='d-and-d-skill-hint'>Str</span>
                     </div>
                     <div className='d-and-d-skill'>
-                      <input type='checkbox' name='deception' onChange={characterState.handleCheckBoxInput} />
+                      <input type='checkbox' name='deception' checked={JSON.parse(localStorage.getItem('deception'))} onChange={characterState.handleCheckBoxInput} />
                       <input type='text' />
                       <label>Deception</label>
                       <span className='d-and-d-skill-hint'>Cha</span>
                     </div>
                     <div className='d-and-d-skill'>
-                      <input type='checkbox' name='history' onChange={characterState.handleCheckBoxInput} />
+                      <input type='checkbox' name='history' checked={JSON.parse(localStorage.getItem('history'))} onChange={characterState.handleCheckBoxInput} />
                       <input type='text' />
                       <label>History</label>
                       <span className='d-and-d-skill-hint'>Int</span>
                     </div>
                     <div className='d-and-d-skill'>
-                      <input type='checkbox' name='insight' onChange={characterState.handleCheckBoxInput} />
+                      <input type='checkbox' name='insight' checked={JSON.parse(localStorage.getItem('insight'))} onChange={characterState.handleCheckBoxInput} />
                       <input type='text' />
                       <label>Insight</label>
                       <span className='d-and-d-skill-hint'>Wis</span>
                     </div>
                     <div className='d-and-d-skill'>
-                      <input type='checkbox' name='intimidation' onChange={characterState.handleCheckBoxInput} />
+                      <input type='checkbox' name='inimidation' checked={JSON.parse(localStorage.getItem('intimidation'))} onChange={characterState.handleCheckBoxInput} />
                       <input type='text' />
                       <label>Intimidation</label>
                       <span className='d-and-d-skill-hint'>Cha</span>
                     </div>
                     <div className='d-and-d-skill'>
-                      <input type='checkbox' name='investigation' onChange={characterState.handleCheckBoxInput} />
+                      <input type='checkbox' name='investigation' checked={JSON.parse(localStorage.getItem('investigation'))} onChange={characterState.handleCheckBoxInput} />
                       <input type='text' />
                       <label>Investigation</label>
                       <span className='d-and-d-skill-hint'>Int</span>
                     </div>
                     <div className='d-and-d-skill'>
-                      <input type='checkbox' name='medicine' onChange={characterState.handleCheckBoxInput} />
+                      <input type='checkbox' name='medicine' checked={JSON.parse(localStorage.getItem('medicine'))} onChange={characterState.handleCheckBoxInput} />
                       <input type='text' />
                       <label>Medicine</label>
                       <span className='d-and-d-skill-hint'>Wis</span>
                     </div>
                     <div className='d-and-d-skill'>
-                      <input type='checkbox' name='nature' onChange={characterState.handleCheckBoxInput} />
+                      <input type='checkbox' name='nature' checked={JSON.parse(localStorage.getItem('nature'))} onChange={characterState.handleCheckBoxInput} />
                       <input type='text' />
                       <label>Nature</label>
                       <span className='d-and-d-skill-hint'>Int</span>
                     </div>
                     <div className='d-and-d-skill'>
-                      <input type='checkbox' name='perception' onChange={characterState.handleCheckBoxInput} />
+                      <input type='checkbox' name='perception' checked={JSON.parse(localStorage.getItem('perception'))} onChange={characterState.handleCheckBoxInput} />
                       <input type='text' />
                       <label>Perception</label>
                       <span className='d-and-d-skill-hint'>Wis</span>
                     </div>
                     <div className='d-and-d-skill'>
-                      <input type='checkbox' name='performance' onChange={characterState.handleCheckBoxInput} />
+                      <input type='checkbox' name='performance' checked={JSON.parse(localStorage.getItem('performance'))} onChange={characterState.handleCheckBoxInput} />
                       <input type='text' />
                       <label>Performance</label>
                       <span className='d-and-d-skill-hint'>Cha</span>
                     </div>
                     <div className='d-and-d-skill'>
-                      <input type='checkbox' name='persuasion' onChange={characterState.handleCheckBoxInput} />
+                      <input type='checkbox' name='persuasion' checked={JSON.parse(localStorage.getItem('persuasion'))} onChange={characterState.handleCheckBoxInput} />
                       <input type='text' />
                       <label>Persuasion</label>
                       <span className='d-and-d-skill-hint'>Cha</span>
                     </div>
                     <div className='d-and-d-skill'>
-                      <input type='checkbox' name='religion' onChange={characterState.handleCheckBoxInput} />
+                      <input type='checkbox' name='religion' checked={JSON.parse(localStorage.getItem('religion'))} onChange={characterState.handleCheckBoxInput} />
                       <input type='text' />
                       <label>Religion</label>
                       <span className='d-and-d-skill-hint'>Int</span>
                     </div>
                     <div className='d-and-d-skill'>
-                      <input type='checkbox' name='sleight_of_hand' onChange={characterState.handleCheckBoxInput} />
+                      <input type='checkbox' name='sleight_of_hand' checked={JSON.parse(localStorage.getItem('sleight_of_hand'))} onChange={characterState.handleCheckBoxInput} />
                       <input type='text' />
                       <label>Sleight of Hand</label>
                       <span className='d-and-d-skill-hint'>Dex</span>
                     </div>
                     <div className='d-and-d-skill'>
-                      <input type='checkbox' name='stealth' onChange={characterState.handleCheckBoxInput} />
+                      <input type='checkbox' name='stealth' checked={JSON.parse(localStorage.getItem('stealth'))} onChange={characterState.handleCheckBoxInput} />
                       <input type='text' />
                       <label>Stealth</label>
                       <span className='d-and-d-skill-hint'>Dex</span>
                     </div>
                     <div className='d-and-d-skill'>
-                      <input type='checkbox' name='survival' onChange={characterState.handleCheckBoxInput} />
+                      <input type='checkbox' name='survival' checked={JSON.parse(localStorage.getItem('survival'))} onChange={characterState.handleCheckBoxInput} />
                       <input type='text' />
                       <label>Survival</label>
                       <span className='d-and-d-skill-hint'>Wis</span>
@@ -1023,7 +977,7 @@ const Character = () => {
               <div className='d-and-d-statrow'>
                 <div className='d-and-d-statrow-value'>
                   {/* <input type='text' /> */}
-                  <Input type='text' name='perception' id='perception' value={localStorage.getItem('perception')} onChange={characterState.handleInputChange} />
+                  <Input type='text' name='perceptionValue' id='perceptionValue' value={localStorage.getItem('perceptionValue')} onChange={characterState.handleInputChange} />
                 </div>
                 <div className='d-and-d-statrow-label'>
                   <label>Passive Wisdom (Perception)</label>
@@ -1034,7 +988,8 @@ const Character = () => {
               {/* <textarea rows={12} /> */}
               <textarea
                 rows={12}
-                type='text' name='other_pro_lang' id='other_pro_lang' value={localStorage.getItem('other_pro_lang')} onChange={characterState.handleInputChange} />
+                type='text' name='other_pro_lang' id='other_pro_lang' value={localStorage.getItem('other_pro_lang')} onChange={characterState.handleInputChange}
+              />
               <label className='d-and-d-title' style={{ marginTop: '10px' }}>
                 Other Proficiencies and Languages
             </label>
@@ -1129,17 +1084,20 @@ const Character = () => {
                     style={{ paddingBottom: '5px' }}>
                     <div className='d-and-d-gray-text'>
                       <label style={{ width: '25px' }}>Total</label>
-                      <input type='text'
+                      <input
+                        type='text' name='total'
                         style={{ width: 'calc(100% - 25px' }}
                         value={localStorage.getItem('total')}
                         onChange={characterState.handleInputChange}
-                        className='d-and-d-linput'></input>
+                        className='d-and-d-linput'
+                      />
                     </div>
                     <input
-                      type='text'
+                      type='text' name='hit_dice'
                       value={localStorage.getItem('hit_dice')}
                       onChange={characterState.handleInputChange}
-                      className='d-and-d-cinput'></input>
+                      className='d-and-d-cinput'
+                    />
                     <label className='d-and-d-title'
                       style={{ marginTop: '5px' }}>Hit Dice</label>
                   </div>
@@ -1152,25 +1110,25 @@ const Character = () => {
                           marginBottom: '5px'
                         }} check>
                           Sucesses
-                         <input type='checkbox' name='sucesses' onChange={characterState.handleCheckBoxInput} />
+                          <Input type='checkbox' name='success1' checked={JSON.parse(localStorage.getItem('success1'))} onChange={characterState.handleSuccessInput} />
                         </Label>
                         <Label check>
-                          <input type='checkbox' name='sucesses' onChange={characterState.handleCheckBoxInput} />
+                          <Input type='checkbox' name='success2' checked={JSON.parse(localStorage.getItem('success2'))} onChange={characterState.handleSuccessInput} />
                         </Label>
                         <Label check>
-                          <input type='checkbox' name='sucesses' onChange={characterState.handleCheckBoxInput} />
+                          <Input type='checkbox' name='success3' checked={JSON.parse(localStorage.getItem('success3'))} onChange={characterState.handleSuccessInput} />
                         </Label>
                       </FormGroup>
                       <FormGroup check inline>
                         <Label check>
                           Failures
-                          <input type='checkbox' name='failures' onChange={characterState.handleCheckBoxInput} />
+                          <Input type='checkbox' name='failure1' checked={JSON.parse(localStorage.getItem('failure1'))} onChange={characterState.handleFailureInput} />
                         </Label>
                         <Label check>
-                          <input type='checkbox' name='failures' onChange={characterState.handleCheckBoxInput} />
+                          <Input type='checkbox' name='failure2' checked={JSON.parse(localStorage.getItem('failure2'))} onChange={characterState.handleFailureInput} />
                         </Label>
                         <Label check>
-                          <input type='checkbox' name='failures' onChange={characterState.handleCheckBoxInput} />
+                          <Input type='checkbox' name='failure3' checked={JSON.parse(localStorage.getItem('failure3'))} onChange={characterState.handleFailureInput} />
                         </Label>
                       </FormGroup>
                     </div>
@@ -1199,16 +1157,20 @@ const Character = () => {
                 </td>
                 <td>
                   {/* <input type='text'/> */}
-                  <Input type='att_spell_bonus' name='att_spell_bonus' id='att_spell_bonus'
-                    value={localStorage.getItem('att_spell_bonus')} onChange={characterState.handleInputChange} />
+                  <Input type='att_spell_type' name='att_spell_type' id='att_spell_type' value={localStorage.getItem('att_spell_type')} onChange={characterState.handleInputChange} />
                 </td>
                 <td>
                   {/* <input type='text'/> */}
-                  <Input type='att_spell_type' name='att_spell_type' id='att_spell_type' value={localStorage.getItem('att_spell_type')} onChange={characterState.handleInputChange} />
+                  <Input
+                    type='att_spell_bonus' name='att_spell_bonus' id='att_spell_bonus'
+                    value={localStorage.getItem('att_spell_bonus')} onChange={characterState.handleInputChange}
+                  />
                 </td>
               </tr>
               <textarea
-                rows={6} />
+                rows={6}
+                name='atk_spell' id='atk_spell' value={localStorage.getItem('atk_spell')} onChange={characterState.handleInputChange}
+              />
               <label className='d-and-d-title' style={{ marginTop: '10px' }}>
                 Attacks & Spellcasting
           </label>
