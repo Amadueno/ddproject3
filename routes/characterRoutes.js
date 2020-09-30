@@ -18,6 +18,12 @@ router.post('/characters', passport.authenticate('jwt'), (req, res) => {
     faction: req.body.faction,
     alignmnent: req.body.alignment,
     exp: req.body.exp,
+    strengthValue: req.body.strengthValue,
+    dexterityValue: req.body.dexterityValue,
+    constitutionValue: req.body.constitutionValue,
+    intelligenceValue: req.body.intelligenceValue,
+    wisdomValue: req.body.wisdomValue,
+    charismaValue: req.body.charismaValue,
     user: req.user._id,
     proficiency: req.body.proficiency,
     inspiration: req.body.inspiration,
@@ -46,12 +52,14 @@ router.post('/characters', passport.authenticate('jwt'), (req, res) => {
     intimidation: req.body.intimidation,
     performance: req.body.performance,
     persuasion: req.body.persuasion,
+    perceptionValue: req.body.perceptionValue,
     armor_class: req.body.armor_class,
     initiative: req.body.initiative,
     speed: req.body.speed,
     maxHP: req.body.maxHP,
     HP: req.body.HP,
     temp_HP: req.body.temp_HP,
+    total: req.body.total,
     hit_dice: req.body.hit_dice,
     death_save: req.body.death_save,
     successes: req.body.successes,
@@ -59,6 +67,7 @@ router.post('/characters', passport.authenticate('jwt'), (req, res) => {
     att_spell_name: req.body.att_spell_name,
     att_spell_bonus: req.body.att_spell_bonus,
     att_spell_type: req.body.att_spell_type,
+    atk_spell: req.body.atk_spell,
     CP: req.body.CP,
     SP: req.body.SP,
     EP: req.body.EP,
@@ -68,7 +77,8 @@ router.post('/characters', passport.authenticate('jwt'), (req, res) => {
     traits: req.body.traits,
     ideals: req.body.ideals,
     bonds: req.body.bonds,
-    flaws: req.body.flaws
+    flaws: req.body.flaws,
+    feat_traits: req.body.feat_traits
   })
     .then(character => {
       User.findByIdAndUpdate(character.user, { $push: { characters: character._id } })
