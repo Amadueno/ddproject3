@@ -3,6 +3,7 @@ import Home from './pages/Home'
 import User from './pages/User'
 import Dice from './pages/Dice'
 import Notes from './pages/Notes'
+import Saved from './pages/Saved'
 import Character from './pages/Character'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
@@ -15,7 +16,8 @@ import {
   NavItem,
   NavLink
 } from 'reactstrap'
-// import './App.css'
+
+import './app.css'
 
 const App = () => {
   const [isOpen, setIsOpen] = useState(false)
@@ -30,9 +32,9 @@ const App = () => {
           <NavbarToggler onClick={toggle} />
           <Collapse isOpen={isOpen} navbar>
             <Nav className='mr-auto' navbar>
-              {/* <NavItem>
+              <NavItem>
                 <NavLink href='/user/'>User</NavLink>
-              </NavItem> */}
+              </NavItem>
               <NavItem>
                 <NavLink href='/character/'>Character</NavLink>
               </NavItem>
@@ -42,15 +44,19 @@ const App = () => {
               <NavItem>
                 <NavLink href='/notes/'>Notes</NavLink>
               </NavItem>
+              {/* <NavItem>
+                <NavLink href='/saved/'>Saved</NavLink>
+              </NavItem> */}
             </Nav>
           </Collapse>
         </Navbar>
         <Switch>
-          <Route exact path='/' component={Home} />
-          {/* <Route path='/user' component={User} /> */}
-          <Route path='/character' component={Character} />
-          <Route path='/dice' component={Dice} />
-          <Route path='/notes' component={Notes} />
+          <Route exact path="/" component={Home} />
+          <Route path="/user" component={User} />
+          <Route path="/character" component={Character} />
+          <Route path="/dice" component={Dice} />
+          <Route path="/notes" component={Notes} />
+          {/* <Route path="/saved" component={Saved} /> */}
         </Switch>
       </div>
     </Router>

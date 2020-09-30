@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import DiceRoller from 'dice-roller-dnd'
+import './dice.css'
 import {
   Row,
   Card,
@@ -57,9 +58,9 @@ const Dice = () => {
   }
 
   return (
-    <>
+    <div className="dice">
       <Row>
-        <Card>
+        <Card className="card"> 
           <CardBody>
             <h2>Select Dice Type:</h2>
             <hr />
@@ -77,7 +78,7 @@ const Dice = () => {
           </CardBody>
         </Card>
       </Row>
-    </>
+    </div>
   )
 }
 

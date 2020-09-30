@@ -1,17 +1,16 @@
 const router = require('express').Router()
 const { Note, User } = require('../models')
 const passport = require('passport')
-
 router.get('/notes', passport.authenticate('jwt'), (req, res) => {
   Note.find()
     .populate('user')
     .then(notes => res.json(notes))
     .catch(err => console.error(err))
 })
-
 router.post('/notes', passport.authenticate('jwt'), (req, res) => {
   Note.create({
-    input: req.body.input
+    input: req.body.input,
+    user: req.user._id
   })
     .then(note => {
       User.findByIdAndUpdate(note.user, { $push: { characters: note._id } })
@@ -20,15 +19,13 @@ router.post('/notes', passport.authenticate('jwt'), (req, res) => {
     })
     .catch(err => console.log(err))
 })
-
 router.post('/notes/bulk', passport.authenticate('jwt'), (req, res) => {
   const characters = req.body.map(note => ({
     ...note,
     user: req.user._id
   }))
-
-  Note.create(characters)
-    .then(characters => {
+  Note.create(users)
+    .then(users => {
       const noteIds = characters.map(note => note._id)
       User.findById(req.user._id)
         .then(user => {
@@ -39,10 +36,10 @@ router.post('/notes/bulk', passport.authenticate('jwt'), (req, res) => {
         })
     })
 })
-
 router.put('/notes/:id', passport.authenticate('jwt'), (req, res) => {
   console.log(req.body)
   Note.findByIdAndUpdate(req.params.id, req.body)
     .then(() => res.sendStatus(200))
     .catch(err => console.log(err))
 })
+module.exports = router

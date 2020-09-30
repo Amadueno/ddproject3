@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import './home.css'
 import API from '../../utils/API'
 import {
   Col,

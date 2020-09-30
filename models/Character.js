@@ -1,5 +1,4 @@
 const { model, Schema } = require('mongoose')
-
 const Character = new Schema({
   name: String,
   class: String, // class & level
@@ -60,5 +59,4 @@ const Character = new Schema({
   flaws: String,
   user: { type: Schema.Types.ObjectId, ref: 'User' }
 })
-
 module.exports = model('Character', Character)
