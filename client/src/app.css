@@ -15,6 +15,7 @@ container {
 }
 
 .diceCard {
+  background: url("../src/assets/parchment.jpg");
   margin: 25px;
   margin-left: 55px;
   background-color: rgb(196, 196, 196);

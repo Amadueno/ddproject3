@@ -23,6 +23,96 @@ let failureCount = JSON.parse(localStorage.getItem('failures'))
 let successCount = JSON.parse(localStorage.getItem('successes'))
 
 const Character = () => {
+  if (!localStorage.getItem('strength')) {
+    localStorage.setItem('strength', false)
+  }
+  if (!localStorage.getItem('athletics')) {
+    localStorage.setItem('athletics', false)
+  }
+  if (!localStorage.getItem('dexterity')) {
+    localStorage.setItem('dexterity', false)
+  }
+  if (!localStorage.getItem('acrobatics')) {
+    localStorage.setItem('acrobatics', false)
+  }
+  if (!localStorage.getItem('sleight_of_hand')) {
+    localStorage.setItem('sleight_of_hand', false)
+  }
+  if (!localStorage.getItem('stealth')) {
+    localStorage.setItem('stealth', false)
+  }
+  if (!localStorage.getItem('constitution')) {
+    localStorage.setItem('constitution', false)
+  }
+  if (!localStorage.getItem('intelligent')) {
+    localStorage.setItem('intelligent', false)
+  }
+  if (!localStorage.getItem('sleight_of_hand')) {
+    localStorage.setItem('sleight_of_hand', false)
+  }
+  if (!localStorage.getItem('arcana')) {
+    localStorage.setItem('arcana', false)
+  }
+  if (!localStorage.getItem('history')) {
+    localStorage.setItem('history', false)
+  }
+  if (!localStorage.getItem('nature')) {
+    localStorage.setItem('nature', false)
+  }
+  if (!localStorage.getItem('religion')) {
+    localStorage.setItem('religion', false)
+  }
+  if (!localStorage.getItem('wisdom')) {
+    localStorage.setItem('wisdom', false)
+  }
+  if (!localStorage.getItem('animal_handling')) {
+    localStorage.setItem('animal_handling', false)
+  }
+  if (!localStorage.getItem('insight')) {
+    localStorage.setItem('insight', false)
+  }
+  if (!localStorage.getItem('medicine')) {
+    localStorage.setItem('medicine', false)
+  }
+  if (!localStorage.getItem('perception')) {
+    localStorage.setItem('perception', false)
+  }
+  if (!localStorage.getItem('survival')) {
+    localStorage.setItem('survival', false)
+  }
+  if (!localStorage.getItem('charisma')) {
+    localStorage.setItem('charisma', false)
+  }
+  if (!localStorage.getItem('deception')) {
+    localStorage.setItem('deception', false)
+  }
+  if (!localStorage.getItem('intimidation')) {
+    localStorage.setItem('intimidation', false)
+  }
+  if (!localStorage.getItem('persuasion')) {
+    localStorage.setItem('persuasion', false)
+  }
+  if (!localStorage.getItem('performance')) {
+    localStorage.setItem('performance', false)
+  }
+  if (!localStorage.getItem('success1')) {
+    localStorage.setItem('success1', false)
+  }
+  if (!localStorage.getItem('success2')) {
+    localStorage.setItem('success2', false)
+  }
+  if (!localStorage.getItem('success3')) {
+    localStorage.setItem('success3', false)
+  }
+  if (!localStorage.getItem('failure1')) {
+    localStorage.setItem('failure1', false)
+  }
+  if (!localStorage.getItem('failure2')) {
+    localStorage.setItem('failure2', false)
+  }
+  if (!localStorage.getItem('failure3')) {
+    localStorage.setItem('failure3', false)
+  }
   const [characterState, setCharacterState] = useState({
     name: localStorage.getItem('name'),
     class: localStorage.getItem('class'),
