@@ -74,8 +74,14 @@ const Notes = () => {
                       onChange={noteState.handleInputChange}
                       style={{width: '100%', height: '23rem'}}>
                   </textarea>
-                    <Button onClick={noteState.handleCreateNote} color="danger">Log Note 💾</Button>
-                    <Button color='danger' onClick={noteState.handleRemoveNote}>❌</Button>
+                  <Button onClick={noteState.handleCreateNote} color="danger" style={{
+                    margin: '5px',
+                    marginBottom: '20px'
+                  }}>Log Note 💾</Button>
+                  <Button color='danger' onClick={noteState.handleRemoveNote} style={{
+                    margin: '5px',
+                    marginBottom: '20px'
+                  }}>Remove Note ❌</Button>
                   <small className="text-muted">
                     <p>Today's time and date is:</p>
                     <Moment />
