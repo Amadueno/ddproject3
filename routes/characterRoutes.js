@@ -61,7 +61,6 @@ router.post('/characters', passport.authenticate('jwt'), (req, res) => {
     temp_HP: req.body.temp_HP,
     total: req.body.total,
     hit_dice: req.body.hit_dice,
-    death_save: req.body.death_save,
     successes: req.body.successes,
     failures: req.body.failures,
     att_spell_name: req.body.att_spell_name,

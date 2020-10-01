@@ -49,7 +49,6 @@ const Character = new Schema({
   temp_HP: String,
   total: String,
   hit_dice: String,
-  death_save: String,
   successes: Number,
   failures: Number,
   att_spell_name: String,

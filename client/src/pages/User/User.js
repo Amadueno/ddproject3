@@ -136,6 +136,7 @@ const Character = () => {
       }
     })
       .then(res => {
+        
       //   setCharacterState({
       //     ...characterState,
       //     name: ' ',

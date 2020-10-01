@@ -10,8 +10,8 @@ import {
   Input,
   Button
 } from 'reactstrap'
-let failureCount = JSON.parse(localStorage.getItem('failure'))
-let successCount = JSON.parse(localStorage.getItem('success'))
+let failureCount = JSON.parse(localStorage.getItem('failures'))
+let successCount = JSON.parse(localStorage.getItem('successes'))
 const randClasses = ['Barbarian', 'Bard', 'Cleric', 'Druid', 'Fighter', 'Monk', 'Paladin', 'Ranger', 'Rogue', 'Sorcerer', 'Warlock', 'Wizard']
 const randRaces = ['Dragonborn', 'Dwarf', 'Elf', 'Gnome', 'Half-elf', 'Halfling', 'Half-orc', 'Human', 'Tiefling']
 const randBackgrounds = ['Acolyte', 'Charlatan', 'Criminal', 'Entertainer', 'Folk Hero', 'Guild Artisan', 'Hermit', 'Outlander', 'Noble', 'Sage', 'Sailor', 'Soldier', 'Urchin']
@@ -19,6 +19,101 @@ const randAlignments = ['Lawful Good', 'Neutral Good', 'Chaotic good', 'Lawful N
 const randFactions = ['Harpers', 'Order of the Gauntlet', 'Emerald Enclave', 'Lords Alliance', 'Zhentarim']
 
 const Character = () => {
+  if (!localStorage.getItem('strength')) {
+    localStorage.setItem('strength', false)
+  }
+  if (!localStorage.getItem('athletics')) {
+    localStorage.setItem('athletics', false)
+  }
+  if (!localStorage.getItem('dexterity')) {
+    localStorage.setItem('dexterity', false)
+  }
+  if (!localStorage.getItem('acrobatics')) {
+    localStorage.setItem('acrobatics', false)
+
+  }
+  if (!localStorage.getItem('sleight_of_hand')) {
+    localStorage.setItem('sleight_of_hand', false)
+
+  }
+  if (!localStorage.getItem('stealth')) {
+    localStorage.setItem('stealth', false)
+
+  }
+  if (!localStorage.getItem('constitution')) {
+    localStorage.setItem('constitution', false)
+
+  }
+  if (!localStorage.getItem('intelligent')) {
+    localStorage.setItem('intelligent', false)
+
+  }
+  if (!localStorage.getItem('sleight_of_hand')) {
+    localStorage.setItem('sleight_of_hand', false)
+  }
+  if (!localStorage.getItem('arcana')) {
+    localStorage.setItem('arcana', false)
+  }
+  if (!localStorage.getItem('history')) {
+    localStorage.setItem('history', false)
+  }
+  if (!localStorage.getItem('nature')) {
+    localStorage.setItem('nature', false)
+  }
+  if (!localStorage.getItem('religion')) {
+    localStorage.setItem('religion', false)
+  }
+  if (!localStorage.getItem('wisdom')) {
+    localStorage.setItem('wisdom', false)
+  }
+  if (!localStorage.getItem('animal_handling')) {
+    localStorage.setItem('animal_handling', false)
+  }
+  if (!localStorage.getItem('insight')) {
+    localStorage.setItem('insight', false)
+  }
+  if (!localStorage.getItem('medicine')) {
+    localStorage.setItem('medicine', false)
+  }
+  if (!localStorage.getItem('perception')) {
+    localStorage.setItem('perception', false)
+  }
+  if (!localStorage.getItem('survival')) {
+    localStorage.setItem('survival', false)
+  }
+  if (!localStorage.getItem('charisma')) {
+    localStorage.setItem('charisma', false)
+  }
+  if (!localStorage.getItem('deception')) {
+    localStorage.setItem('deception', false)
+  }
+  if (!localStorage.getItem('intimidation')) {
+    localStorage.setItem('intimidation', false)
+  }
+  if (!localStorage.getItem('persuasion')) {
+    localStorage.setItem('persuasion', false)
+  }
+  if (!localStorage.getItem('performance')) {
+    localStorage.setItem('performance', false)
+  }
+  if (!localStorage.getItem('success1')) {
+    localStorage.setItem('success1', false)
+  }
+  if (!localStorage.getItem('success2')) {
+    localStorage.setItem('success2', false)
+  }
+  if (!localStorage.getItem('success3')) {
+    localStorage.setItem('success3', false)
+  }
+  if (!localStorage.getItem('failure1')) {
+    localStorage.setItem('failure1', false)
+  }
+  if (!localStorage.getItem('failure2')) {
+    localStorage.setItem('failure2', false)
+  }
+  if (!localStorage.getItem('failure3')) {
+    localStorage.setItem('failure3', false)
+  }
   // const checkCheckBox = () => {
   //   if (localStorage.getItem('wisdom') === true) {
   //     document.getElementById('wisdom').checked = true
@@ -57,7 +152,7 @@ const Character = () => {
     charismaValue: ' ',
     proficiency: ' ',
     inspiration: ' ',
-    strength: JSON.parse(localStorage.getItem('strength')),
+    strength: false,
     athletics: JSON.parse(localStorage.getItem('strength')),
     dexterity: JSON.parse(localStorage.getItem('dexterity')),
     acrobatics: JSON.parse(localStorage.getItem('acrobatics')),
@@ -290,7 +385,6 @@ const Character = () => {
     localStorage.setItem('temp_HP', '')
     localStorage.setItem('total', '')
     localStorage.setItem('hit_dice', '')
-    localStorage.setItem('death_save', '')
     localStorage.setItem('successes', 0)
     localStorage.setItem('success1', false)
     localStorage.setItem('success2', false)
@@ -380,7 +474,6 @@ const Character = () => {
       temp_HP: localStorage.getItem('temp_HP'),
       total: localStorage.getItem('total'),
       hit_dice: localStorage.getItem('hit_dice'),
-      death_save: localStorage.getItem('death_save'),
       successes: localStorage.getItem('successes'),
       failures: localStorage.getItem('failures'),
       att_spell_name: localStorage.getItem('att_spell_name'),
@@ -452,7 +545,6 @@ const Character = () => {
       temp_HP: localStorage.getItem('temp_HP'),
       total: localStorage.getItem('total'),
       hit_dice: localStorage.getItem('hit_dice'),
-      death_save: localStorage.getItem('death_save'),
       successes: JSON.parse(localStorage.getItem('successes')),
       // success1: JSON.parse(localStorage.getItem('successes')),
       // success2: JSON.parse(localStorage.getItem('successes')),
@@ -525,7 +617,6 @@ const Character = () => {
       temp_HP: characterState.temp_HP,
       total: characterState.total,
       hit_dice: characterState.hit_dice,
-      death_save: characterState.death_save,
       successes: characterState.successes,
       failures: characterState.failures,
       att_spell_name: characterState.att_spell_name,
@@ -1046,12 +1137,12 @@ const Character = () => {
                 </div>
                 <div className='d-and-d-box'>
                   <div className='d-and-d-skill'>
-                    <input type='checkbox' name='strength' defaultChecked='false' checked={JSON.parse(localStorage.getItem('strength'))} onChange={characterState.handleCheckBoxInput} />
+                    <input type='checkbox' name='strength' checked={JSON.parse(localStorage.getItem('strength'))} onChange={characterState.handleCheckBoxInput} />
                     <input type='text' />
                     <label>Strength</label>
                   </div>
                   <div className='d-and-d-skill'>
-                    <input type='checkbox' name='dexterity' defaultChecked='false' checked={JSON.parse(localStorage.getItem('dexterity'))} onChange={characterState.handleCheckBoxInput} />
+                    <input type='checkbox' name='dexterity' checked={JSON.parse(localStorage.getItem('dexterity'))} onChange={characterState.handleCheckBoxInput} />
                     <input type='text' />
                     <label>Dexterity</label>
                   </div>
