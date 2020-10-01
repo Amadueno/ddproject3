@@ -15,6 +15,7 @@ import {
   NavbarToggler,
   NavbarBrand,
   Nav,
+  Button,
   NavItem,
   NavLink
 } from 'reactstrap'
@@ -26,13 +27,24 @@ const App = () => {
 
   const toggle = () => setIsOpen(!isOpen)
 
+  const [userState, setUserState] = useState({
+    username: localStorage.getItem('username'),
+    password: ''
+  })
+
+  userState.handleUserLogout = event => {
+    localStorage.removeItem('username')
+    window.location.pathname = './'
+  }
+
   return (
     <Router>
       <div>
-        <Navbar color='danger' dark expand='md' sticky="top">
-          <NavbarBrand href='/'>
+        <Navbar className="gradient" color='danger' dark expand='md' sticky="top">
+            <NavbarBrand>
               <img src= {img} width="55" height="47" className="d-inline-block align-top" style={{border: "none"}}/>{' '}
-              Dungeon Sheets</NavbarBrand>
+              Dungeon Sheets
+          </NavbarBrand>
           <NavbarToggler onClick={toggle} />
           <Collapse isOpen={isOpen} navbar>
             <Nav className='mr-auto' navbar>
@@ -53,6 +65,7 @@ const App = () => {
               </NavItem> */}
             </Nav>
           </Collapse>
+          <Button className="diceButton" onClick={userState.handleUserLogout}>Log Out</Button>
         </Navbar>
         <Switch>
           <Route exact path="/" component={Home} />
@@ -64,7 +77,7 @@ const App = () => {
         </Switch>
       </div>
       <div>
-        <Navbar color='danger' dark expand='md' fixed="bottom">
+        <Navbar className="gradient" color='danger' dark expand='md' fixed="bottom">
           <img className="foot" src={footer} height="47" />
         </Navbar>
       </div>

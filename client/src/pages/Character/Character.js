@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, userState } from 'react'
 import './dndstyles.css'
 import axios from 'axios'
 
@@ -687,23 +687,31 @@ const Character = () => {
   //       console.error(err)
   //     })
   // }
+  const [userState, setUserState] = useState({
+    username: localStorage.getItem('username'),
+    password: ''
+  })
+  userState.handleUserLogout = event => {
+    localStorage.removeItem('username')
+    window.location.pathname = './'
+  }
 
   return (
     <div className='d-and-d-character-sheet container-xl mt-5 mb-5'>
-      <Button color='danger' onClick={characterState.handleCreateCharacter}
+      <Button className='diceButton' color='danger' onClick={characterState.handleCreateCharacter}
         style={{
           margin: '5px',
           marginBottom: '20px'
         }}>Create Character</Button>
       <Button
-        color='danger' onClick={characterState.handleRandomize}
+        className='diceButton' color='danger' onClick={characterState.handleRandomize}
         style={{
           margin: '5px',
           marginBottom: '20px'
         }}>Random Character
         </Button>
       <Button
-        color='danger'
+        className='diceButton' color='danger'
         style={{
           margin: '5px',
           marginBottom: '20px'
@@ -1425,17 +1433,17 @@ const Character = () => {
           </div>
         </div>
       </div>
-      <Button color='danger'
+      <Button className='diceButton' color='danger'
         style={{
           margin: '5px',
           marginBottom: '20px'
         }} onClick={characterState.handleCreateCharacter}>Create Character</Button>
-      <Button color='danger'
+      <Button className='diceButton' color='danger'
         style={{
           margin: '5px',
           marginBottom: '20px'
         }} onClick={characterState.handleDicePage}>Dice Roller</Button>
-      <Button color='danger'
+      <Button className='diceButton' color='danger'
         style={{
           margin: '5px',
           marginBottom: '20px'

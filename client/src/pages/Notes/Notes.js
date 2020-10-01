@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, userState } from 'react'
 import { Button, Card, CardTitle, CardText, CardImg, CardImgOverlay, Col, Container, Row } from 'reactstrap'
 import Moment from 'react-moment'
 import axios from 'axios'
@@ -53,6 +53,14 @@ const Notes = () => {
       //   //   })
       //   .catch(err => console.error(err))
     }
+    const [userState, setUserState] = useState({
+      username: localStorage.getItem('username'),
+      password: ''
+    })
+    userState.handleUserLogout = event => {
+      localStorage.removeItem('username')
+      window.location.pathname = './'
+    }
     return (
       <div >
         <Container
@@ -72,13 +80,13 @@ const Notes = () => {
                       name="input"
                       defaultValue={localStorage.getItem('input')}
                       onChange={noteState.handleInputChange}
-                      style={{width: '100%', height: '23rem'}}>
+                      style={{width: '100%', height: '23rem', border: 'none', padding: '40px'}}>
                   </textarea>
-                  <Button onClick={noteState.handleCreateNote} color="danger" style={{
+                  <Button className='diceButton' onClick={noteState.handleCreateNote} color="danger" style={{
                     margin: '5px',
                     marginBottom: '20px'
                   }}>Log Note 💾</Button>
-                  <Button color='danger' onClick={noteState.handleRemoveNote} style={{
+                  <Button className='diceButton' color='danger' onClick={noteState.handleRemoveNote} style={{
                     margin: '5px',
                     marginBottom: '20px'
                   }}>Remove Note ❌</Button>

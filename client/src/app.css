@@ -3,7 +3,8 @@
 }
 
 body {
-  background-image: url(./assets/background.jpg)
+  background-image: url(./assets/background.jpg);
+  margin-right: 0;
 }
 
 container {
@@ -15,23 +16,21 @@ container {
 }
 
 .diceCard {
-  background: url("../src/assets/parchment.jpg");
+  /* background: url("../src/assets/parchment2.png"); */
   margin: 25px;
   margin-left: 55px;
-  background-color: rgb(196, 196, 196);
-  width: 80;
+  background-color: gray;
 }
 
 .noteCard {
-  background: url("../src/assets/parchment.jpg");
+  background: url("../src/assets/parchment2.png");
   /* background-size: contain; */
   /* background-position: top; */
   /* background: cover; */
 }
 
 .diceCard1 {
-  background: url("../src/assets/d20.png")no-repeat center;
-  background-color: rgb(196, 196, 196);
+  background-color: gray;
   margin-left: 55px;
   margin: 55px;
   width: 11rem;
@@ -54,20 +53,16 @@ container {
 } */
 
 .diceButton {
-  margin-left: 5px
+  margin-left: 5px;
+  background-image: linear-gradient(rgb(217, 83, 79), rgb(160, 7, 7));
 }
 
-#diceResult {
-  margin-top: 45px;
-  margin-right: 10px
+.gradient {
+  background-image: linear-gradient(rgb(217, 83, 79), rgb(160, 7, 7))
 }
 
 h2 {
   text-align: center
-}
-
-.footer {
-  font-size: medium;
 }
 
 .backgroundD {
@@ -84,4 +79,21 @@ h2 {
 .foot {
   margin: auto;
   height: 47px;
+}
+
+.centered {
+  /*margin-top: 45px;
+  margin-right:;
+  10px*/
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: aliceblue;
+  font-size: xxx-large;
+  font-weight: bold;
+}
+
+.container {
+  position: relative;
 }
