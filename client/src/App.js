@@ -34,6 +34,7 @@ const App = () => {
 
   userState.handleUserLogout = event => {
     localStorage.removeItem('username')
+    localStorage.removeItem('user')
     window.location.pathname = './'
   }
 
@@ -60,9 +61,9 @@ const App = () => {
               <NavItem>
                 <NavLink href='/notes/'>Notes</NavLink>
               </NavItem>
-              {/* <NavItem>
+              <NavItem>
                 <NavLink href='/saved/'>Saved</NavLink>
-              </NavItem> */}
+              </NavItem>
             </Nav>
           </Collapse>
           <Button className="diceButton" onClick={userState.handleUserLogout}>Log Out</Button>
@@ -73,7 +74,7 @@ const App = () => {
           <Route path="/character" component={Character} />
           <Route path="/dice" component={Dice} />
           <Route path="/notes" component={Notes} />
-          {/* <Route path="/saved" component={Saved} /> */}
+          <Route path="/saved" component={Saved} />
         </Switch>
       </div>
       <div>

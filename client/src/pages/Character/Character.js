@@ -311,6 +311,10 @@ const Character = () => {
   characterState.handleNotePage = event => {
     window.location.pathname = '../Notes/Notes.js'
   }
+  characterState.handleSavedPage = event => {
+    window.location.pathname = '../Saved/Saved.js'
+  }
+
 
   characterState.handleCreateCharacter = event => {
     event.preventDefault()
@@ -698,25 +702,32 @@ const Character = () => {
 
   return (
     <div className='d-and-d-character-sheet container-xl mt-5 mb-5'>
-      <Button className='diceButton' color='danger' onClick={characterState.handleCreateCharacter}
+        <Button className='diceButton' color='danger' onClick={characterState.handleCreateCharacter}
         style={{
           margin: '5px',
           marginBottom: '20px'
         }}>Create Character</Button>
-      <Button
+        <Button
         className='diceButton' color='danger' onClick={characterState.handleRandomize}
         style={{
           margin: '5px',
           marginBottom: '20px'
         }}>Random Character
         </Button>
-      <Button
+        <Button
         className='diceButton' color='danger'
         style={{
           margin: '5px',
           marginBottom: '20px'
         }} onClick={characterState.handleRemoveCharacter}
-      >Remove Character
+      >Reset Sheet
+        </Button>
+      <Button
+        className='diceButton' color='danger' onClick={characterState.handleSavedPage}
+        style={{
+          margin: '5px',
+          marginBottom: '20px'
+        }}>View Saved Characters
         </Button>
       <h3>Character Sheet</h3>
       <div>
@@ -724,10 +735,6 @@ const Character = () => {
           <div className='col-md-3 pr-2 pl-2'>
             <div className='d-and-d-page-title'></div>
             <div className='d-and-d-attribute-collection char-name pr-3 pl-3'>
-              {/* <Input type="name" name="name" id="CharacterName" 
-              defaultValue={localStorage.getItem('name')}
-              onChange={characterState.handleInputChange} 
-              /> */}
               <Input type='name' name='name' id='name'
                 value={localStorage.getItem('name')}
                 onChange={characterState.handleInputChange} />
@@ -746,13 +753,6 @@ const Character = () => {
             <div className='d-and-d-attribute-collection pr-3 pl-3'>
               <div className='row pl-3 pr-3'>
                 <div className='col-md-3 col-6 pl-0 pr-0'>
-                  {/* <Input type="class" name="class" id="Class" value={localStorage.getItem('class')} /> */}
-                  {/* <input
-                    type='class'
-                    name='class'
-                    defaultValue={localStorage.getItem('class')}
-                    onChange={characterState.handleRandomize}
-                  /> */}
                   <Input type='class' name='class' id='Class' value={localStorage.getItem('class')} onChange={characterState.handleInputChange} />
                   <label
                     style={{
@@ -764,7 +764,6 @@ const Character = () => {
                 </div>
                 <div className='col-md-3 col-6 pl-0 pr-0'>
                   <Input type='background' name='background' id='background' value={localStorage.getItem('background')} onChange={characterState.handleInputChange} />
-                  {/* <Input type="background" name="background" id="background" defaultValue={localStorage.getItem('background')} /> */}
                   <label
                     style={{
                       width: '100%',
@@ -774,7 +773,6 @@ const Character = () => {
                     }}>Background</label>
                 </div>
                 <div className='col-md-3 col-6 pl-0 pr-0'>
-                  {/* <Input type="faction" name="faction" id="faction" defaultValue={localStorage.getItem('faction')} /> */}
                   <Input type='faction' name='faction' id='faction' value={localStorage.getItem('faction')} onChange={characterState.handleInputChange} />
                   <label
                     style={{
@@ -787,7 +785,6 @@ const Character = () => {
               </div>
               <div className='row pl-3 pr-3'>
                 <div className='col-md-3 col-6 pl-0 pr-0'>
-                  {/* <Input type="race" name="race" id="Race" defaultValue={localStorage.getItem('race')} /> */}
                   <Input type='race' name='race' id='Race' value={localStorage.getItem('race')} onChange={characterState.handleInputChange} />
                   <label
                     style={{
@@ -798,7 +795,6 @@ const Character = () => {
                     }}>Race</label>
                 </div>
                 <div className='col-md-3 col-6 pl-0 pr-0'>
-                  {/* <Input type="alignment" name="alignment" id="Alignment" defaultValue={localStorage.getItem('alignment')} /> */}
                   <Input type='alignment' name='alignment' id='Alignment' value={localStorage.getItem('alignment')} onChange={characterState.handleInputChange} />
                   <label
                     style={{
@@ -809,7 +805,6 @@ const Character = () => {
                     }}>Alignment</label>
                 </div>
                 <div className='col-md-3 col-6 pl-0 pr-0'>
-                  {/* <Input type="exp" name="exp" id="Exp" defaultValue={localStorage.getItem('exp')} /> */}
                   <Input type='exp' name='exp' id='Exp' value={localStorage.getItem('exp')} onChange={characterState.handleInputChange} />
                   <label
                     style={{
