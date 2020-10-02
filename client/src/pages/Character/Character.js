@@ -23,6 +23,27 @@ let failureCount = JSON.parse(localStorage.getItem('failures'))
 let successCount = JSON.parse(localStorage.getItem('successes'))
 
 const Character = () => {
+  if (!localStorage.getItem('name')) {
+    localStorage.setItem('name', '')
+  }
+  if (!localStorage.getItem('class')) {
+    localStorage.setItem('class', '')
+  }
+  if (!localStorage.getItem('background')) {
+    localStorage.setItem('background', '')
+  }
+  if (!localStorage.getItem('faction')) {
+    localStorage.setItem('faction', '')
+  }
+  if (!localStorage.getItem('race')) {
+    localStorage.setItem('race', '')
+  }
+  if (!localStorage.getItem('alignment')) {
+    localStorage.setItem('alignment', '')
+  }
+  if (!localStorage.getItem('exp')) {
+    localStorage.setItem('exp', '')
+  }
   if (!localStorage.getItem('strength')) {
     localStorage.setItem('strength', false)
   }
@@ -702,19 +723,19 @@ const Character = () => {
 
   return (
     <div className='d-and-d-character-sheet container-xl mt-5 mb-5'>
-        <Button className='diceButton' color='danger' onClick={characterState.handleCreateCharacter}
+      <Button className='diceButton' color='danger' onClick={characterState.handleCreateCharacter}
         style={{
           margin: '5px',
           marginBottom: '20px'
         }}>Create Character</Button>
-        <Button
+      <Button
         className='diceButton' color='danger' onClick={characterState.handleRandomize}
         style={{
           margin: '5px',
           marginBottom: '20px'
         }}>Random Character
         </Button>
-        <Button
+      <Button
         className='diceButton' color='danger'
         style={{
           margin: '5px',
