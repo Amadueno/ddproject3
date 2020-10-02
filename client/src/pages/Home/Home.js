@@ -54,12 +54,11 @@ const Home = () => {
           window.location.pathname = '../Character/Character.js'
           // window.location = '/index.html'
         } else {
-          console.log('Wrong credential')
           toast.error('Login Failed, Please Try Again.', {
             autoClose: 4000,
             position: toast.POSITION.TOP_CENTER,
             pauseOnHover: true
-        }
+        })}
         // localStorage.setItem('user', '')
       })
       .catch(err => {
