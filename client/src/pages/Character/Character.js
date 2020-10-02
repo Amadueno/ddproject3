@@ -642,126 +642,127 @@ const Character = () => {
       .then(() => {
         console.log('Created successfully!')
         window.location.pathname = '../Character/Character.js'
-        // setCharacterState({
-        //   ...characterState,
-        //   name: ' ',
-        //   class: ' ',
-        //   background: ' ',
-        //   race: ' ',
-        //   faction: ' ',
-        //   alignment: ' ',
-        //   exp: ' ',
-        //   proficiency: ' ',
-        //   inspiration: ' ',
-        //   strength: ' ',
-        //   athletics: ' ',
-        //   dexterity: ' ',
-        //   acrobatics: ' ',
-        //   sleight_of_hand: ' ',
-        //   stealth: ' ',
-        //   constitution: ' ',
-        //   intelligent: ' ',
-        //   arcana: ' ',
-        //   history: ' ',
-        //   investigation: ' ',
-        //   nature: ' ',
-        //   religion: ' ',
-        //   wisdom: ' ',
-        //   animal_handling: ' ',
-        //   insight: ' ',
-        //   medicine: ' ',
-        //   perception: ' ',
-        //   other_pro_lang: ' ',
-        //   survival: ' ',
-        //   charisma: ' ',
-        //   deception: ' ',
-        //   intimidation: ' ',
-        //   performance: ' ',
-        //   persuasion: ' ',
-        //   armor_class: ' ',
-        //   initiative: ' ',
-        //   speed: ' ',
-        //   HP: ' ',
-        //   temp_HP: ' ',
-        //   hit_dice: ' ',
-        //   death_save: ' ',
-        //   successes: ' ',
-        //   failures: ' ',
-        //   att_spell_name: ' ',
-        //   att_spell_bonus: ' ',
-        //   att_spell_type: ' ',
-        //   CP: ' ',
-        //   SP: ' ',
-        //   EP: ' ',
-        //   GP: ' ',
-        //   PP: ' ',
-        //   equipments: ' ',
-        //   traits: ' ',
-        //   ideals: ' ',
-        //   bonds: ' ',
-        //   flaws: ' '
-        // })
-        // localStorage.setItem('characterName', characterState.name)
-        // localStorage.setItem('class', characterState.class)
-        // localStorage.setItem('background', characterState.background)
-        // localStorage.setItem('race', characterState.race)
-        // localStorage.setItem('faction', characterState.faction)
-        // localStorage.setItem('alignment', characterState.alignment)
-        // localStorage.setItem('exp', characterState.exp)
-        // localStorage.setItem('proficiency', characterState.proficiency)
-        // localStorage.setItem('inspiration', characterState.inspiration)
-        // localStorage.setItem('strength', characterState.strength)
-        // localStorage.setItem('athletics', characterState.athletics)
-        // localStorage.setItem('dexterity', characterState.dexterity)
-        // localStorage.setItem('acrobatics', characterState.acrobatics)
-        // localStorage.setItem('sleight_of_hand', characterState.sleight_of_hand)
-        // localStorage.setItem('stealth', characterState.stealth)
-        // localStorage.setItem('constitution', characterState.constitution)
-        // localStorage.setItem('intelligent', characterState.intelligent)
-        // localStorage.setItem('arcana', characterState.arcana)
-        // localStorage.setItem('history', characterState.history)
-        // localStorage.setItem('investigation', characterState.investigation)
-        // localStorage.setItem('nature', characterState.nature)
-        // localStorage.setItem('religion', characterState.religion)
-        // localStorage.setItem('wisdom', characterState.wisdom)
-        // localStorage.setItem('animal_handling', characterState.animal_handling)
-        // localStorage.setItem('insight', characterState.insight)
-        // localStorage.setItem('medicine', characterState.medicine)
-        // localStorage.setItem('perception', characterState.perception)
-        // localStorage.setItem('other_pro_lang', characterState.other_pro_lang)
-        // localStorage.setItem('survival', characterState.survival)
-        // localStorage.setItem('charisma', characterState.charisma)
-        // localStorage.setItem('deception', characterState.deception)
-        // localStorage.setItem('intimidation', characterState.intimidation)
-        // localStorage.setItem('performance', characterState.performance)
-        // localStorage.setItem('persuasion', characterState.persuasion)
-        // localStorage.setItem('armor_class', characterState.armor_class)
-        // localStorage.setItem('initiative', characterState.initiative)
-        // localStorage.setItem('speed', characterState.speed)
-        // localStorage.setItem('HP', characterState.HP)
-        // localStorage.setItem('temp_HP', characterState.temp_HP)
-        // localStorage.setItem('hit_dice', characterState.hit_dice)
-        // localStorage.setItem('death_save', characterState.death_save)
-        // localStorage.setItem('successes', characterState.successes)
-        // localStorage.setItem('failures', characterState.failures)
-        // localStorage.setItem('att_spell_name', characterState.att_spell_name)
-        // localStorage.setItem('att_spell_bonus', characterState.att_spell_bonus)
-        // localStorage.setItem('att_spell_type', characterState.att_spell_type)
-        // localStorage.setItem('CP', characterState.CP)
-        // localStorage.setItem('SP', characterState.SP)
-        // localStorage.setItem('EP', characterState.EP)
-        // localStorage.setItem('GP', characterState.GP)
-        // localStorage.setItem('PP', characterState.PP)
-        // localStorage.setItem('equipments', characterState.equipments)
-        // localStorage.setItem('traits', characterState.traits)
-        // localStorage.setItem('ideals', characterState.ideals)
-        // localStorage.setItem('bonds', characterState.bonds)
-        // localStorage.setItem('flaws', characterState.flaws)
       })
       .catch(err => {
         console.error(err)
       })
   }
+  // setCharacterState({
+  //   ...characterState,
+  //   name: ' ',
+  //   class: ' ',
+  //   background: ' ',
+  //   race: ' ',
+  //   faction: ' ',
+  //   alignment: ' ',
+  //   exp: ' ',
+  //   proficiency: ' ',
+  //   inspiration: ' ',
+  //   strength: ' ',
+  //   athletics: ' ',
+  //   dexterity: ' ',
+  //   acrobatics: ' ',
+  //   sleight_of_hand: ' ',
+  //   stealth: ' ',
+  //   constitution: ' ',
+  //   intelligent: ' ',
+  //   arcana: ' ',
+  //   history: ' ',
+  //   investigation: ' ',
+  //   nature: ' ',
+  //   religion: ' ',
+  //   wisdom: ' ',
+  //   animal_handling: ' ',
+  //   insight: ' ',
+  //   medicine: ' ',
+  //   perception: ' ',
+  //   other_pro_lang: ' ',
+  //   survival: ' ',
+  //   charisma: ' ',
+  //   deception: ' ',
+  //   intimidation: ' ',
+  //   performance: ' ',
+  //   persuasion: ' ',
+  //   armor_class: ' ',
+  //   initiative: ' ',
+  //   speed: ' ',
+  //   HP: ' ',
+  //   temp_HP: ' ',
+  //   hit_dice: ' ',
+  //   death_save: ' ',
+  //   successes: ' ',
+  //   failures: ' ',
+  //   att_spell_name: ' ',
+  //   att_spell_bonus: ' ',
+  //   att_spell_type: ' ',
+  //   CP: ' ',
+  //   SP: ' ',
+  //   EP: ' ',
+  //   GP: ' ',
+  //   PP: ' ',
+  //   equipments: ' ',
+  //   traits: ' ',
+  //   ideals: ' ',
+  //   bonds: ' ',
+  //   flaws: ' '
+  // })
+  // localStorage.setItem('characterName', characterState.name)
+  // localStorage.setItem('class', characterState.class)
+  // localStorage.setItem('background', characterState.background)
+  // localStorage.setItem('race', characterState.race)
+  // localStorage.setItem('faction', characterState.faction)
+  // localStorage.setItem('alignment', characterState.alignment)
+  // localStorage.setItem('exp', characterState.exp)
+  // localStorage.setItem('proficiency', characterState.proficiency)
+  // localStorage.setItem('inspiration', characterState.inspiration)
+  // localStorage.setItem('strength', characterState.strength)
+  // localStorage.setItem('athletics', characterState.athletics)
+  // localStorage.setItem('dexterity', characterState.dexterity)
+  // localStorage.setItem('acrobatics', characterState.acrobatics)
+  // localStorage.setItem('sleight_of_hand', characterState.sleight_of_hand)
+  // localStorage.setItem('stealth', characterState.stealth)
+  // localStorage.setItem('constitution', characterState.constitution)
+  // localStorage.setItem('intelligent', characterState.intelligent)
+  // localStorage.setItem('arcana', characterState.arcana)
+  // localStorage.setItem('history', characterState.history)
+  // localStorage.setItem('investigation', characterState.investigation)
+  // localStorage.setItem('nature', characterState.nature)
+  // localStorage.setItem('religion', characterState.religion)
+  // localStorage.setItem('wisdom', characterState.wisdom)
+  // localStorage.setItem('animal_handling', characterState.animal_handling)
+  // localStorage.setItem('insight', characterState.insight)
+  // localStorage.setItem('medicine', characterState.medicine)
+  // localStorage.setItem('perception', characterState.perception)
+  // localStorage.setItem('other_pro_lang', characterState.other_pro_lang)
+  // localStorage.setItem('survival', characterState.survival)
+  // localStorage.setItem('charisma', characterState.charisma)
+  // localStorage.setItem('deception', characterState.deception)
+  // localStorage.setItem('intimidation', characterState.intimidation)
+  // localStorage.setItem('performance', characterState.performance)
+  // localStorage.setItem('persuasion', characterState.persuasion)
+  // localStorage.setItem('armor_class', characterState.armor_class)
+  // localStorage.setItem('initiative', characterState.initiative)
+  // localStorage.setItem('speed', characterState.speed)
+  // localStorage.setItem('HP', characterState.HP)
+  // localStorage.setItem('temp_HP', characterState.temp_HP)
+  // localStorage.setItem('hit_dice', characterState.hit_dice)
+  // localStorage.setItem('death_save', characterState.death_save)
+  // localStorage.setItem('successes', characterState.successes)
+  // localStorage.setItem('failures', characterState.failures)
+  // localStorage.setItem('att_spell_name', characterState.att_spell_name)
+  // localStorage.setItem('att_spell_bonus', characterState.att_spell_bonus)
+  // localStorage.setItem('att_spell_type', characterState.att_spell_type)
+  // localStorage.setItem('CP', characterState.CP)
+  // localStorage.setItem('SP', characterState.SP)
+  // localStorage.setItem('EP', characterState.EP)
+  // localStorage.setItem('GP', characterState.GP)
+  // localStorage.setItem('PP', characterState.PP)
+  // localStorage.setItem('equipments', characterState.equipments)
+  // localStorage.setItem('traits', characterState.traits)
+  // localStorage.setItem('ideals', characterState.ideals)
+  // localStorage.setItem('bonds', characterState.bonds)
+  // localStorage.setItem('flaws', characterState.flaws)
+
   // characterState.handleCreateCharacter = event => {
   //   event.preventDefault()
   //   axios.post('/api/characters', {
@@ -1219,7 +1220,7 @@ const Character = () => {
                       <span className='d-and-d-skill-hint'>Wis</span>
                     </div>
                     <div className='d-and-d-skill'>
-                      <input type='checkbox' name='inimidation' checked={JSON.parse(localStorage.getItem('intimidation'))} onChange={characterState.handleCheckBoxInput} />
+                      <input type='checkbox' name='intimidation' checked={JSON.parse(localStorage.getItem('intimidation'))} onChange={characterState.handleCheckBoxInput} />
                       <input type='text' />
                       <label>Intimidation</label>
                       <span className='d-and-d-skill-hint'>Cha</span>

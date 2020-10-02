@@ -11,19 +11,27 @@ import {
   FormText,
   ButtonToggle,
   Row,
+  Media,
+  Card,
   Container
 } from 'reactstrap'
 import axios from 'axios'
+import { toast, ToastContainer } from 'react-toastify'
+import { render } from 'react-dom'
+import 'react-toastify/dist/ReactToastify.css'
+import backgroundD from '../../assets/backgroundD.png'
+
+toast.configure()
 
 const Home = () => {
   const [userState, setUserState] = useState({
-    username: ' ',
-    password: ' '
+    username: '',
+    password: ''
   })
 
   const [newUserState, setNewUserState] = useState({
-    rUsername: ' ',
-    rPassword: ' '
+    rUsername: '',
+    rPassword: ''
   })
 
   userState.handleInputChange = event => {
@@ -69,11 +77,22 @@ const Home = () => {
       password: newUserState.rPassword
     })
       .then(res => {
-        setNewUserState({ ...newUserState, rUsername: ' ', rPassword: ' ' })
+        setNewUserState({ ...newUserState, rUsername: '', rPassword: '' })
+        toast.success('Registration Successful, Please Login.', {
+          className: "success-toast",
+          autoClose: 4000,
+          position: toast.POSITION.TOP_CENTER,
+          pauseOnHover: true
+        })
         console.log('hi!')
       })
       .catch(err => {
         console.error(err)
+        toast.error('Registration Unsuccessful, Please Try Again.', {
+          autoClose: 4000,
+          position: toast.POSITION.TOP_CENTER,
+          pauseOnHover: true
+        })
       })
   }
 
@@ -95,7 +114,7 @@ const Home = () => {
               <FormGroup>
                 <Label for='password'>Password</Label>
                 <Input
-                  type='text'
+                  type="password"
                   name='password'
                   value={userState.password}
                   onChange={userState.handleInputChange}
@@ -118,7 +137,7 @@ const Home = () => {
               <FormGroup>
                 <Label for='rPassword'>Password</Label>
                 <Input
-                  type='text'
+                  type="password"
                   name='rPassword'
                   value={newUserState.rPassword}
                   onChange={newUserState.handleNewInputChange}
@@ -128,10 +147,25 @@ const Home = () => {
             </Form>
           </Col>
         </Row>
+        <Media className= "dragonB">
+          <Media src={backgroundD}></Media>
+        </Media>
       </div>
-
     </>
   )
 }
+// const Test = () => {
+//   return (
+//     <div>
+//       <ToastContainer />
+//     </div>
+//   )
+// }
+
+// render(
+//   <Test />,
+//   document.getElementById('root')
+// )
+
 
 export default Home

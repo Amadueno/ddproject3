@@ -1,10 +1,11 @@
 .d-and-d-character-sheet {
-  font-size: 10px;
+  font-size: 12px;
   background-color: whitesmoke;
   border-radius: 25px;
   padding: 20px;
   width: 200px;
   height: auto;
+  margin-bottom: 20px;
 }
 
 .d-and-d-character-sheet input[type=text] {
@@ -68,7 +69,7 @@
 }
 
 .d-and-d-character-sheet .d-and-d-statbox {
-  font-size: 7px;
+  font-size: 9px;
   background-color: white;
   font-weight: bold;
   border: 2px solid black;

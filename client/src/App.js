@@ -5,6 +5,8 @@ import Dice from './pages/Dice'
 import Notes from './pages/Notes'
 import Saved from './pages/Saved'
 import Character from './pages/Character'
+import img from './assets/dragon5.png'
+import footer from './assets/footer.png'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
 import {
@@ -27,8 +29,10 @@ const App = () => {
   return (
     <Router>
       <div>
-        <Navbar color='danger' light expand='md'>
-          <NavbarBrand href='/'>Dungeon Sheets</NavbarBrand>
+        <Navbar color='danger' dark expand='md' sticky="top">
+          <NavbarBrand href='/'>
+              <img src= {img} width="55" height="47" className="d-inline-block align-top" style={{border: "none"}}/>{' '}
+              Dungeon Sheets</NavbarBrand>
           <NavbarToggler onClick={toggle} />
           <Collapse isOpen={isOpen} navbar>
             <Nav className='mr-auto' navbar>
@@ -58,6 +62,11 @@ const App = () => {
           <Route path="/notes" component={Notes} />
           {/* <Route path="/saved" component={Saved} /> */}
         </Switch>
+      </div>
+      <div>
+        <Navbar color='danger' dark expand='md' fixed="bottom">
+          <img className="foot" src={footer} height="47" />
+        </Navbar>
       </div>
     </Router>
   )

@@ -7,6 +7,7 @@ const { Strategy } = require('passport-local')
 const { Strategy: JWTStrategy, ExtractJwt } = require('passport-jwt')
 const { User } = require('./models')
 
+
 const app = express()
 
 if (process.env.NODE_ENV === 'production') {

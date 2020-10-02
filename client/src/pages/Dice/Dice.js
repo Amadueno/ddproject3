@@ -67,30 +67,21 @@ const Dice = () => {
           <CardBody>
             <h2>Select Dice Type:</h2>
             <hr />
-            <Button color='danger' onClick={diceState.handleD4}>d4</Button>
-            <Button color='danger' onClick={diceState.handleD6}>d6</Button>
-            <Button color='danger' onClick={diceState.handleD8}>d8</Button>
-            <Button color='danger' onClick={diceState.handleD10}>d10</Button>
-            <Button color='danger' onClick={diceState.handleD20}>d20</Button>
+            <Button className="diceButton" color='danger' onClick={diceState.handleD4}>d4</Button>
+            <Button className="diceButton"color='danger' onClick={diceState.handleD6}>d6</Button>
+            <Button className="diceButton"color='danger' onClick={diceState.handleD8}>d8</Button>
+            <Button className="diceButton"color='danger' onClick={diceState.handleD10}>d10</Button>
+            <Button className="diceButton"color='danger' onClick={diceState.handleD20}>d20</Button>
           </CardBody>
         </Card>
-        <Card className="diceCard">
-          <CardImg width="100%" src="/assets/d201.jpg" alt="d20" />
-          <CardImgOverlay>
-            <CardTitle>Roll Outcome:</CardTitle>
-            <CardText> {diceState.roll}</CardText>
-          </CardImgOverlay>
-        </Card>
-
-        {/* <Card className="diceCard d20">
+        <Card className="diceCard1">
           <CardBody>
-            <hr />
-            <h5 >Roll Outcome: {diceState.roll}</h5>
+            <h2 id="diceResult">{diceState.roll}</h2>
           </CardBody>
-        </Card> */}
+        </Card>
       </Row>
     </div>
   )
 }
-
+// ../../assets / d201.jpg
 export default Dice
