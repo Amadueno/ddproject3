@@ -52,7 +52,7 @@ const Home = () => {
           localStorage.setItem('username', userState.username)
           localStorage.setItem('user', token)
           console.log(token)
-          window.location.pathname = '../Character/Character.js'
+          window.location.pathname = '../Saved/Saved.js'
           // window.location = '/index.html'
         } else {
           console.log('Wrong credential')
@@ -79,7 +79,7 @@ const Home = () => {
       .then(res => {
         setNewUserState({ ...newUserState, rUsername: '', rPassword: '' })
         toast.success('Registration Successful, Please Login.', {
-          className: "success-toast",
+          className: 'success-toast',
           autoClose: 4000,
           position: toast.POSITION.TOP_CENTER,
           pauseOnHover: true
@@ -96,9 +96,14 @@ const Home = () => {
       })
   }
 
+  userState.handleUserLogout = event => {
+    localStorage.removeItem('username')
+    window.location.path = '../Home/Home.js'
+  }
+
   return (
     <>
-      <div className="homePage">
+      <div className='homePage'>
         <Row>
           <Col xs='6'>
             <Form>
@@ -114,7 +119,7 @@ const Home = () => {
               <FormGroup>
                 <Label for='password'>Password</Label>
                 <Input
-                  type="password"
+                  type='password'
                   name='password'
                   value={userState.password}
                   onChange={userState.handleInputChange}
@@ -137,7 +142,7 @@ const Home = () => {
               <FormGroup>
                 <Label for='rPassword'>Password</Label>
                 <Input
-                  type="password"
+                  type='password'
                   name='rPassword'
                   value={newUserState.rPassword}
                   onChange={newUserState.handleNewInputChange}
@@ -147,8 +152,8 @@ const Home = () => {
             </Form>
           </Col>
         </Row>
-        <Media className= "dragonB">
-          <Media src={backgroundD}></Media>
+        <Media className='dragonB'>
+          <Media src={backgroundD} />
         </Media>
       </div>
     </>
@@ -166,6 +171,5 @@ const Home = () => {
 //   <Test />,
 //   document.getElementById('root')
 // )
-
 
 export default Home

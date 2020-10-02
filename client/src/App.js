@@ -29,16 +29,20 @@ const App = () => {
   return (
     <Router>
       <div>
-        <Navbar color='danger' dark expand='md' sticky="top">
+        <Navbar color='danger' dark expand='md' sticky='top'>
           <NavbarBrand href='/'>
-              <img src= {img} width="55" height="47" className="d-inline-block align-top" style={{border: "none"}}/>{' '}
-              Dungeon Sheets</NavbarBrand>
+            <img src={img} width='55' height='47' className='d-inline-block align-top' style={{ border: 'none' }} />{' '}
+              Dungeon Sheets
+          </NavbarBrand>
           <NavbarToggler onClick={toggle} />
           <Collapse isOpen={isOpen} navbar>
             <Nav className='mr-auto' navbar>
               {/* <NavItem>
                 <NavLink href='/user/'>User</NavLink>
               </NavItem> */}
+              <NavItem>
+                <NavLink href='/'>Home</NavLink>
+              </NavItem>
               <NavItem>
                 <NavLink href='/character/'>Character</NavLink>
               </NavItem>
@@ -48,24 +52,24 @@ const App = () => {
               <NavItem>
                 <NavLink href='/notes/'>Notes</NavLink>
               </NavItem>
-              {/* <NavItem>
+              <NavItem>
                 <NavLink href='/saved/'>Saved</NavLink>
-              </NavItem> */}
+              </NavItem>
             </Nav>
           </Collapse>
         </Navbar>
         <Switch>
-          <Route exact path="/" component={Home} />
+          <Route exact path='/' component={Home} />
           {/* <Route path="/user" component={User} /> */}
-          <Route path="/character" component={Character} />
-          <Route path="/dice" component={Dice} />
-          <Route path="/notes" component={Notes} />
-          {/* <Route path="/saved" component={Saved} /> */}
+          <Route path='/character' component={Character} />
+          <Route path='/dice' component={Dice} />
+          <Route path='/notes' component={Notes} />
+          <Route path='/saved' component={Saved} />
         </Switch>
       </div>
       <div>
-        <Navbar color='danger' dark expand='md' fixed="bottom">
-          <img className="foot" src={footer} height="47" />
+        <Navbar color='danger' dark expand='md' fixed='bottom'>
+          <img className='foot' src={footer} height='47' />
         </Navbar>
       </div>
     </Router>

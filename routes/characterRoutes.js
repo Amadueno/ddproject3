@@ -9,6 +9,14 @@ router.get('/characters', passport.authenticate('jwt'), (req, res) => {
     .catch(err => console.error(err))
 })
 
+
+router.get('/characters/:id', passport.authenticate('jwt'), (req, res) => {
+  console.log(req.params.id)
+  console.log(res)
+  Character.findById(req.params.id)
+    .then(character => res.json(character))
+})
+
 router.post('/characters', passport.authenticate('jwt'), (req, res) => {
   Character.create({
     name: req.body.name,

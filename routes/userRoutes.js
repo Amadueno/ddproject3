@@ -21,7 +21,17 @@ router.post('/users/login', (req, res) => {
 })
 
 router.get('/users/characters', passport.authenticate('jwt'), (req, res) => {
-  res.json(req.user)
+  Character.find()
+    .then(character => res.json(character))
+    .catch(err => console.log(err))
+})
+
+router.get('/users/characters/:id', passport.authenticate('jwt'), (req, res) => {
+  console.log(req.params.id)
+  console.log(res)
+  Character.findById(req.params.id)
+    .populate('users')
+    .then(character => res.json(character))
 })
 
 // GET all users
