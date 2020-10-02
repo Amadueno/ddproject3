@@ -6,7 +6,6 @@ import Notes from './pages/Notes'
 import Saved from './pages/Saved'
 import Character from './pages/Character'
 import img from './assets/dragon5.png'
-import footer from './assets/footer.png'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
 import {
@@ -17,7 +16,11 @@ import {
   Nav,
   Button,
   NavItem,
-  NavLink
+  NavLink,
+  UncontrolledDropdown,
+  DropdownToggle,
+  DropdownMenu,
+  DropdownItem,
 } from 'reactstrap'
 
 import './app.css'
@@ -151,7 +154,9 @@ const App = () => {
       </div>
       <div>
         <Navbar className="gradient" color='danger' dark expand='md' fixed="bottom">
-          <img className="foot" src={footer} height="47" />
+          <img src={img} width="35" height="27" className="d-inline-block align-top" style={{ border: "none" }} />
+          <p className="bot">Dungeon Sheets© 2020</p>
+          <p > <a className="bot2"href="https://github.com/Amadueno/ddproject3" target="_blank">GitHub</a></p>
         </Navbar>
       </div>
     </Router>

@@ -1,6 +1,7 @@
 import React, { useState, userState } from 'react'
 import './dndstyles.css'
 import axios from 'axios'
+import '../../app.css'
 
 // import User from '../User/User.js'
 import {

@@ -2,6 +2,17 @@
   font-family: 'David Libre', serif;
 }
 
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  /* height: 50px; */
+  color: white;
+  text-align: center;
+  background-image: linear-gradient(rgb(217, 83, 79), rgb(160, 7, 7))
+}
+
 body {
   background-image: url(./assets/background.jpg);
   margin-right: 0;
@@ -94,6 +105,28 @@ h2 {
   font-weight: bold;
 }
 
+.bot {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: aliceblue;
+  font-size: small;
+}
+
+.bot2 {
+  position: absolute;
+  top: 50%;
+  left: 90%;
+  transform: translate(-50%, -50%);
+  color: aliceblue;
+  font-size: small;
+}
+
 .container {
   position: relative;
+}
+
+a:hover {
+  color: inherit
 }
