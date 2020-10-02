@@ -9,10 +9,9 @@ router.get('/characters', passport.authenticate('jwt'), (req, res) => {
     .catch(err => console.error(err))
 })
 
-
 router.get('/characters/:id', passport.authenticate('jwt'), (req, res) => {
-  console.log(req.params.id)
-  console.log(res)
+  // console.log(req.params._id)
+  // console.log(res)
   Character.findById(req.params.id)
     .then(character => res.json(character))
 })

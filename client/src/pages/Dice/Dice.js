@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, userState } from 'react'
 import DiceRoller from 'dice-roller-dnd'
 import {
   Row,
@@ -8,8 +8,9 @@ import {
   CardTitle,
   CardText,
   CardImg,
-  CardImgOverlay
+  CardImgOverlay, Container
 } from 'reactstrap'
+import d20 from '../../assets/d20.png'
 
 const dice = new DiceRoller()
 console.log(dice.d20())
@@ -59,10 +60,17 @@ const Dice = () => {
     console.log(diceState)
     console.log(event.target)
   }
+  const [userState, setUserState] = useState({
+    username: localStorage.getItem('username'),
+    password: ''
+  })
+  userState.handleUserLogout = event => {
+    localStorage.removeItem('username')
+    window.location.pathname = './'
+  }
 
   return (
-    <div className="dice">
-      <Row>
+    <div>
         <Card className="diceCard"> 
           <CardBody>
             <h2>Select Dice Type:</h2>
@@ -74,12 +82,14 @@ const Dice = () => {
             <Button className="diceButton"color='danger' onClick={diceState.handleD20}>d20</Button>
           </CardBody>
         </Card>
-        <Card className="diceCard1">
-          <CardBody>
-            <h2 id="diceResult">{diceState.roll}</h2>
-          </CardBody>
-        </Card>
-      </Row>
+        {/* <div className="container">
+            <img src={d20} style={{width: '100%'}}/>
+            <h2 className="center" id="diceResult">{diceState.roll} </h2>
+        </div> */}
+        <div className="container">
+        <img src={d20} style={{ width: '100%' }} />
+          <div className="centered">{diceState.roll}</div>
+        </div>  
     </div>
   )
 }

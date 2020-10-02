@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, userState } from 'react'
 import './dndstyles.css'
 import axios from 'axios'
 
@@ -19,6 +19,31 @@ const randAlignments = ['Lawful Good', 'Neutral Good', 'Chaotic good', 'Lawful N
 const randFactions = ['Harpers', 'Order of the Gauntlet', 'Emerald Enclave', 'Lords Alliance', 'Zhentarim']
 
 const Character = () => {
+  if (!localStorage.getItem('name')) {
+    localStorage.setItem('name', false)
+  }
+  if (!localStorage.getItem('class')) {
+    localStorage.setItem('class', false)
+  }
+  if (!localStorage.getItem('background')) {
+    localStorage.setItem('strength', false)
+  }
+  if (!localStorage.getItem('faction')) {
+    localStorage.setItem('faction', false)
+  }
+  if (!localStorage.getItem('race')) {
+    localStorage.setItem('race', false)
+  }
+  if (!localStorage.getItem('alignment')) {
+    localStorage.setItem('alignment', false)
+  }
+  if (!localStorage.getItem('exp')) {
+    localStorage.setItem('exp', false)
+  }
+  if (!localStorage.getItem('strength')) {
+    localStorage.setItem('strength', false)
+  }
+
   if (!localStorage.getItem('strength')) {
     localStorage.setItem('strength', false)
   }
@@ -114,6 +139,75 @@ const Character = () => {
   if (!localStorage.getItem('failure3')) {
     localStorage.setItem('failure3', false)
   }
+
+  useEffect(() => {
+    // axios.get('/api/characters')
+    axios.get('/api/users', {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('user')}`
+      }
+    })
+      .then(users => {
+        console.log(users.data)
+        const rightUser = users.data.filter(user => user.username === localStorage.getItem('username'))
+        console.log(rightUser[0])
+        axios.get(`/api/users/${rightUser[0]._id}`, {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem('user')}`
+          }
+        })
+          .then(({ data }) => {
+            console.log(data)
+            data.characters.forEach(characterId =>
+              axios.get(`/api/characters/${characterId}`, {
+                headers: {
+                  Authorization: `Bearer ${localStorage.getItem('user')}`
+                }
+              })
+                .then(({ data }) => {
+                  console.log({ data })
+                  setSavedState({ ...savedState, saved: [data] })
+                  console.log(savedState.saved)
+                })
+                .catch(err => console.log(err))
+            )
+          })
+          .catch(err => console.log(err))
+      }).catch(err => console.log(err))
+
+    axios.get('/api/users', {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('user')}`
+      }
+    })
+      .then(users => {
+        console.log(users.data)
+        const rightUser = users.data.filter(user => user.username === localStorage.getItem('username'))
+        console.log(rightUser[0])
+        axios.get(`/api/users/${rightUser[0]._id}`, {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem('user')}`
+          }
+        })
+          .then(({ data }) => {
+            console.log(data)
+            data.notes.forEach(notesId =>
+              axios.get(`/api/characters/${noteId}`, {
+                headers: {
+                  Authorization: `Bearer ${localStorage.getItem('user')}`
+                }
+              })
+                .then(({ data }) => {
+                  console.log({ data })
+                  setSavedState({ ...savedState, saved: [data] })
+                  console.log(savedState.saved)
+                })
+                .catch(err => console.log(err))
+            )
+          })
+          .catch(err => console.log(err))
+      }).catch(err => console.log(err))
+  }, [])
   // const checkCheckBox = () => {
   //   if (localStorage.getItem('wisdom') === true) {
   //     document.getElementById('wisdom').checked = true
@@ -907,9 +1001,37 @@ const Character = () => {
   //       console.error(err)
   //     })
   // }
+  const [userState, setUserState] = useState({
+    username: localStorage.getItem('username'),
+    password: ''
+  })
+  userState.handleUserLogout = event => {
+    localStorage.removeItem('username')
+    window.location.pathname = './'
+  }
 
   return (
     <div className='d-and-d-character-sheet container-xl mt-5 mb-5'>
+      <Button className='diceButton' color='danger' onClick={characterState.handleCreateCharacter}
+        style={{
+          margin: '5px',
+          marginBottom: '20px'
+        }}>Create Character</Button>
+      <Button
+        className='diceButton' color='danger' onClick={characterState.handleRandomize}
+        style={{
+          margin: '5px',
+          marginBottom: '20px'
+        }}>Random Character
+        </Button>
+      <Button
+        className='diceButton' color='danger'
+        style={{
+          margin: '5px',
+          marginBottom: '20px'
+        }} onClick={characterState.handleRemoveCharacter}
+      >Remove Character
+        </Button>
       <h3>Character Sheet</h3>
       <div>
         <div className='row mb-4'>
@@ -1675,24 +1797,17 @@ const Character = () => {
           </div>
         </div>
       </div>
-      <Button
-        color='danger'
+      <Button className='diceButton' color='danger'
         style={{
           margin: '5px',
           marginBottom: '20px'
-        }} onClick={characterState.handleCreateCharacter}
-      >Create Character
-      </Button>
-      <Button
-        color='danger'
+        }} onClick={characterState.handleCreateCharacter}>Create Character</Button>
+      <Button className='diceButton' color='danger'
         style={{
           margin: '5px',
           marginBottom: '20px'
-        }} onClick={characterState.handleDicePage}
-      >Dice Roller
-      </Button>
-      <Button
-        color='danger'
+        }} onClick={characterState.handleDicePage}>Dice Roller</Button>
+      <Button className='diceButton' color='danger'
         style={{
           margin: '5px',
           marginBottom: '20px'

@@ -1,5 +1,4 @@
-import React, { useState } from 'react'
-import './home.css'
+import React, { useState, userState } from 'react'
 import API from '../../utils/API'
 import {
   Col,
@@ -40,6 +39,8 @@ const Home = () => {
   }
 
   userState.handleUserLogin = event => {
+    localStorage.removeItem('username')
+    localStorage.removeItem('user')
     event.preventDefault()
     console.log(event.target)
     axios.post('/api/users/login', {
@@ -98,7 +99,7 @@ const Home = () => {
 
   userState.handleUserLogout = event => {
     localStorage.removeItem('username')
-    window.location.path = '../Home/Home.js'
+    window.location.pathname = './'
   }
 
   return (
@@ -125,7 +126,7 @@ const Home = () => {
                   onChange={userState.handleInputChange}
                 />
               </FormGroup>
-              <ButtonToggle color='danger' onClick={userState.handleUserLogin}>Log In</ButtonToggle>
+              <ButtonToggle className='diceButton' color='danger' onClick={userState.handleUserLogin}>Log In</ButtonToggle>
             </Form>
           </Col>
           <Col xs='6'>
@@ -148,7 +149,7 @@ const Home = () => {
                   onChange={newUserState.handleNewInputChange}
                 />
               </FormGroup>
-              <ButtonToggle color='danger' onClick={newUserState.handleCreateUser}>Register</ButtonToggle>
+              <ButtonToggle className='diceButton' color='danger' onClick={newUserState.handleCreateUser}>Register</ButtonToggle>
             </Form>
           </Col>
         </Row>
@@ -159,17 +160,5 @@ const Home = () => {
     </>
   )
 }
-// const Test = () => {
-//   return (
-//     <div>
-//       <ToastContainer />
-//     </div>
-//   )
-// }
-
-// render(
-//   <Test />,
-//   document.getElementById('root')
-// )
 
 export default Home

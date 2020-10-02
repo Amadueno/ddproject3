@@ -4,12 +4,17 @@ const passport = require('passport')
 const jwt = require('jsonwebtoken')
 
 router.post('/users/register', (req, res) => {
-  console.log(req.body)
   const { username, password } = req.body
   User.register(new User({ username }), password, err => {
     if (err) { console.log(err) }
     res.sendStatus(200)
   })
+})
+
+router.get('/users/:id', (req, res) => {
+  User.findById(req.params.id)
+    .then(data => res.json(data))
+    .catch(err => console.log(err))
 })
 
 router.post('/users/login', (req, res) => {
@@ -27,8 +32,6 @@ router.get('/users/characters', passport.authenticate('jwt'), (req, res) => {
 })
 
 router.get('/users/characters/:id', passport.authenticate('jwt'), (req, res) => {
-  console.log(req.params.id)
-  console.log(res)
   Character.findById(req.params.id)
     .populate('users')
     .then(character => res.json(character))

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, userState } from 'react'
 import { Button, Card, CardTitle, CardText, CardImg, CardImgOverlay, Col, Container, Row } from 'reactstrap'
 import Moment from 'react-moment'
 import axios from 'axios'
@@ -84,36 +84,53 @@ const Notes = () => {
     //   //   })
     //   .catch(err => console.error(err))
   }
+  const [userState, setUserState] = useState({
+    username: localStorage.getItem('username'),
+    password: ''
+  })
+  userState.handleUserLogout = event => {
+    localStorage.removeItem('username')
+    window.location.pathname = './'
+  }
   return (
-    <div >
+    <div>
       <Container
-        style={{ color: "whitesmoke" }}>
+        style={{ color: 'whitesmoke' }}
+      >
         <br />
         <h3>Campaign Notes</h3>
         {/* <Button onClick={noteState.handleCreateNote} color="danger">📝</Button> */}
       </Container>
-      <Container >
+      <Container>
         <Row>
-          <Col >
-            <Card >
+          <Col>
+            <Card>
               {/* <CardImg width="auto" src="assets/parchment.jpg" alt="parchment"/> */}
               <CardImgOverlay>
                 {/* <CardTitle>Note Title</CardTitle> */}
-                <textarea className="noteCard" type="input"
-                  name="input"
+                <textarea
+                  className='noteCard' type='input'
+                  name='input'
                   defaultValue={localStorage.getItem('input')}
                   onChange={noteState.handleInputChange}
-                  style={{ width: '100%', height: '23rem' }}>
+                  style={{ width: '100%', height: '23rem', border: 'none', padding: '40px' }}
+                >
                 </textarea>
-                <Button onClick={noteState.handleCreateNote} color="danger" style={{
-                  margin: '5px',
-                  marginBottom: '20px'
-                }}>Log Note 💾</Button>
-                <Button color='danger' onClick={noteState.handleRemoveNote} style={{
-                  margin: '5px',
-                  marginBottom: '20px'
-                }}>Remove Note ❌</Button>
-                <small className="text-muted">
+                <Button
+                  className='diceButton' onClick={noteState.handleCreateNote} color='danger' style={{
+                    margin: '5px',
+                    marginBottom: '20px'
+                  }}
+                >Log Note 💾
+                </Button>
+                <Button
+                  className='diceButton' color='danger' onClick={noteState.handleRemoveNote} style={{
+                    margin: '5px',
+                    marginBottom: '20px'
+                  }}
+                >Remove Note ❌
+                </Button>
+                <small className='text-muted'>
                   <p>Today's time and date is:</p>
                   <Moment />
                 </small>
@@ -125,6 +142,47 @@ const Notes = () => {
     </div>
   )
 }
+// return (
+//   <div >
+//     <Container
+//       style={{ color: "whitesmoke" }}>
+//       <br />
+//       <h3>Campaign Notes</h3>
+//       {/* <Button onClick={noteState.handleCreateNote} color="danger">📝</Button> */}
+//     </Container>
+//     <Container >
+//       <Row>
+//         <Col >
+//           <Card >
+//             {/* <CardImg width="auto" src="assets/parchment.jpg" alt="parchment"/> */}
+//             <CardImgOverlay>
+//               {/* <CardTitle>Note Title</CardTitle> */}
+//               <textarea className="noteCard" type="input"
+//                 name="input"
+//                 defaultValue={localStorage.getItem('input')}
+//                 onChange={noteState.handleInputChange}
+//                 style={{ width: '100%', height: '23rem' }}>
+//               </textarea>
+//               <Button onClick={noteState.handleCreateNote} color="danger" style={{
+//                 margin: '5px',
+//                 marginBottom: '20px'
+//               }}>Log Note 💾</Button>
+//               <Button color='danger' onClick={noteState.handleRemoveNote} style={{
+//                 margin: '5px',
+//                 marginBottom: '20px'
+//               }}>Remove Note ❌</Button>
+//               <small className="text-muted">
+//                 <p>Today's time and date is:</p>
+//                 <Moment />
+//               </small>
+//             </CardImgOverlay>
+//           </Card>
+//         </Col>
+//       </Row>
+//     </Container>
+//   </div>
+// )
+// }
 // return (
 //   <div>
 //     <Container
