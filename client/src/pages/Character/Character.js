@@ -1,4 +1,4 @@
-import React, { useState, userState } from 'react'
+import React, { useState, useEffect } from 'react'
 import './dndstyles.css'
 import axios from 'axios'
 
@@ -51,23 +51,18 @@ const Character = () => {
   }
   if (!localStorage.getItem('acrobatics')) {
     localStorage.setItem('acrobatics', false)
-
   }
   if (!localStorage.getItem('sleight_of_hand')) {
     localStorage.setItem('sleight_of_hand', false)
-
   }
   if (!localStorage.getItem('stealth')) {
     localStorage.setItem('stealth', false)
-
   }
   if (!localStorage.getItem('constitution')) {
     localStorage.setItem('constitution', false)
-
   }
   if (!localStorage.getItem('intelligent')) {
     localStorage.setItem('intelligent', false)
-
   }
   if (!localStorage.getItem('sleight_of_hand')) {
     localStorage.setItem('sleight_of_hand', false)
@@ -154,19 +149,83 @@ const Character = () => {
         })
           .then(({ data }) => {
             console.log(data)
-            data.characters.forEach(characterId =>
-              axios.get(`/api/characters/${characterId}`, {
-                headers: {
-                  Authorization: `Bearer ${localStorage.getItem('user')}`
-                }
-              })
-                .then(({ data }) => {
-                  console.log({ data })
-                  setSavedState({ ...savedState, saved: [data] })
-                  console.log(savedState.saved)
+
+            axios.get(`/api/characters/${data.characters[(data.characters.length - 1)].characterId}`, {
+              headers: {
+                Authorization: `Bearer ${localStorage.getItem('user')}`
+              }
+            })
+              .then(({ data }) => {
+                console.log({ data })
+                setCharacterState({
+                  ...characterState,
+                  name: data.name,
+                  class: data.class,
+                  race: data.race,
+                  background: data.background,
+                  alignment: data.alignment,
+                  faction: data.faction,
+                  exp: data.data.exp,
+                  strengthValue: data.strengthValue,
+                  dexterityValue: data.dexterityValue,
+                  constitutionValue: data.constitutionValue,
+                  intelligenceValue: data.intelligenceValue,
+                  wisdomValue: data.wisdomValue,
+                  charismaValue: data.charismaValue,
+                  proficiency: data.proficiency,
+                  inspiration: data.inspiration,
+                  strength: data.strength,
+                  athletics: data.athletics,
+                  dexterity: data.dexterity,
+                  acrobatics: data.acrobatics,
+                  sleight_of_hand: data.sleight_of_hand,
+                  stealth: data.stealth,
+                  constitution: data.constitution,
+                  intelligent: data.intelligent,
+                  arcana: data.arcana,
+                  history: data.history,
+                  investigation: data.investigation,
+                  nature: data.nature,
+                  religion: data.religion,
+                  wisdom: data.wisdom,
+                  animal_handling: data.animal_handling,
+                  insight: data.insight,
+                  medicine: data.medicine,
+                  perception: data.perception,
+                  other_pro_lang: data.other_pro_lang,
+                  survival: data.survival,
+                  charisma: data.charisma,
+                  deception: data.deception,
+                  intimidation: data.intimidation,
+                  performance: data.performance,
+                  persuasion: data.persuasion,
+                  armor_class: data.armor_class,
+                  initiative: data.initiative,
+                  speed: data.speed,
+                  HP: data.HP,
+                  temp_HP: data.temp_HP,
+                  total: data.total,
+                  hit_dice: data.hit_dice,
+                  successes: data.successes,
+                  failures: data.failures,
+                  att_spell_name: data.att_spell_name,
+                  att_spell_bonus: data.att_spell_bonus,
+                  att_spell_type: data.att_spell_type,
+                  CP: data.CP,
+                  SP: data.SP,
+                  EP: data.EP,
+                  GP: data.GP,
+                  PP: data.PP,
+                  equipments: data.equipments,
+                  traits: data.traits,
+                  ideals: data.ideals,
+                  bonds: data.bonds,
+                  flaws: data.flaws,
+                  feat_traits: data.feat_traits
                 })
-                .catch(err => console.log(err))
-            )
+
+              })
+              .catch(err => console.log(err))
           })
           .catch(err => console.log(err))
       }).catch(err => console.log(err))
@@ -187,7 +246,7 @@ const Character = () => {
         })
           .then(({ data }) => {
             console.log(data)
-            data.notes.forEach(notesId =>
+            data.notes.forEach(noteId =>
               axios.get(`/api/characters/${noteId}`, {
                 headers: {
                   Authorization: `Bearer ${localStorage.getItem('user')}`
@@ -195,8 +254,7 @@ const Character = () => {
               })
                 .then(({ data }) => {
                   console.log({ data })
-                  setSavedState({ ...savedState, saved: [data] })
-                  console.log(savedState.saved)
+                  setCharacterState({ ...characterState, saved: [data] })
                 })
                 .catch(err => console.log(err))
             )
@@ -578,7 +636,8 @@ const Character = () => {
       traits: localStorage.getItem('traits'),
       ideals: localStorage.getItem('ideals'),
       bonds: localStorage.getItem('bonds'),
-      flaws: localStorage.getItem('flaws')
+      flaws: localStorage.getItem('flaws'),
+      feat_traits: localStorage.getItem('feat_traits')
     })
 
     console.log(characterState)
@@ -586,7 +645,6 @@ const Character = () => {
   characterState.handleSavedPage = event => {
     window.location.pathname = '../Saved/Saved.js'
   }
-
 
   characterState.handleCreateCharacter = event => {
     event.preventDefault()
@@ -740,6 +798,14 @@ const Character = () => {
       .catch(err => {
         console.error(err)
       })
+  }
+  const [userState, setUserState] = useState({
+    username: localStorage.getItem('username'),
+    password: ''
+  })
+  userState.handleUserLogout = event => {
+    localStorage.removeItem('username')
+    window.location.pathname = './'
   }
   // setCharacterState({
   //   ...characterState,
@@ -1001,29 +1067,26 @@ const Character = () => {
   //       console.error(err)
   //     })
   // }
-  const [userState, setUserState] = useState({
-    username: localStorage.getItem('username'),
-    password: ''
-  })
-  userState.handleUserLogout = event => {
-    localStorage.removeItem('username')
-    window.location.pathname = './'
-  }
+
 
   return (
     <div className='d-and-d-character-sheet container-xl mt-5 mb-5'>
-      <Button className='diceButton' color='danger' onClick={characterState.handleCreateCharacter}
+      <Button
+        className='diceButton' color='danger' onClick={characterState.handleCreateCharacter}
         style={{
           margin: '5px',
           marginBottom: '20px'
-        }}>Create Character</Button>
+        }}
+      >Create Character
+      </Button>
       <Button
         className='diceButton' color='danger' onClick={characterState.handleRandomize}
         style={{
           margin: '5px',
           marginBottom: '20px'
-        }}>Random Character
-        </Button>
+        }}
+      >Random Character
+      </Button>
       <Button
         className='diceButton' color='danger'
         style={{
@@ -1031,21 +1094,23 @@ const Character = () => {
           marginBottom: '20px'
         }} onClick={characterState.handleRemoveCharacter}
       >Reset Sheet
-        </Button>
+      </Button>
       <Button
         className='diceButton' color='danger' onClick={characterState.handleSavedPage}
         style={{
           margin: '5px',
           marginBottom: '20px'
-        }}>View Saved Characters
-        </Button>
+        }}
+      >View Saved Characters
+      </Button>
       <h3>Character Sheet</h3>
       <div>
         <div className='row mb-4'>
           <div className='col-md-3 pr-2 pl-2'>
             <div className='d-and-d-page-title' />
             <div className='d-and-d-attribute-collection char-name pr-3 pl-3'>
-              <Input type='name' name='name' id='name'
+              <Input
+                type='name' name='name' id='name'
                 value={localStorage.getItem('name')}
                 onChange={characterState.handleInputChange}
               />
@@ -1787,17 +1852,24 @@ const Character = () => {
           </div>
         </div>
       </div>
-      <Button className='diceButton' color='danger'
+      <Button
+        className='diceButton' color='danger'
         style={{
           margin: '5px',
           marginBottom: '20px'
-        }} onClick={characterState.handleCreateCharacter}>Create Character</Button>
-      <Button className='diceButton' color='danger'
+        }} onClick={characterState.handleCreateCharacter}
+      >Create Character
+      </Button>
+      <Button
+        className='diceButton' color='danger'
         style={{
           margin: '5px',
           marginBottom: '20px'
-        }} onClick={characterState.handleDicePage}>Dice Roller</Button>
-      <Button className='diceButton' color='danger'
+        }} onClick={characterState.handleDicePage}
+      >Dice Roller
+      </Button>
+      <Button
+        className='diceButton' color='danger'
         style={{
           margin: '5px',
           marginBottom: '20px'

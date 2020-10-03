@@ -74,96 +74,97 @@ const Saved = () => {
       {
         savedState.saved.length > 0 ? (
           savedState.saved.map(character => (
-          <div className='d-and-d-character-sheet container-xl mt-5 mb-5'>
-            <div key={character.name}>
-              <div>
-                <div className='row mb-4'>
-                  <div className='col-md-3 pr-2 pl-2'>
-                    <div className='d-and-d-page-title'></div>
-                    <div className='d-and-d-attribute-collection char-name pr-3 pl-3'>
+            <div className='d-and-d-character-sheet container-xl mt-5 mb-5'>
+              <div key={character.name}>
+                <div>
+                  <div className='row mb-4'>
+                    <div className='col-md-3 pr-2 pl-2'>
+                      <div className='d-and-d-page-title'></div>
+                      <div className='d-and-d-attribute-collection char-name pr-3 pl-3'>
                         <Input type='name' name='name' id='name'
                           value={character.name} />
-                    </div>
-                    <label
-                      style={{
-                        width: '100%',
-                        textAlign: 'right',
-                        textTransform: 'uppercase',
-                        fontSize: '11px'
-                      }}>
-                      Character Name
-            </label>
-                  </div>
-                  <div className='col-md-9 pr-2 pl-2'>
-                    <div className='d-and-d-attribute-collection pr-3 pl-3'>
-                      <div className='row pl-3 pr-3'>
-                        <div className='col-md-3 col-6 pl-0 pr-0'>
-                            <Input type='class' name='class' id='class'
-                              value={character.class}/>
-                          <label
-                            style={{
-                              width: '100%',
-                              textAlign: 'right',
-                              textTransform: 'uppercase',
-                              fontSize: '11px'
-                            }}>Class & Level</label>
-                        </div>
-                        <div className='col-md-3 col-6 pl-0 pr-0'>
-                            <Input type='background' name='background' id='background'
-                              value={character.background}/>
-                          <label
-                            style={{
-                              width: '100%',
-                              textAlign: 'right',
-                              textTransform: 'uppercase',
-                              fontSize: '11px'
-                            }}>Background</label>
-                        </div>
-                        <div className='col-md-3 col-6 pl-0 pr-0'>
-                            <Input type='faction' name='name' id='faction'
-                              value={character.faction}/>
-                          <label
-                            style={{
-                              width: '100%',
-                              textAlign: 'right',
-                              textTransform: 'uppercase',
-                              fontSize: '11px'
-                            }}>Faction</label>
-                        </div>
                       </div>
-                      <div className='row pl-3 pr-3'>
-                        <div className='col-md-3 col-6 pl-0 pr-0'>
+                      <label
+                        style={{
+                          width: '100%',
+                          textAlign: 'right',
+                          textTransform: 'uppercase',
+                          fontSize: '11px'
+                        }}>
+                        Character Name
+            </label>
+                    </div>
+                    <div className='col-md-9 pr-2 pl-2'>
+                      <div className='d-and-d-attribute-collection pr-3 pl-3'>
+                        <div className='row pl-3 pr-3'>
+                          <div className='col-md-3 col-6 pl-0 pr-0'>
+                            <Input type='class' name='class' id='class'
+                              value={character.class} />
+                            <label
+                              style={{
+                                width: '100%',
+                                textAlign: 'right',
+                                textTransform: 'uppercase',
+                                fontSize: '11px'
+                              }}>Class & Level</label>
+                          </div>
+                          <div className='col-md-3 col-6 pl-0 pr-0'>
+                            <Input type='background' name='background' id='background'
+                              value={character.background} />
+                            <label
+                              style={{
+                                width: '100%',
+                                textAlign: 'right',
+                                textTransform: 'uppercase',
+                                fontSize: '11px'
+                              }}>Background</label>
+                          </div>
+                          <div className='col-md-3 col-6 pl-0 pr-0'>
+                            <Input type='faction' name='name' id='faction'
+                              value={character.faction} />
+                            <label
+                              style={{
+                                width: '100%',
+                                textAlign: 'right',
+                                textTransform: 'uppercase',
+                                fontSize: '11px'
+                              }}>Faction</label>
+                          </div>
+                        </div>
+                        <div className='row pl-3 pr-3'>
+                          <div className='col-md-3 col-6 pl-0 pr-0'>
                             <Input type='race' name='race' id='race'
-                              value={character.race}/>
-                          <label
-                            style={{
-                              width: '100%',
-                              textAlign: 'right',
-                              textTransform: 'uppercase',
-                              fontSize: '11px'
-                            }}>Race</label>
-                        </div>
-                        <div className='col-md-3 col-6 pl-0 pr-0'>
+                              value={character.race} />
+                            <label
+                              style={{
+                                width: '100%',
+                                textAlign: 'right',
+                                textTransform: 'uppercase',
+                                fontSize: '11px'
+                              }}>Race</label>
+                          </div>
+                          <div className='col-md-3 col-6 pl-0 pr-0'>
                             <Input type='alignment' name='alignment' id='Alignment'
-                              value={character.alignment}/>
-                          <label
-                            style={{
-                              width: '100%',
-                              textAlign: 'right',
-                              textTransform: 'uppercase',
-                              fontSize: '11px'
-                            }}>Alignment</label>
-                        </div>
-                        <div className='col-md-3 col-6 pl-0 pr-0'>
+                              value={character.alignment} />
+                            <label
+                              style={{
+                                width: '100%',
+                                textAlign: 'right',
+                                textTransform: 'uppercase',
+                                fontSize: '11px'
+                              }}>Alignment</label>
+                          </div>
+                          <div className='col-md-3 col-6 pl-0 pr-0'>
                             <Input type='exp' name='exp' id='exp'
-                              value={character.exp}/>
-                          <label
-                            style={{
-                              width: '100%',
-                              textAlign: 'right',
-                              textTransform: 'uppercase',
-                              fontSize: '11px'
-                            }}>Experience Points</label>
+                              value={character.exp} />
+                            <label
+                              style={{
+                                width: '100%',
+                                textAlign: 'right',
+                                textTransform: 'uppercase',
+                                fontSize: '11px'
+                              }}>Experience Points</label>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -171,13 +172,12 @@ const Saved = () => {
                 </div>
               </div>
             </div>
-          </div>
           ))
         ) : null
       }
       <h1>Your saved Notes</h1>
     </>
-          )
+  )
 }
 
 export default Saved
